@@ -1,0 +1,337 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="Résumé en français et carte mentale de la conférence du Cheikh Abd Razzaq Al Badr au Masjid Nabawi, 26/10/2026.">
+<style>*,*::before,*::after{box-sizing:border-box}body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style>
+<title>Cours du 26/10 : le Tawhid et le Taghout</title>
+
+<style>
+/* Layout : page de résumé type Plaud (colonne centrée 768px), puis carte mentale en encadré qui s'ouvre en plein écran */
+:root {
+  --bg: #ffffff;
+  --fg: #111113;
+  --muted: #6b6b70;
+  --line: #e6e6e8;
+  --quote: #c9c9ce;
+  --panel: #ffffff;
+  --panel-shadow: 0 2px 10px rgba(0,0,0,.10);
+  --circle-open: #ffffff;
+  --map-font: 300 16px/20px sans-serif;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #1c1c1e; --fg: #f2f2f2; --muted: #a1a1a6; --line: #38383a; --quote: #4a4a4e;
+    --panel: #2c2c2e; --panel-shadow: 0 2px 10px rgba(0,0,0,.45); --circle-open: #1c1c1e;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #1c1c1e; --fg: #f2f2f2; --muted: #a1a1a6; --line: #38383a; --quote: #4a4a4e;
+  --panel: #2c2c2e; --panel-shadow: 0 2px 10px rgba(0,0,0,.45); --circle-open: #1c1c1e;
+  color-scheme: dark;
+}
+body {
+  background: var(--bg); color: var(--fg);
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  font-size: 15px; line-height: 1.6;
+}
+body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-area-inset-top, 0px); z-index: 10; background: var(--bg); }
+.top {
+  position: sticky; top: env(safe-area-inset-top, 0px); z-index: 5;
+  background: var(--bg); border-bottom: 1px solid var(--line);
+  padding-block: 10px;
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+}
+.top h1 { margin: 0; font-size: 13px; font-weight: 600; line-height: 1.35; text-wrap: balance; }
+.top p { margin: 2px 0 0; font-size: 12px; color: var(--muted); font-variant-numeric: tabular-nums; }
+main {
+  max-width: 768px; margin: 0 auto;
+  padding-block: 24px 48px;
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+}
+.tabs { display: flex; gap: 20px; font-size: 13px; margin-bottom: 20px; }
+.tabs span { color: var(--muted); }
+.tabs strong { font-weight: 600; }
+blockquote { margin: 0 0 8px; padding: 2px 0 2px 14px; border-left: 3px solid var(--quote); color: var(--muted); font-size: 14px; }
+blockquote strong { color: var(--fg); font-weight: 600; }
+h2 { font-size: 21px; line-height: 1.3; margin: 32px 0 12px; text-wrap: balance; }
+h3 { font-size: 17px; line-height: 1.35; margin: 26px 0 8px; text-wrap: balance; }
+p { margin: 0 0 12px; }
+ul, ol { margin: 0 0 12px; padding-left: 22px; }
+li { margin: 6px 0; }
+li > ul, li > ol { margin: 6px 0 0; }
+.todo { list-style: none; padding-left: 0; }
+.todo li { display: flex; gap: 10px; align-items: flex-start; }
+.todo input { margin-top: 5px; flex: none; width: 15px; height: 15px; accent-color: var(--muted); }
+.todo label { min-width: 0; }
+
+.mapcard {
+  position: relative; margin-top: 40px; height: 320px;
+  border: 1px solid var(--line); border-radius: 10px; overflow: hidden; background: var(--bg);
+}
+.mapcard .label { position: absolute; top: 10px; left: 12px; font-size: 12px; color: var(--muted); z-index: 2; }
+.mapcard .open {
+  position: absolute; inset: 0; z-index: 3; border: 0; background: transparent; cursor: zoom-in;
+}
+.mapcard .open:focus-visible { outline: 2px solid var(--muted); outline-offset: -3px; }
+#mm {
+  width: 100%; height: 100%; display: block;
+  --markmap-text-color: var(--fg);
+  --markmap-circle-open-bg: var(--circle-open);
+  --markmap-max-width: 300px;
+  --markmap-font: var(--map-font);
+}
+.controls, .close { display: none; }
+.mapcard.full {
+  position: fixed; inset: 0; z-index: 20; margin: 0; height: auto; border: 0; border-radius: 0;
+  padding: env(safe-area-inset-top, 0px) env(safe-area-inset-right, 0px) env(safe-area-inset-bottom, 0px) env(safe-area-inset-left, 0px);
+}
+.mapcard.full .open, .mapcard.full .label { display: none; }
+.mapcard.full .controls {
+  display: flex; position: absolute;
+  right: calc(16px + env(safe-area-inset-right, 0px));
+  bottom: calc(16px + env(safe-area-inset-bottom, 0px));
+  gap: 4px; padding: 6px; background: var(--panel); border-radius: 10px; box-shadow: var(--panel-shadow);
+}
+.mapcard.full .close {
+  display: grid; place-items: center; position: absolute;
+  top: calc(12px + env(safe-area-inset-top, 0px)); right: calc(12px + env(safe-area-inset-right, 0px));
+  width: 36px; height: 36px; border: 0; border-radius: 8px; background: var(--panel); box-shadow: var(--panel-shadow);
+  color: var(--fg); cursor: pointer;
+}
+.controls button {
+  width: 32px; height: 32px; border: 0; border-radius: 6px;
+  background: transparent; color: var(--fg); cursor: pointer; display: grid; place-items: center;
+}
+.controls button:hover { background: var(--line); }
+.controls button:focus-visible, .close:focus-visible { outline: 2px solid var(--muted); outline-offset: 1px; }
+.ico { width: 18px; height: 18px; fill: none; stroke: currentColor; stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round; }
+footer { text-align: center; font-size: 12px; color: var(--muted); padding-block: 8px 32px; }
+</style>
+</head>
+<body>
+
+
+<div class="top">
+  <h1>10-26 Conférence : le Tawhid, l'éloignement du Taghout, et les droits d'Allah et des serviteurs à la lumière des versets explicites et du hadith de Mu'âdh</h1>
+  <p>2026-10-26 19:18 · Cheikh Abd Razzaq Al Badr</p>
+</div>
+
+<main>
+  <div class="tabs"><strong>Résumé</strong></div>
+  <div id="doc"></div>
+
+  <section class="mapcard" id="card" aria-label="Carte mentale">
+    <span class="label">Carte mentale</span>
+    <svg id="mm" class="markmap"></svg>
+    <button class="open" id="open" type="button" aria-label="Ouvrir la carte mentale en plein écran"></button>
+    <button class="close" id="close" type="button" title="Fermer" aria-label="Fermer la carte"><svg class="ico" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
+    <div class="controls" role="toolbar" aria-label="Commandes de la carte">
+      <button id="zin" type="button" title="Zoom avant" aria-label="Zoom avant"><svg class="ico" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="M11 8v6M8 11h6M16.5 16.5L21 21"/></svg></button>
+      <button id="zout" type="button" title="Zoom arrière" aria-label="Zoom arrière"><svg class="ico" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="M8 11h6M16.5 16.5L21 21"/></svg></button>
+      <button id="fit" type="button" title="Ajuster à l'écran" aria-label="Ajuster à l'écran"><svg class="ico" viewBox="0 0 24 24"><path d="M4 9V4h5M15 4h5v5M20 15v5h-5M9 20H4v-5"/><rect x="8" y="8" width="8" height="8" rx="1"/></svg></button>
+      <button id="all" type="button" title="Tout déplier" aria-label="Tout déplier"><svg class="ico" viewBox="0 0 24 24"><path d="M4 6h16M8 12h12M12 18h8"/><circle cx="4" cy="12" r="0.8"/><circle cx="8" cy="18" r="0.8"/></svg></button>
+    </div>
+  </section>
+</main>
+<footer>Traduction française de la note Plaud du 26/10/2026</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/d3@7.9.0/dist/d3.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/markmap-view@0.18.10/dist/browser/index.js"></script>
+<script>
+const n = (content, children, fold) => ({ content, children: children || [], payload: fold ? { fold: 1 } : {} });
+const PBUH = 'ﷺ';
+
+const data = n("10-26 Conférence : le Tawhid et l'éloig...", [
+  n("", [
+    n("Date : 2026-10-26"),
+    n("Heure : 19:18:03"),
+    n("Lieu : Masjid Nabawi, Médine"),
+    n("Conférencier : Cheikh Abd Razzaq Al Badr")
+  ]),
+  n("Résumé", [
+    n("Les conférences ont traité de questions relatives au Tawhid et aux fondements de la croyance, en soulignant que la sagesse de la création des djinns et des humains et de l'envoi des messagers est l'adoration d'Allah Seul, et que l'adoration ne se réalise qu'en la vouant exclusivement à Allah et en évitant le Taghout. Elles ont montré que le fondement de la religion des prophètes est unique, malgré la diversité des législations et des règles pratiques, et que la parole du Tawhid repose sur la négation et l'affirmation : le rejet du Taghout et la foi en Allah."),
+    n("Elles ont également abordé la définition du Taghout, ainsi que ce qu'indiquent les versets explicites des sourates Al-An'âm, Al-Isrâ' et An-Nisâ' sur l'importance capitale du Tawhid et la gravité du shirk (association). Puis elles ont exposé les droits d'Allah et des serviteurs, et les enseignements tirés du hadith de Mu'âdh ibn Jabal (qu'Allah l'agrée) en matière de croyance, d'éducation et de bienséance dans l'enseignement et la prédication. Elles ont aussi évoqué l'universalité du message des messagers envoyés aux nations, qui ne laisse plus aucune excuse, et des exemples de polythéistes vouant un culte exclusif à Allah dans l'adversité, dont l'histoire de Husayn, père de 'Imrân.")
+  ]),
+  n("Points de connaissance", [
+    n("1. La sagesse de la création et l'adoration pour laquelle les hommes ont été créés", [
+      n("La parole du Très-Haut : ﴾Je n'ai créé les djinns et les hommes que pour qu'ils M'adorent﴿ indique que la sagesse de la création des deux espèces est l'adoration d'Allah, c'est-à-dire L'adorer Seul et Lui vouer exclusivement la religion."),
+      n("L'adoration n'est une adoration d'Allah que si elle Lui est exclusivement vouée et fondée sur le Tawhid ; celui qui adore Allah et adore avec Lui un autre n'a pas réalisé le but pour lequel il a été créé."),
+      n("La sourate Al-Kâfirûn montre qu'on peut nier la qualité d'adorateur à celui qui ne voue pas exclusivement son adoration à Allah : ﴾Je n'adore pas ce que vous adorez… et vous n'êtes pas adorateurs de ce que j'adore﴿."),
+      n("Les formes des actes d'adoration, comme la prière, le jeûne et la circumambulation, ne suffisent pas à établir l'adoration d'Allah si elles s'accompagnent de shirk ; ce qui compte, c'est d'adorer Allah Seul.")
+    ], true),
+    n("2. L'appel des prophètes et leur conflit avec leurs peuples", [
+      n("Le fondement de l'appel des prophètes était : ﴾Adorez Allah, vous n'avez pas d'autre divinité que Lui﴿, comme l'ont dit Noé, Hûd, Sâlih et Chu'ayb (paix sur eux)."),
+      n("Le conflit avec leurs peuples ne portait pas sur le simple fait d'accomplir des actes d'adoration pour Allah, mais sur le fait de Lui réserver ces actes ; d'où l'indignation des polythéistes : ﴾Réduira-t-il les divinités à une divinité unique ? Voilà une chose vraiment étonnante﴿."),
+      n("Les polythéistes reconnaissaient qu'Allah est le Créateur et le Pourvoyeur, mais ils L'adoraient tout en adorant d'autres que Lui."),
+      n("Ils invoquaient Allah exclusivement dans l'adversité, comme dans la parole du Très-Haut : ﴾Quand ils montent en bateau, ils invoquent Allah en Lui vouant exclusivement la religion ; puis, lorsqu'Il les a sauvés en les ramenant sur la terre ferme, voilà qu'ils Lui donnent des associés﴿. Cela apparaît aussi dans l'histoire de 'Ikrima (qu'Allah l'agrée), à qui l'on dit dans la détresse : « Seule la sincérité exclusive vous sauvera »."),
+    ], true),
+    n("3. L'histoire de Husayn, père de 'Imrân (qu'Allah l'agrée)", [
+      n("L'histoire est rapportée par l'imam Ahmad, At-Tirmidhî et d'autres ; sa chaîne de transmission fait l'objet de critiques, mais elle est mentionnée par les savants."),
+      n(`Le Prophète ${PBUH} demanda à Husayn combien de divinités il adorait. Il répondit : sept, six sur terre et une dans le ciel. Il réservait ses invocations à Celui qui est dans le ciel dans les moments de détresse et de peur.`),
+      n(`Le Prophète ${PBUH} l'invita à délaisser celles qui sont sur terre et à adorer Seul Celui qui est dans le ciel, ce qui fut la cause de son entrée en islam.`),
+      n("On cite cette histoire comme preuve que les polythéistes savaient qu'ils se tournaient vers Allah avec un culte exclusif dans l'adversité.")
+    ], true),
+    n("4. L'envoi des messagers, l'universalité du message et l'unité de la religion", [
+      n("Le Très-Haut dit : ﴾Nous avons envoyé dans chaque communauté un messager [pour dire] : « Adorez Allah et écartez-vous du Taghout »﴿ ; le but de l'envoi des messagers est donc d'appeler au Tawhid et à l'éloignement du Taghout."),
+      n("Le Très-Haut dit : ﴾Nous n'avons envoyé avant toi aucun messager sans lui révéler : « Point de divinité en dehors de Moi ; adorez-Moi donc »﴿, et Il dit : ﴾Interroge ceux de Nos messagers que Nous avons envoyés avant toi : avons-Nous institué, en dehors du Tout Miséricordieux, des divinités à adorer ?﴿."),
+      n("L'envoi des messagers aux nations ôte tout argument et ne laisse plus d'excuse, comme dans la parole du Très-Haut : ﴾Et Nous n'avons jamais châtié avant d'avoir envoyé un messager﴿."),
+      n("Le fondement de la religion des prophètes est unique et immuable : adorer Allah et éviter le Taghout ; en revanche, les législations et les règles pratiques diffèrent : une chose peut être licite dans une législation et interdite dans une autre."),
+      n("On en veut pour preuve la parole du Très-Haut : ﴾À chacun de vous Nous avons assigné une législation et une voie﴿, le hadith : « Nous, l'ensemble des prophètes, notre religion est une », et la parole du Très-Haut : ﴾Il vous a prescrit en matière de religion ce qu'Il avait enjoint à Noé… : « Établissez la religion et n'en faites pas un sujet de division »﴿."),
+      n("La croyance n'est pas sujette à l'abrogation, contrairement aux règles pratiques qui peuvent varier d'une législation à l'autre. La leçon a mentionné l'épître d'Ach-Chawkânî : <em>Guider les gens dignes de confiance vers l'accord des législations sur le Tawhid, la résurrection et les prophéties</em>."),
+      n("Les six piliers de la foi mentionnés dans la leçon sont la foi en Allah, en Ses anges, en Ses livres, en Ses messagers, au Jour dernier et au destin.")
+    ], true),
+    n("5. Le Tawhid et le rejet du Taghout", [
+      n("L'ordre d'adorer Allah est associé à l'ordre d'éviter le Taghout dans la parole du Très-Haut : ﴾Adorez Allah et écartez-vous du Taghout﴿."),
+      n("Le Très-Haut dit : ﴾Quiconque mécroit au Taghout et croit en Allah s'est saisi de l'anse la plus solide﴿ ; le sens du verset ne se réalise qu'en réunissant les deux."),
+      n("L'anse la plus solide est la parole « Lâ ilâha illa Allah », qui repose sur deux piliers, la négation et l'affirmation : « Lâ ilâha », c'est-à-dire le rejet du Taghout et la négation du droit à l'adoration pour tout autre qu'Allah ; « illa Allah », c'est-à-dire l'affirmation de l'adoration pour Allah et le fait de la Lui réserver."),
+      n("La leçon a exposé que se contenter de mentionner l'adoration d'Allah Seul sans expliquer l'éloignement du Taghout néglige une partie du sens du Tawhid, et a relié cela à la question du jugement porté sur celui qui adore autre qu'Allah."),
+      n("Il a été mentionné que le verset du Trône (Âyat al-Kursî) contient de multiples preuves et arguments en faveur du Tawhid, et que le verset qui le suit lie le fait de se saisir de l'anse la plus solide au rejet du Taghout et à la foi en Allah.")
+    ], true),
+    n("6. Définition du Taghout", [
+      n("Le mot Taghout dérive de « tughyân », c'est-à-dire le dépassement des limites ; c'est un terme générique qui englobe ce qui est adoré en dehors d'Allah, ou suivi, ou obéi au-delà des limites."),
+      n("Définition d'Ibn al-Qayyim citée par la leçon : le Taghout est tout ce par quoi le serviteur dépasse ses limites, qu'il s'agisse d'un adoré, d'un suivi ou d'un obéi."),
+      n("Y entre tout ce qui est adoré en dehors d'Allah, qu'il s'agisse d'un prophète, d'un saint, d'un vertueux ou de toute autre créature."),
+      n("Les prophètes et les vertueux qui n'acceptent pas d'être adorés ne sont pas des Taghout en eux-mêmes ; mais celui qui les adore a obéi au Diable qui lui a embelli cela. C'est pourquoi Abraham (paix sur lui) dit à son père : ﴾Ô mon père, n'adore pas le Diable﴿."),
+      n("La leçon a indiqué que les chefs des Taghout sont au nombre de cinq, et a cité le Diable en premier.")
+    ], true),
+    n("7. Les versets explicites de la sourate Al-An'âm", [
+      n(`Il est rapporté d'Ibn Mas'ûd (qu'Allah l'agrée) : « Que celui qui veut voir le testament de Muhammad ${PBUH}, sur lequel est apposé son sceau, lise : ﴾Dis : Venez, je vais réciter ce que votre Seigneur vous a interdit﴿ » jusqu'à la fin, ainsi que les deux versets qui suivent.`),
+      n("Les trois versets contiennent dix points et commencent par l'interdiction du shirk, ce qui montre l'importance capitale du Tawhid :", [
+        n("1. L'interdiction du shirk."),
+        n("2. La recommandation envers les parents."),
+        n("3. L'interdiction de tuer ses enfants."),
+        n("4. L'interdiction d'approcher les turpitudes."),
+        n("5. L'interdiction de tuer l'âme qu'Allah a rendue sacrée, sauf en droit."),
+        n("6. L'interdiction d'approcher les biens de l'orphelin, si ce n'est de la meilleure façon."),
+        n("7. Donner la pleine mesure et le juste poids."),
+        n("8. L'équité dans la parole."),
+        n("9. Le respect de l'engagement envers Allah."),
+        n("10. Suivre le droit chemin et éviter les sentiers divergents.")
+      ], true),
+      n("Les versets s'ouvrent sur l'interdiction du shirk, ce dont la leçon a déduit que le Tawhid est la plus importante des priorités et que le shirk est le plus grave des interdits.")
+    ], true),
+    n("8. Les versets explicites de la sourate Al-Isrâ' et le verset des dix droits", [
+      n("Les versets explicites de la sourate Al-Isrâ' contiennent dix-huit points ; ils commencent et se terminent par l'interdiction du shirk, ce qui confirme sa gravité et le caractère obligatoire du Tawhid."),
+      n("Parmi les principaux points qu'ils contiennent :", [
+        n("L'interdiction de prendre une divinité avec Allah, et l'ordre de L'adorer Seul."),
+        n("La bienfaisance envers les parents, et le fait de donner au proche parent, au pauvre et au voyageur leurs droits."),
+        n("L'interdiction du gaspillage et de l'avarice, et l'ordre de la modération dans la dépense."),
+        n("L'interdiction de tuer ses enfants par crainte de la pauvreté, et d'approcher la fornication."),
+        n("L'interdiction de tuer l'âme sacrée, sauf en droit, et d'approcher les biens de l'orphelin, si ce n'est de la meilleure façon."),
+        n("Le respect de l'engagement, et donner la pleine mesure et le juste poids."),
+        n("L'interdiction de parler sans savoir, de l'orgueil et de marcher sur terre avec arrogance."),
+        n("La conclusion des versets par l'interdiction du shirk.")
+      ], true),
+      n("Le fait que ces recommandations s'ouvrent et se ferment sur l'interdiction du shirk, et qu'elle y soit répétée, indique que le Tawhid est la plus obligatoire des obligations et que le shirk est le plus grave des interdits."),
+      n("Quant au verset des dix droits dans la sourate An-Nisâ', c'est la parole du Très-Haut : ﴾Adorez Allah et ne Lui associez rien ; agissez avec bonté envers les père et mère…﴿. Il s'ouvre sur le plus grand des droits : adorer Allah et éviter le shirk. Les droits comprennent : les parents, les proches, les orphelins, les pauvres, le voisin proche, le voisin lointain, le compagnon de tous les jours, le voyageur et les esclaves en votre possession."),
+      n(`Dans ce contexte, la leçon établit que le Tawhid consiste à adorer Allah Seul et à éviter le shirk, et cite le testament du Prophète ${PBUH} tel que rapporté par Ibn Mas'ûd (qu'Allah l'agrée) au sujet des versets qui réunissent les droits.`)
+    ], true),
+    n("9. Le hadith de Mu'âdh ibn Jabal et les droits d'Allah et des serviteurs", [
+      n("Le droit d'Allah sur les serviteurs est qu'ils L'adorent sans rien Lui associer ; c'est le but de la création des djinns et des hommes, de l'envoi des messagers et de la révélation des Livres."),
+      n("Le droit des serviteurs sur Allah est qu'Il ne châtie pas celui qui Le rencontre en monothéiste. C'est un droit qu'Allah a accordé par pure grâce et qu'Il S'est imposé à Lui-même, et non un dû du serviteur envers son Créateur."),
+      n("On retient de la parole de Mu'âdh (qu'Allah l'agrée) : « Ne vais-je pas annoncer la bonne nouvelle aux gens ? » que cette question n'était pas connue de tous les Compagnons.")
+    ], true),
+    n("10. Enseignements pour la prédication et l'éducation tirés du hadith de Mu'âdh", [
+      n("Il est permis de taire une partie de la science pour un intérêt religieux prépondérant, par exemple de crainte que les gens ne se reposent sur l'immensité de la miséricorde et délaissent les œuvres, et non par simple caprice ou opinion personnelle."),
+      n("Il est recommandé d'annoncer au musulman ce qui le réjouit, en prenant garde que se reposer sur l'espoir peut mener à la paresse ou à tomber dans les interdits."),
+      n("Fait partie de la bienséance de renvoyer la science à Allah et à Son Messager lorsqu'on ne sait pas, en disant : « Allah et Son Messager savent mieux »."),
+      n("Il est permis de réserver une science à certaines personnes lorsque l'intérêt et l'aptitude de celui qui la reçoit l'exigent ; on cite la parole de 'Alî (qu'Allah l'agrée) : « Parlez aux gens de ce qu'ils connaissent »."),
+      n(`Le hadith montre l'humilité du Prophète ${PBUH}, qui montait un âne et prenait quelqu'un en croupe, ainsi que la permission de monter à deux sur une monture tant qu'elle le supporte sans en souffrir.`),
+      n(`Parmi les mérites de Mu'âdh ibn Jabal (qu'Allah l'agrée) : le Prophète ${PBUH} l'a pris en croupe et lui a réservé cette science ; et ce qui est rapporté sur son mérite : ﴾Mu'âdh était une communauté à lui seul, dévoué à Allah﴿, ainsi que la parole du Prophète ${PBUH} : « Mu'âdh viendra le Jour de la Résurrection devant les savants, à la distance d'un jet de pierre ».`)
+    ], true)
+  ]),
+  n("Devoirs", [
+    n("Réviser les versets des sourates Adh-Dhâriyât, An-Nahl et Al-A'râf relatifs au Tawhid, et relever les expressions communes à l'appel des prophètes."),
+    n("Expliquer la différence entre le simple accomplissement de l'adoration et l'adoration fondée sur le Tawhid, avec des preuves coraniques."),
+    n("Analyser l'histoire de Husayn et en dégager ce qu'elle indique sur le culte exclusif voué à Allah dans l'adversité."),
+    n("Comparer brièvement la constance du fondement de la religion et la diversité des législations, avec des exemples de règles différentes."),
+    n("Rassembler les preuves de l'envoi des messagers à toutes les nations et expliquer son effet : ne laisser aucune excuse."),
+    n("Réviser les deux versets ﴾Adorez Allah et écartez-vous du Taghout﴿ et ﴾Quiconque mécroit au Taghout et croit en Allah﴿, et expliquer le lien entre la négation et l'affirmation dans la parole du Tawhid."),
+    n("Résumer la définition du Taghout et donner des exemples d'adoré, de suivi et d'obéi par lesquels le serviteur dépasse ses limites."),
+    n("Relever les dix points des versets explicites de la sourate Al-An'âm, et réviser les versets explicites de la sourate Al-Isrâ', leurs dix-huit points et ce qu'ils indiquent sur le Tawhid."),
+    n("Réviser le verset des dix droits de la sourate An-Nisâ' et en expliquer les sens et les implications."),
+    n("Résumer les enseignements doctrinaux et éducatifs tirés du hadith de Mu'âdh ibn Jabal (qu'Allah l'agrée), en particulier le droit d'Allah et le droit des serviteurs.")
+  ])
+]);
+
+
+
+// Résumé écrit, généré depuis le même arbre que la carte
+const bold = s => s.replace(/﴾[^﴿]*﴿/g, m => `<strong>${m}</strong>`);
+const [meta, resume, points, devoirs] = data.children;
+const NUM = /^(\d+)\.\s+/;
+function list(items) {
+  const ordered = items.every(i => NUM.test(i.content));
+  const tag = ordered ? 'ol' : 'ul';
+  return `<${tag}>` + items.map(i => {
+    const txt = ordered ? i.content.replace(NUM, '') : i.content;
+    return `<li><p>${bold(txt)}</p>${i.children.length ? list(i.children) : ''}</li>`;
+  }).join('') + `</${tag}>`;
+}
+let html = '<blockquote><p>' + meta.children.map(m => {
+  const k = m.content.indexOf(' : ');
+  return `<strong>${m.content.slice(0, k)} :</strong> ${m.content.slice(k + 3)}`;
+}).join('<br>') + '</p></blockquote>';
+html += `<h2>${resume.content}</h2>` + resume.children.map(p => `<p>${bold(p.content)}</p>`).join('');
+html += `<h2>${points.content}</h2>` + points.children.map(pt => `<h3>${pt.content}</h3>${list(pt.children)}`).join('');
+html += `<h2>${devoirs.content}</h2><ul class="todo">` + devoirs.children.map((d, i) =>
+  `<li><input type="checkbox" id="devoir-${i + 1}"><label for="devoir-${i + 1}">${bold(d.content)}</label></li>`).join('') + '</ul>';
+document.getElementById('doc').innerHTML = html;
+
+// Carte mentale : une teinte pastel par branche principale (couleurs Plaud), épaisseur décroissante avec la profondeur
+const BRANCH = ['#E5CCB3', '#E5DDB3', '#CCE5B3', '#B7E5C6'];
+data.payload.c = BRANCH[0];
+data.children.forEach((b, i) => {
+  (function paint(x) { x.payload.c = BRANCH[i % BRANCH.length]; x.children.forEach(paint); })(b);
+});
+(function mark(x) { if (x.payload.fold) x.payload.foldInit = 1; x.children.forEach(mark); })(data);
+const depthOf = node => (node.state && node.state.path ? node.state.path.split('.').length : 1);
+
+const { Markmap } = window.markmap;
+const mm = Markmap.create('#mm', {
+  color: node => node.payload.c,
+  lineWidth: node => 1 + 1.5 / Math.pow(2, depthOf(node) - 1),
+  maxWidth: 300,
+  duration: 400,
+  spacingVertical: 5,
+  paddingX: 8,
+  fitRatio: 0.95
+}, data);
+
+const card = document.getElementById('card');
+function setFull(on) {
+  card.classList.toggle('full', on);
+  document.body.style.overflow = on ? 'hidden' : '';
+  requestAnimationFrame(() => mm.fit());
+  if (on) document.getElementById('close').focus();
+}
+document.getElementById('open').onclick = () => setFull(true);
+document.getElementById('close').onclick = () => setFull(false);
+document.addEventListener('keydown', e => { if (e.key === 'Escape' && card.classList.contains('full')) setFull(false); });
+document.getElementById('zin').onclick = () => mm.rescale(1.25);
+document.getElementById('zout').onclick = () => mm.rescale(0.8);
+document.getElementById('fit').onclick = () => mm.fit();
+let open = false;
+document.getElementById('all').onclick = () => {
+  open = !open;
+  (function walk(x) {
+    if (x !== data && x.children && x.children.length) {
+      x.payload = { ...x.payload, fold: open ? 0 : (x.payload.foldInit ? 1 : 0) };
+    }
+    (x.children || []).forEach(walk);
+  })(mm.state.data);
+  mm.renderData().then(() => mm.fit());
+  const b = document.getElementById('all');
+  b.title = b.ariaLabel = open ? 'Replier' : 'Tout déplier';
+};
+window.addEventListener('resize', () => mm.fit());
+window.addEventListener('load', () => setTimeout(() => mm.fit(), 300));
+</script>
+
+</body>
+</html>
