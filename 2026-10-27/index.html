@@ -1,0 +1,298 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="Résumé en français et carte mentale de la conférence du Cheikh Abd Razzaq Al Badr au Masjid Nabawi, 27/10/2026.">
+<style>*,*::before,*::after{box-sizing:border-box}body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style>
+<title>Cours du 27/10 : le mérite du Tawhid</title>
+
+<style>
+/* Layout : page de résumé type Plaud (colonne centrée 768px), puis carte mentale en encadré qui s'ouvre en plein écran */
+:root {
+  --bg: #ffffff;
+  --fg: #111113;
+  --muted: #6b6b70;
+  --line: #e6e6e8;
+  --quote: #c9c9ce;
+  --panel: #ffffff;
+  --panel-shadow: 0 2px 10px rgba(0,0,0,.10);
+  --circle-open: #ffffff;
+  --map-font: 300 16px/20px sans-serif;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #1c1c1e; --fg: #f2f2f2; --muted: #a1a1a6; --line: #38383a; --quote: #4a4a4e;
+    --panel: #2c2c2e; --panel-shadow: 0 2px 10px rgba(0,0,0,.45); --circle-open: #1c1c1e;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #1c1c1e; --fg: #f2f2f2; --muted: #a1a1a6; --line: #38383a; --quote: #4a4a4e;
+  --panel: #2c2c2e; --panel-shadow: 0 2px 10px rgba(0,0,0,.45); --circle-open: #1c1c1e;
+  color-scheme: dark;
+}
+body {
+  background: var(--bg); color: var(--fg);
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  font-size: 15px; line-height: 1.6;
+}
+body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-area-inset-top, 0px); z-index: 10; background: var(--bg); }
+.top {
+  position: sticky; top: env(safe-area-inset-top, 0px); z-index: 5;
+  background: var(--bg); border-bottom: 1px solid var(--line);
+  padding-block: 10px;
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+}
+.top h1 { margin: 0; font-size: 13px; font-weight: 600; line-height: 1.35; text-wrap: balance; }
+.top p { margin: 2px 0 0; font-size: 12px; color: var(--muted); font-variant-numeric: tabular-nums; }
+main {
+  max-width: 768px; margin: 0 auto;
+  padding-block: 24px 48px;
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+}
+.tabs { display: flex; gap: 20px; font-size: 13px; margin-bottom: 20px; }
+.tabs span { color: var(--muted); }
+.tabs strong { font-weight: 600; }
+blockquote { margin: 0 0 8px; padding: 2px 0 2px 14px; border-left: 3px solid var(--quote); color: var(--muted); font-size: 14px; }
+blockquote strong { color: var(--fg); font-weight: 600; }
+h2 { font-size: 21px; line-height: 1.3; margin: 32px 0 12px; text-wrap: balance; }
+h3 { font-size: 17px; line-height: 1.35; margin: 26px 0 8px; text-wrap: balance; }
+h4 { font-size: 15px; line-height: 1.4; margin: 16px 0 4px; color: var(--muted); }
+p { margin: 0 0 12px; }
+ul, ol { margin: 0 0 12px; padding-left: 22px; }
+li { margin: 6px 0; }
+li > ul, li > ol { margin: 6px 0 0; }
+.todo { list-style: none; padding-left: 0; }
+.todo li { display: flex; gap: 10px; align-items: flex-start; }
+.todo input { margin-top: 5px; flex: none; width: 15px; height: 15px; accent-color: var(--muted); }
+.todo label { min-width: 0; }
+
+.mapcard {
+  position: relative; margin-top: 40px; height: 320px;
+  border: 1px solid var(--line); border-radius: 10px; overflow: hidden; background: var(--bg);
+}
+.mapcard .label { position: absolute; top: 10px; left: 12px; font-size: 12px; color: var(--muted); z-index: 2; }
+.mapcard .open {
+  position: absolute; inset: 0; z-index: 3; border: 0; background: transparent; cursor: zoom-in;
+}
+.mapcard .open:focus-visible { outline: 2px solid var(--muted); outline-offset: -3px; }
+#mm {
+  width: 100%; height: 100%; display: block;
+  --markmap-text-color: var(--fg);
+  --markmap-circle-open-bg: var(--circle-open);
+  --markmap-max-width: 300px;
+  --markmap-font: var(--map-font);
+}
+.controls, .close { display: none; }
+.mapcard.full {
+  position: fixed; inset: 0; z-index: 20; margin: 0; height: auto; border: 0; border-radius: 0;
+  padding: env(safe-area-inset-top, 0px) env(safe-area-inset-right, 0px) env(safe-area-inset-bottom, 0px) env(safe-area-inset-left, 0px);
+}
+.mapcard.full .open, .mapcard.full .label { display: none; }
+.mapcard.full .controls {
+  display: flex; position: absolute;
+  right: calc(16px + env(safe-area-inset-right, 0px));
+  bottom: calc(16px + env(safe-area-inset-bottom, 0px));
+  gap: 4px; padding: 6px; background: var(--panel); border-radius: 10px; box-shadow: var(--panel-shadow);
+}
+.mapcard.full .close {
+  display: grid; place-items: center; position: absolute;
+  top: calc(12px + env(safe-area-inset-top, 0px)); right: calc(12px + env(safe-area-inset-right, 0px));
+  width: 36px; height: 36px; border: 0; border-radius: 8px; background: var(--panel); box-shadow: var(--panel-shadow);
+  color: var(--fg); cursor: pointer;
+}
+.controls button {
+  width: 32px; height: 32px; border: 0; border-radius: 6px;
+  background: transparent; color: var(--fg); cursor: pointer; display: grid; place-items: center;
+}
+.controls button:hover { background: var(--line); }
+.controls button:focus-visible, .close:focus-visible { outline: 2px solid var(--muted); outline-offset: 1px; }
+.ico { width: 18px; height: 18px; fill: none; stroke: currentColor; stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round; }
+footer { text-align: center; font-size: 12px; color: var(--muted); padding-block: 8px 32px; }
+</style>
+</head>
+<body>
+
+
+<div class="top">
+  <h1>10-27 Conférence : le mérite du Tawhid, l'expiation des péchés et l'exégèse du verset d'Al-An'âm</h1>
+  <p>2026-10-27 19:16 · Cheikh Abd Razzaq Al Badr</p>
+</div>
+
+<main>
+  <div class="tabs"><strong>Résumé</strong></div>
+  <div id="doc"></div>
+
+  <section class="mapcard" id="card" aria-label="Carte mentale">
+    <span class="label">Carte mentale</span>
+    <svg id="mm" class="markmap"></svg>
+    <button class="open" id="open" type="button" aria-label="Ouvrir la carte mentale en plein écran"></button>
+    <button class="close" id="close" type="button" title="Fermer" aria-label="Fermer la carte"><svg class="ico" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
+    <div class="controls" role="toolbar" aria-label="Commandes de la carte">
+      <button id="zin" type="button" title="Zoom avant" aria-label="Zoom avant"><svg class="ico" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="M11 8v6M8 11h6M16.5 16.5L21 21"/></svg></button>
+      <button id="zout" type="button" title="Zoom arrière" aria-label="Zoom arrière"><svg class="ico" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="M8 11h6M16.5 16.5L21 21"/></svg></button>
+      <button id="fit" type="button" title="Ajuster à l'écran" aria-label="Ajuster à l'écran"><svg class="ico" viewBox="0 0 24 24"><path d="M4 9V4h5M15 4h5v5M20 15v5h-5M9 20H4v-5"/><rect x="8" y="8" width="8" height="8" rx="1"/></svg></button>
+      <button id="all" type="button" title="Tout déplier" aria-label="Tout déplier"><svg class="ico" viewBox="0 0 24 24"><path d="M4 6h16M8 12h12M12 18h8"/><circle cx="4" cy="12" r="0.8"/><circle cx="8" cy="18" r="0.8"/></svg></button>
+    </div>
+  </section>
+</main>
+<footer>Traduction française de la note Plaud du 27/10/2026</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/d3@7.9.0/dist/d3.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/markmap-view@0.18.10/dist/browser/index.js"></script>
+<script>
+const n = (content, children, fold) => ({ content, children: children || [], payload: fold ? { fold: 1 } : {} });
+const PBUH = 'ﷺ';
+
+const data = n("10-27 Conférence : le mérite du Tawhid...", [
+  n("", [
+    n("Date : 2026-10-27"),
+    n("Heure : 19:16:31"),
+    n("Lieu : Masjid Nabawi, Médine"),
+    n("Conférencier : Cheikh Abd Razzaq Al Badr")
+  ]),
+  n("Résumé", [
+    n("La conférence du 27/10/2026, à 19 h 16, a porté sur le chapitre « Le mérite du Tawhid et les péchés qu'il expie », en soulignant que le Tawhid (Tawhid de la divinité et de l'adoration) est la meilleure des œuvres et celle qui expie le plus les péchés. La structure du mot « mâ » dans le titre du chapitre a été analysée, et le sens infinitif a été retenu : « son expiation des péchés », selon l'explication de Sulaymân ibn 'Abd Allah dans « Taysîr al-'Azîz al-Hamîd ». Puis le verset d'Al-An'âm a été expliqué : ﴾Ceux qui ont cru et n'ont point troublé leur foi par quelque injustice…﴿, l'injustice y désignant le shirk. La leçon a établi la règle de la sécurité et de la bonne guidée liées au Tawhid, et la répartition en trois des degrés de la foi et de la sécurité, d'après l'exposé d'Ibn Taymiyya dans « Kitâb al-Îmân ». Elle a aussi expliqué le sens originel de l'injustice (zulm) dans la langue, placer une chose ailleurs qu'à sa place, et son application au shirk et aux péchés. Elle a enfin montré la différence entre l'entrée en Enfer des monothéistes désobéissants, qui est une purification, leur sortie « groupe après groupe » (dabâ'ir dabâ'ir) et leur entrée finale au Paradis, en distinguant le cas des devanciers et des modérés de celui qui est injuste envers lui-même.")
+  ]),
+  n("Points de connaissance", [
+    n("1. Le mérite du Tawhid et l'expiation des péchés", [
+      n("Définition du Tawhid visé", [
+        n("Le chapitre vise le Tawhid de la divinité et de l'adoration, c'est-à-dire vouer l'adoration à Allah Seul sans rien Lui associer. C'est le fondement de la bonne guidée, et il n'y a pas de bonne guidée sans lui."),
+        n("Son mérite a été explicitement mentionné en raison de sa grande importance : aucune œuvre ne l'égale en mérite ni en expiation des péchés.")
+      ], true),
+      n("La structure de « mâ » dans le titre du chapitre", [
+        n("« Mâ yukaffiru min adh-dhunûb » peut être relatif (« ce qu'il expie comme péchés ») ou infinitif (« son expiation des péchés »)."),
+        n("Le sens infinitif a été retenu selon le commentateur Sulaymân ibn 'Abd Allah dans « Taysîr al-'Azîz al-Hamîd ». Le sens est donc : le mérite du Tawhid et son expiation des péchés."),
+        n("« Taysîr al-'Azîz al-Hamîd » est le premier commentaire écrit du Kitâb at-Tawhid. Il se distingue par sa rigueur, sa précision et son attention aux hadiths. Bien qu'il n'ait pas couvert tous les chapitres, il est devenu une référence pour ceux qui sont venus après.")
+      ], true)
+    ], true),
+    n("2. L'exégèse du verset d'Al-An'âm : la sécurité et la bonne guidée", [
+      n("Le texte du verset et son contexte", [
+        n("Le verset ﴾Ceux qui ont cru et n'ont point troublé leur foi par quelque injustice, ceux-là ont la sécurité, et ce sont eux les bien-guidés﴿ est venu en réponse à la question ﴾Lequel des deux partis a le plus droit à la sécurité, si vous savez ?﴿, après la discussion d'Abraham avec son peuple."),
+        n("Le jugement divin a tranché : ceux qui ont le plus droit à la sécurité sont ceux qui ont cru sans mêler leur foi d'injustice (c'est-à-dire de shirk).")
+      ], true),
+      n("Le sens de « l'injustice » dans le verset", [
+        n("« Yalbisû » signifie « mêler » : ne pas mêler sa foi d'injustice, c'est la garder pure."),
+        n(`Les Compagnons ont pensé que l'injustice était l'injustice envers soi-même par les péchés. Le Prophète ${PBUH} les a corrigés par le verset de Luqmân : ﴾Le shirk est vraiment une injustice énorme﴿. Il s'agit donc ici, avant tout, du shirk majeur.`)
+      ], true),
+      n("La sécurité et la bonne guidée qui découlent du Tawhid", [
+        n("Les monothéistes qui n'ont pas mêlé leur foi de shirk ont la sécurité complète ici-bas et dans l'au-delà, et ils sont guidés vers le droit chemin."),
+        n("La bonne guidée repose sur le Tawhid : celui qui ne voue pas l'unicité à Allah n'est pas considéré comme bien-guidé.")
+      ], true),
+      n("La répartition en trois de la sécurité selon l'état de la foi (d'après Ibn Taymiyya)", [
+        n("Celui qui est préservé des trois genres d'injustice (le shirk, l'injustice envers les serviteurs, l'injustice envers soi-même par les péchés) a la sécurité complète et la bonne guidée complète."),
+        n("Celui qui n'est pas préservé de l'injustice envers lui-même mais reste sur le Tawhid a la sécurité et la bonne guidée dans leur principe : il entrera forcément au Paradis à la fin."),
+        n("Celui qui n'a pas de foi n'a pas de sécurité."),
+        n("Ceci est tiré du « Kitâb al-Îmân » d'Ibn Taymiyya (qu'Allah lui fasse miséricorde).")
+      ], true)
+    ], true),
+    n("3. Les degrés des croyants et l'entrée au Paradis", [
+      n("Les degrés mentionnés dans la sourate Fâtir", [
+        n("﴾Parmi eux il en est qui sont injustes envers eux-mêmes, d'autres qui sont modérés, et d'autres qui, par la permission d'Allah, devancent dans les bonnes œuvres… Les jardins d'Éden, où ils entreront﴿ : beaucoup de pieux prédécesseurs accordent une grande valeur au « waw » (le « ils ») de « yadkhulûnahâ » (« ils y entreront »), car il englobe aussi celui qui est injuste envers lui-même."),
+        n("Les trois catégories sont : celui qui est injuste envers lui-même (par les péchés, sans mécréance ni shirk), le modéré, et celui qui devance dans les bonnes œuvres.")
+      ], true),
+      n("La manière d'entrer et son déroulement", [
+        n("Les devanciers et les modérés entrent au Paradis d'emblée, sans jugement ni châtiment."),
+        n("Celui qui est injuste envers lui-même entre au Paradis, mais cela peut être précédé d'un châtiment qui le purifie et le nettoie de ses péchés."),
+        n("Les monothéistes désobéissants entrent en Enfer pour être purifiés, ce qui diffère de l'entrée des mécréants. Puis ils en sont sortis « groupe après groupe » (dabâ'ir dabâ'ir, selon leurs péchés) et jetés dans le fleuve du Firdaws : ils reprennent vie et repoussent comme pousse la graine dans le limon du torrent.")
+      ], true)
+    ], true),
+    n("4. Le sens de l'injustice dans la langue et dans la religion", [
+      n("L'origine linguistique", [
+        n("Dans la langue des Arabes, l'injustice (zulm) consiste à placer une chose ailleurs qu'à sa place. Exemple chez An-Nâbigha : « wan-nu'yu kal-hawdi bil-mazlûmati al-jaladi » (et la rigole, tel un bassin, dans la terre dure « maltraitée ») : on a creusé là où l'on ne creuse pas, car « al-mazlûma » désigne la terre dure.")
+      ], true),
+      n("Ses usages dans la religion", [
+        n("Le mot désigne le shirk et désigne aussi les péchés. Employé seul, il vise le plus souvent le shirk, comme dans : ﴾Et ce sont les mécréants qui sont les injustes﴿ et ﴾Les injustes n'auront aucun secoureur﴿.")
+      ], true),
+      n("Pourquoi le polythéiste et le désobéissant sont appelés injustes", [
+        n("Le polythéiste est injuste car il a placé l'adoration ailleurs qu'à sa place et l'a vouée à qui ne la mérite pas, alors que l'adoration est un droit exclusif d'Allah Seul."),
+        n("Le désobéissant est injuste envers lui-même car il a dépassé la limite de l'obéissance : il a placé son acte ailleurs qu'à sa juste place, qui est l'obéissance au Créateur.")
+      ], true)
+    ], true)
+  ]),
+  n("Prochaines étapes", [
+    n("Réviser le chapitre « Le mérite du Tawhid et les péchés qu'il expie » du Kitâb at-Tawhid, en consultant « Taysîr al-'Azîz al-Hamîd » de Sulaymân ibn 'Abd Allah pour gagner en précision et en compréhension."),
+    n("Étudier le « Kitâb al-Îmân » d'Ibn Taymiyya sur les degrés de la sécurité et de la bonne guidée et sur les trois genres d'injustice, en suivant les preuves coraniques qui s'y rapportent."),
+    n(`Mémoriser et comprendre le verset d'Al-An'âm et l'explication du Prophète ${PBUH} sur le sens de « l'injustice » par le verset de Luqmân, puis rédiger un résumé montrant l'effet du Tawhid sur la sécurité et la bonne guidée.`),
+    n("Préparer un schéma des degrés : celui qui devance dans les bonnes œuvres, le modéré, celui qui est injuste envers lui-même, avec les cas d'entrée au Paradis et l'étape de purification des monothéistes désobéissants."),
+    n("Rassembler des exemples tirés de la poésie et de la langue sur le sens de l'injustice, « placer une chose ailleurs qu'à sa place », et les relier à ses applications religieuses au shirk et aux péchés.")
+  ])
+]);
+
+// Résumé écrit, généré depuis le même arbre que la carte
+const bold = s => s.replace(/﴾[^﴿]*﴿/g, m => `<strong>${m}</strong>`);
+const [meta, resume, points, devoirs] = data.children;
+const NUM = /^(\d+)\.\s+/;
+function list(items) {
+  const ordered = items.every(i => NUM.test(i.content));
+  const tag = ordered ? 'ol' : 'ul';
+  return `<${tag}>` + items.map(i => {
+    const txt = ordered ? i.content.replace(NUM, '') : i.content;
+    return `<li><p>${bold(txt)}</p>${i.children.length ? list(i.children) : ''}</li>`;
+  }).join('') + `</${tag}>`;
+}
+let html = '<blockquote><p>' + meta.children.map(m => {
+  const k = m.content.indexOf(' : ');
+  return `<strong>${m.content.slice(0, k)} :</strong> ${m.content.slice(k + 3)}`;
+}).join('<br>') + '</p></blockquote>';
+html += `<h2>${resume.content}</h2>` + resume.children.map(p => `<p>${bold(p.content)}</p>`).join('');
+html += `<h2>${points.content}</h2>` + points.children.map(pt => `<h3>${pt.content}</h3>` + (pt.children.every(s => s.children.length) ? pt.children.map(s => `<h4>${s.content}</h4>${list(s.children)}`).join('') : list(pt.children))).join('');
+html += `<h2>${devoirs.content}</h2><ul class="todo">` + devoirs.children.map((d, i) =>
+  `<li><input type="checkbox" id="devoir-${i + 1}"><label for="devoir-${i + 1}">${bold(d.content)}</label></li>`).join('') + '</ul>';
+document.getElementById('doc').innerHTML = html;
+
+// Carte mentale : une teinte pastel par branche principale (couleurs Plaud), épaisseur décroissante avec la profondeur
+const BRANCH = ['#E5CCB3', '#E5DDB3', '#CCE5B3', '#B7E5C6'];
+data.payload.c = BRANCH[0];
+data.children.forEach((b, i) => {
+  (function paint(x) { x.payload.c = BRANCH[i % BRANCH.length]; x.children.forEach(paint); })(b);
+});
+(function mark(x) { if (x.payload.fold) x.payload.foldInit = 1; x.children.forEach(mark); })(data);
+const depthOf = node => (node.state && node.state.path ? node.state.path.split('.').length : 1);
+
+const { Markmap } = window.markmap;
+const mm = Markmap.create('#mm', {
+  color: node => node.payload.c,
+  lineWidth: node => 1 + 1.5 / Math.pow(2, depthOf(node) - 1),
+  maxWidth: 300,
+  duration: 400,
+  spacingVertical: 5,
+  paddingX: 8,
+  fitRatio: 0.95
+}, data);
+
+const card = document.getElementById('card');
+function setFull(on) {
+  card.classList.toggle('full', on);
+  document.body.style.overflow = on ? 'hidden' : '';
+  requestAnimationFrame(() => mm.fit());
+  if (on) document.getElementById('close').focus();
+}
+document.getElementById('open').onclick = () => setFull(true);
+document.getElementById('close').onclick = () => setFull(false);
+document.addEventListener('keydown', e => { if (e.key === 'Escape' && card.classList.contains('full')) setFull(false); });
+document.getElementById('zin').onclick = () => mm.rescale(1.25);
+document.getElementById('zout').onclick = () => mm.rescale(0.8);
+document.getElementById('fit').onclick = () => mm.fit();
+let open = false;
+document.getElementById('all').onclick = () => {
+  open = !open;
+  (function walk(x) {
+    if (x !== data && x.children && x.children.length) {
+      x.payload = { ...x.payload, fold: open ? 0 : (x.payload.foldInit ? 1 : 0) };
+    }
+    (x.children || []).forEach(walk);
+  })(mm.state.data);
+  mm.renderData().then(() => mm.fit());
+  const b = document.getElementById('all');
+  b.title = b.ariaLabel = open ? 'Replier' : 'Tout déplier';
+};
+window.addEventListener('resize', () => mm.fit());
+window.addEventListener('load', () => setTimeout(() => mm.fit(), 300));
+</script>
+
+</body>
+</html>
