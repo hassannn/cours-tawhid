@@ -1,0 +1,337 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="Résumé en français et carte mentale de la conférence du Cheikh Abd Razzaq Al Badr au Masjid Nabawi, 28/10/2026.">
+<style>*,*::before,*::after{box-sizing:border-box}body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style>
+<title>Cours du 28/10 : la réalité du Tawhid</title>
+
+<style>
+/* Layout : page de résumé type Plaud (colonne centrée 768px), puis carte mentale en encadré qui s'ouvre en plein écran */
+:root {
+  --bg: #ffffff;
+  --fg: #111113;
+  --muted: #6b6b70;
+  --line: #e6e6e8;
+  --quote: #c9c9ce;
+  --panel: #ffffff;
+  --panel-shadow: 0 2px 10px rgba(0,0,0,.10);
+  --circle-open: #ffffff;
+  --map-font: 300 16px/20px sans-serif;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #1c1c1e; --fg: #f2f2f2; --muted: #a1a1a6; --line: #38383a; --quote: #4a4a4e;
+    --panel: #2c2c2e; --panel-shadow: 0 2px 10px rgba(0,0,0,.45); --circle-open: #1c1c1e;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #1c1c1e; --fg: #f2f2f2; --muted: #a1a1a6; --line: #38383a; --quote: #4a4a4e;
+  --panel: #2c2c2e; --panel-shadow: 0 2px 10px rgba(0,0,0,.45); --circle-open: #1c1c1e;
+  color-scheme: dark;
+}
+body {
+  background: var(--bg); color: var(--fg);
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  font-size: 15px; line-height: 1.6;
+}
+body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-area-inset-top, 0px); z-index: 10; background: var(--bg); }
+.top {
+  position: sticky; top: env(safe-area-inset-top, 0px); z-index: 5;
+  background: var(--bg); border-bottom: 1px solid var(--line);
+  padding-block: 10px;
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+}
+.top h1 { margin: 0; font-size: 13px; font-weight: 600; line-height: 1.35; text-wrap: balance; }
+.top p { margin: 2px 0 0; font-size: 12px; color: var(--muted); font-variant-numeric: tabular-nums; }
+main {
+  max-width: 768px; margin: 0 auto;
+  padding-block: 24px 48px;
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+}
+.tabs { display: flex; gap: 20px; font-size: 13px; margin-bottom: 20px; }
+.tabs span { color: var(--muted); }
+.tabs strong { font-weight: 600; }
+blockquote { margin: 0 0 8px; padding: 2px 0 2px 14px; border-left: 3px solid var(--quote); color: var(--muted); font-size: 14px; }
+blockquote strong { color: var(--fg); font-weight: 600; }
+h2 { font-size: 21px; line-height: 1.3; margin: 32px 0 12px; text-wrap: balance; }
+h3 { font-size: 17px; line-height: 1.35; margin: 26px 0 8px; text-wrap: balance; }
+h4 { font-size: 15px; line-height: 1.4; margin: 16px 0 4px; color: var(--muted); }
+p { margin: 0 0 12px; }
+ul, ol { margin: 0 0 12px; padding-left: 22px; }
+li { margin: 6px 0; }
+li > ul, li > ol { margin: 6px 0 0; }
+.todo { list-style: none; padding-left: 0; }
+.todo li { display: flex; gap: 10px; align-items: flex-start; }
+.todo input { margin-top: 5px; flex: none; width: 15px; height: 15px; accent-color: var(--muted); }
+.todo label { min-width: 0; }
+
+.mapcard {
+  position: relative; margin-top: 40px; height: 320px;
+  border: 1px solid var(--line); border-radius: 10px; overflow: hidden; background: var(--bg);
+}
+.mapcard .label { position: absolute; top: 10px; left: 12px; font-size: 12px; color: var(--muted); z-index: 2; }
+.mapcard .open {
+  position: absolute; inset: 0; z-index: 3; border: 0; background: transparent; cursor: zoom-in;
+}
+.mapcard .open:focus-visible { outline: 2px solid var(--muted); outline-offset: -3px; }
+#mm {
+  width: 100%; height: 100%; display: block;
+  --markmap-text-color: var(--fg);
+  --markmap-circle-open-bg: var(--circle-open);
+  --markmap-max-width: 300px;
+  --markmap-font: var(--map-font);
+}
+.controls, .close { display: none; }
+.mapcard.full {
+  position: fixed; inset: 0; z-index: 20; margin: 0; height: auto; border: 0; border-radius: 0;
+  padding: env(safe-area-inset-top, 0px) env(safe-area-inset-right, 0px) env(safe-area-inset-bottom, 0px) env(safe-area-inset-left, 0px);
+}
+.mapcard.full .open, .mapcard.full .label { display: none; }
+.mapcard.full .controls {
+  display: flex; position: absolute;
+  right: calc(16px + env(safe-area-inset-right, 0px));
+  bottom: calc(16px + env(safe-area-inset-bottom, 0px));
+  gap: 4px; padding: 6px; background: var(--panel); border-radius: 10px; box-shadow: var(--panel-shadow);
+}
+.mapcard.full .close {
+  display: grid; place-items: center; position: absolute;
+  top: calc(12px + env(safe-area-inset-top, 0px)); right: calc(12px + env(safe-area-inset-right, 0px));
+  width: 36px; height: 36px; border: 0; border-radius: 8px; background: var(--panel); box-shadow: var(--panel-shadow);
+  color: var(--fg); cursor: pointer;
+}
+.controls button {
+  width: 32px; height: 32px; border: 0; border-radius: 6px;
+  background: transparent; color: var(--fg); cursor: pointer; display: grid; place-items: center;
+}
+.controls button:hover { background: var(--line); }
+.controls button:focus-visible, .close:focus-visible { outline: 2px solid var(--muted); outline-offset: 1px; }
+.ico { width: 18px; height: 18px; fill: none; stroke: currentColor; stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round; }
+footer { text-align: center; font-size: 12px; color: var(--muted); padding-block: 8px 32px; }
+</style>
+</head>
+<body>
+
+
+<div class="top">
+  <h1>10-28 Conférence : la réalité du Tawhid, ses piliers, ses conditions et le devenir de ses gens</h1>
+  <p>2026-10-28 19:14 · Cheikh Abd Razzaq Al Badr</p>
+</div>
+
+<main>
+  <div class="tabs"><strong>Résumé</strong></div>
+  <div id="doc"></div>
+
+  <section class="mapcard" id="card" aria-label="Carte mentale">
+    <span class="label">Carte mentale</span>
+    <svg id="mm" class="markmap"></svg>
+    <button class="open" id="open" type="button" aria-label="Ouvrir la carte mentale en plein écran"></button>
+    <button class="close" id="close" type="button" title="Fermer" aria-label="Fermer la carte"><svg class="ico" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
+    <div class="controls" role="toolbar" aria-label="Commandes de la carte">
+      <button id="zin" type="button" title="Zoom avant" aria-label="Zoom avant"><svg class="ico" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="M11 8v6M8 11h6M16.5 16.5L21 21"/></svg></button>
+      <button id="zout" type="button" title="Zoom arrière" aria-label="Zoom arrière"><svg class="ico" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="M8 11h6M16.5 16.5L21 21"/></svg></button>
+      <button id="fit" type="button" title="Ajuster à l'écran" aria-label="Ajuster à l'écran"><svg class="ico" viewBox="0 0 24 24"><path d="M4 9V4h5M15 4h5v5M20 15v5h-5M9 20H4v-5"/><rect x="8" y="8" width="8" height="8" rx="1"/></svg></button>
+      <button id="all" type="button" title="Tout déplier" aria-label="Tout déplier"><svg class="ico" viewBox="0 0 24 24"><path d="M4 6h16M8 12h12M12 18h8"/><circle cx="4" cy="12" r="0.8"/><circle cx="8" cy="18" r="0.8"/></svg></button>
+    </div>
+  </section>
+</main>
+<footer>Traduction française de la note Plaud du 28/10/2026</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/d3@7.9.0/dist/d3.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/markmap-view@0.18.10/dist/browser/index.js"></script>
+<script>
+const n = (content, children, fold) => ({ content, children: children || [], payload: fold ? { fold: 1 } : {} });
+const PBUH = 'ﷺ';
+
+const data = n("10-28 Conférence : la réalité du...", [
+  n("", [
+    n("Date : 2026-10-28"),
+    n("Heure : 19:14:46"),
+    n("Lieu : Masjid Nabawi, Médine"),
+    n("Conférencier : Cheikh Abd Razzaq Al Badr")
+  ]),
+  n("Résumé", [
+    n("La conférence du 28/10/2026 a établi le sens de la parole du Tawhid « Lâ ilâha illa Allah », ses piliers et les conditions pour en tirer profit, en montrant que la prononcer sans science, sans sincérité et sans œuvres ne suffit pas, et que les effets du Tawhid apparaissent dans le fait de vouer l'adoration à Allah Seul et de délaisser le shirk. Elle a expliqué comment réunir la servitude du Messager et sa mission, et a montré le juste milieu entre l'excès et la négligence. Elle a mentionné le témoignage au sujet de Jésus (paix sur lui) et la réfutation de l'exagération et du manquement, et a expliqué l'attribution de la « parole » et de « l'esprit » à Allah ainsi que les règles de ce qui Lui est attribué. Elle a affirmé la réalité du Paradis et de l'Enfer et leur pérennité, ainsi que le devenir des gens du Tawhid selon leurs œuvres, en exposant les trois cas d'entrée au Paradis. Elle s'est conclue par des recommandations d'étude et le calendrier des cours.")
+  ]),
+  n("Points de connaissance", [
+    n("1. La réalité du Tawhid, ses conditions et ses effets", [
+      n("Le sens de « Lâ ilâha illa Allah » et son effet", [
+        n("« Lâ ilâha illa Allah » n'est pas une simple parole : c'est le Tawhid, la sincérité et le fait de vouer l'adoration à Allah Seul (gloire à Lui). Celui qui la répète beaucoup sans réaliser ce qu'elle signifie, à savoir l'unicité d'Allah et la religion vouée exclusivement à Lui, n'en tire pas profit."),
+        n("Les effets du Tawhid sont concrets : on n'invoque qu'Allah, on ne demande qu'à Allah, on n'implore le secours que d'Allah, on n'égorge que pour Allah, et on ne voue aucune part de l'adoration à un autre que Lui. Celui qui voue l'adoration à un autre qu'Allah et Lui donne un égal n'est pas des gens de cette parole, même s'il la prononce de nombreuses fois.")
+      ], true),
+      n("Les conditions d'acceptation de la parole du Tawhid : la science, les œuvres et la sincérité", [
+        n("Il faut connaître son sens, agir selon ce qu'elle implique et être sincère du fond du cœur. Par la science, on est sauvé de la voie des chrétiens (des actes d'adoration innovés, non fondés sur la science). Par les œuvres, on est sauvé de la voie des juifs (la science sans les œuvres, comme ceux qui ont été chargés de la Torah puis ne l'ont pas portée). Par la sincérité, on est sauvé de la voie des hypocrites (qui disent de leur langue le contraire de ce qu'ils ont dans le cœur)."),
+        n("Le hadith : « Celui qui dit Lâ ilâha illa Allah sincèrement, du fond du cœur, entre au Paradis » établit la condition de la sincérité du cœur, avec la science et les œuvres.")
+      ], true),
+      n("Critique de celui qui se contente de la parole sans les œuvres", [
+        n("Celui qui reconnaît « Lâ ilâha illa Allah » en paroles mais renie son sens en contredisant ce qu'elle implique est un apostat, plus grave que le mécréant d'origine. L'exemple donné est celui des adorateurs de tombes qui ont connu son sens puis l'ont renié, et qui sont ainsi devenus, selon le conférencier, des mécréants apostats.")
+      ], true)
+    ], true),
+    n("2. Les piliers du Tawhid et leur confirmation dans les invocations", [
+      n("Les deux piliers : la négation et l'affirmation", [
+        n("Le Tawhid repose sur deux piliers : la négation dans « Lâ ilâha » et l'affirmation dans « illa Allah ». Il ne se réalise que par leur réunion.")
+      ], true),
+      n("« Wahdahu lâ charîka lah » comme confirmation", [
+        n("« Wahdahu » (Seul) confirme l'affirmation, et « lâ charîka lah » (sans associé) confirme la négation. Cet ajout est fréquent dans les invocations du matin et du soir et après les prières, par souci du rang du Tawhid."),
+        n("Il est rapporté du hâfiz Ibn Hajar : « Confirmation après confirmation, par souci du rang du Tawhid ». Le conférencier a annoncé un prix de valeur pour qui trouvera ce texte dans les livres d'Ibn Hajar, en interdisant de chercher pendant le cours ou la prière, mais en le permettant après.")
+      ], true)
+    ], true),
+    n(`3. Le témoignage que Muhammad ${PBUH} est serviteur et Messager`, [
+      n("Le juste milieu entre l'excès et la négligence", [
+        n("Réunir « Son serviteur et Son Messager » réfute les exagérateurs, qui ont permis d'implorer son secours dans ce pour quoi on n'implore que le secours d'Allah et l'ont ainsi élevé au-dessus de son rang. Cela réfute aussi ceux qui manquent à son égard, en délaissant le fait de le suivre et en se contentant, à la place de sa Sunna, de systèmes et de lois faux."),
+        n("Le Prophète a interdit l'éloge excessif : « Ne m'encensez pas comme les chrétiens ont encensé Jésus fils de Marie. Je ne suis qu'un serviteur ; dites donc : le serviteur d'Allah et Son Messager. » Le témoignage correct produit le juste milieu : affirmer la servitude empêche l'excès, et affirmer la mission empêche la négligence. Le Messager est obéi et suivi, et on ne le dément pas.")
+      ], true),
+      n("Demander et chercher l'aide auprès d'Allah Seul", [
+        n("La recommandation du Prophète à Mu'âdh : « Si tu demandes, demande à Allah ; et si tu cherches de l'aide, cherche l'aide d'Allah… », avec le rappel que le bien et le mal que font les gens ne surviennent que selon ce qu'Allah a écrit. Cela confirme la fausseté du fait d'implorer le secours du Messager dans ce qui relève exclusivement du Seigneur.")
+      ], true)
+    ], true),
+    n("4. Le témoignage au sujet de Jésus (paix sur lui) et les règles de ce qui est attribué à Allah", [
+      n("Réfutation de l'exagération et du manquement au sujet de Jésus", [
+        n("« Et que Jésus est le serviteur d'Allah et Son Messager, Sa parole qu'Il a lancée à Marie, et un esprit venant de Lui » : c'est une réfutation des chrétiens (l'excès : diviniser Jésus, en faire le fils de Dieu ou le troisième de trois) et des juifs (le manquement : l'accuser d'être né de la fornication). Celui qui témoigne qu'il est le serviteur d'Allah et Son Messager est préservé de l'excès des uns et de la négligence des autres."),
+        n("Le Messie a appelé : ﴾Ô enfants d'Israël, adorez Allah, mon Seigneur et votre Seigneur﴿, et il a établi que le shirk interdit le Paradis et rend l'Enfer obligatoire.")
+      ], true),
+      n("Le sens de « Sa parole » et « un esprit venant de Lui »", [
+        n("« Sa parole qu'Il a lancée à Marie » : c'est la parole avec laquelle Gabriel a été envoyé à Marie. Jésus a été créé par la parole d'Allah « Sois ! », mais il n'est pas lui-même le « Sois ! ». Jésus est la parole d'Allah au sens où il est l'effet de la parole, et non l'attribut lui-même : Allah lui a dit « Sois ! », et il fut."),
+        n("Deux règles sur l'attribution :", [
+          n("Lorsqu'un nom d'action est attribué à Allah, il peut désigner l'attribut ou son effet, selon le contexte : ﴾jusqu'à ce qu'il entende la parole d'Allah﴿ est l'attribution d'un attribut, alors que « Sa parole » ici est l'attribution de l'effet de l'attribut."),
+          n("Ce qui est attribué à Allah est de deux types :", [
+            n("Des sens qui n'existent pas par eux-mêmes, comme la science, la puissance, la miséricorde et la vie : leur attribution est celle d'un attribut à Celui qu'il qualifie."),
+            n("Des entités qui existent par elles-mêmes : leur attribution est une attribution de création. Elle peut être une attribution d'honneur quand la chose a une particularité (comme la Kaaba, maison d'Allah ; la chamelle d'Allah ; Jésus, esprit d'Allah ; Abraham, ami intime d'Allah), ou une simple attribution de création sans honneur particulier (la terre d'Allah, le ciel d'Allah).")
+          ])
+        ]),
+        n("« Un esprit venant de Lui » : un des esprits qu'Allah a créés. « Venant de Lui » est ici comme dans Sa parole : ﴾Il vous a assujetti tout ce qui est dans les cieux et sur la terre, le tout venant de Lui﴿, c'est-à-dire en tant que création, avec en plus un honneur du fait de son attribution à Lui. Il faut distinguer le « venant de » de la descente de la Révélation du « venant de » de la création en général, pour ne pas faire de tout ce chapitre soit des attributs, soit des créatures.")
+      ], true),
+      n("Les deux déviations dans la compréhension de « Sa parole »", [
+        n("Deux groupes se sont trompés : les chrétiens ont fait de ce qui a été créé par la parole (Jésus) un être adoré, et les Jahmites ont fait de la parole d'Allah une chose créée, en assimilant « la parole d'Allah » à « la maison d'Allah », comme une attribution de création.")
+      ], true)
+    ], true),
+    n("5. La réalité du Paradis et de l'Enfer, et le devenir des gens du Tawhid", [
+      n("Le Paradis est vrai", [
+        n("Allah l'a créé et il existe déjà. Il l'a préparé pour ceux qui Lui obéissent et Le craignent. On y trouve ce qu'aucun œil n'a vu, ce qu'aucune oreille n'a entendu et ce qui n'est jamais venu à l'esprit d'un être humain. Il est éternel, et ses délices ne cessent pas.")
+      ], true),
+      n("L'Enfer est vrai", [
+        n("Il existe déjà. Allah l'a préparé pour ceux qui Le démentent et Lui désobéissent. Il ne disparaît pas, et les mécréants y demeurent éternellement.")
+      ], true),
+      n("La réponse de la condition dans le hadith et le mérite du Tawhid", [
+        n("« Celui qui témoigne… Allah le fera entrer au Paradis » est la réponse de la condition et le point qui prouve le mérite du Tawhid : il rend obligatoire l'entrée au Paradis, on n'y entre que par lui, et il en est la clé.")
+      ], true),
+      n("« Quelles que soient ses œuvres » et les degrés d'entrée", [
+        n("Deux avis des savants :", [
+          n("Il entre au Paradis quelles que soient ses œuvres, bonnes ou mauvaises, à condition que ses péchés soient en dessous du shirk. Celui qui porte de graves péchés n'y entre pas forcément d'emblée, et peut passer par une étape de purification."),
+          n("Il entre au Paradis selon la mesure de ses œuvres : ﴾Et pour chacun, des degrés selon ce qu'ils ont fait﴿. Les gens du Paradis diffèrent en degrés selon leurs œuvres.")
+        ])
+      ], true),
+      n("Les cas d'entrée des monothéistes au Paradis", [
+        n("Celui qui meurt sur le Tawhid entrera forcément au Paradis, et son entrée se fait selon trois cas :", [
+          n("1. Il ne meurt en persistant dans aucun péché, et rencontre Allah préservé des péchés : il entre au Paradis d'emblée. Cela concerne les modérés et ceux qui devancent dans les bonnes œuvres, qui y entrent sans jugement ni châtiment."),
+          n("2. Il meurt en persistant dans un péché ou un grand péché, en dessous du shirk : il est entre deux issues. Soit Allah le rétribue pour sa faute : il entre en Enfer, est purifié, puis entre au Paradis, comme les monothéistes désobéissants qui sortent de l'Enfer « groupe après groupe » (dabâ'ir dabâ'ir) et sont jetés dans un fleuve… Soit Allah lui pardonne, et il entre au Paradis d'emblée."),
+          n("3. Le résultat dans tous les cas : sa destination est le Paradis, d'emblée ou après un retard et une purification. Quant à celui qui meurt sur le shirk, il n'a aucun espoir du Paradis : ﴾Les portes du ciel ne leur seront pas ouvertes, et ils n'entreront au Paradis que lorsque le chameau passera par le chas de l'aiguille﴿.")
+        ])
+      ], true)
+    ], true),
+    n("6. Les juifs et les chrétiens dans Al-Fâtiha, et la mise en garde contre leur ressemblance", [
+      n("Qui sont « ceux qui ont encouru la colère » et « les égarés »", [
+        n("﴾Non pas de ceux qui ont encouru Ta colère, ni des égarés﴿ : ceux qui ont encouru la colère sont les juifs, et les égarés sont les chrétiens."),
+        n("Celui des dévots qui se corrompt a une ressemblance avec les chrétiens, et celui des savants qui se corrompt a une ressemblance avec les juifs, comme l'a dit l'un des pieux prédécesseurs.")
+      ], true)
+    ], true),
+    n("7. Références, remarques et calendrier des cours", [
+      n("Références et remarque scientifique", [
+        n("Il est rapporté du hâfiz Ibn Hajar l'expression « Confirmation après confirmation, par souci du rang du Tawhid » au sujet de « Wahdahu lâ charîka lah », et il a été dit qu'elle vient du commentaire d'« Al-Michkât » ou « Al-Miskât ». Il a été conseillé de la retrouver dans les livres d'Ibn Hajar, avec la promesse d'un prix de valeur pour qui la trouve après le cours. Il est interdit de chercher pendant le cours ou juste après la prière, par souci d'honnêteté et pour rester concentré sur le cours.")
+      ], true),
+      n("Calendrier des cours et remarques", [
+        n("Remarque : le jeudi 29/10/2026, il n'y a pas de cours après la prière du Maghrib.")
+      ], true),
+      n("Remarque technique sur l'enregistrement", [
+        n("Un court passage est apparu : « Ceci est pour l'enregistrement de la voiture », puis le conférencier a repris la discussion. C'est une brève interruption technique qui n'a pas changé le contenu du cours.")
+      ], true)
+    ], true)
+  ]),
+  n("Devoirs", [
+    n("Lire les trois biographies de l'introduction du livre « Charh Kitâb at-Tawhid » et méditer leurs enseignements."),
+    n("Lire une ou deux fois rapidement, avant le cours, les introductions sur le Kitâb at-Tawhid, ses commentaires et son importance, pour bien les fixer à l'avance."),
+    n("Essayer de trouver, après le cours, le texte d'Ibn Hajar sur « Wahdahu lâ charîka lah », et noter l'endroit exact pour qui veut obtenir le prix."),
+    n("Ancrer concrètement les sens de « Lâ ilâha illa Allah » en revoyant ses actes quotidiens : réserver l'invocation, l'appel au secours et le sacrifice à Allah Seul, et délaisser les formes de shirk dans les actes."),
+    n("Réviser les règles de l'attribution à Allah : distinguer l'attribution d'un attribut de l'attribution de création et d'honneur, avec des exemples du Coran et de la Sunna."),
+    n("Se rappeler qu'il n'y a pas de cours après le Maghrib le jeudi 29/10/2026, et organiser son temps en conséquence.")
+  ])
+]);
+
+// Résumé écrit, généré depuis le même arbre que la carte
+const bold = s => s.replace(/﴾[^﴿]*﴿/g, m => `<strong>${m}</strong>`);
+const [meta, resume, points, devoirs] = data.children;
+const NUM = /^(\d+)\.\s+/;
+function list(items) {
+  const ordered = items.every(i => NUM.test(i.content));
+  const tag = ordered ? 'ol' : 'ul';
+  return `<${tag}>` + items.map(i => {
+    const txt = ordered ? i.content.replace(NUM, '') : i.content;
+    return `<li><p>${bold(txt)}</p>${i.children.length ? list(i.children) : ''}</li>`;
+  }).join('') + `</${tag}>`;
+}
+let html = '<blockquote><p>' + meta.children.map(m => {
+  const k = m.content.indexOf(' : ');
+  return `<strong>${m.content.slice(0, k)} :</strong> ${m.content.slice(k + 3)}`;
+}).join('<br>') + '</p></blockquote>';
+html += `<h2>${resume.content}</h2>` + resume.children.map(p => `<p>${bold(p.content)}</p>`).join('');
+html += `<h2>${points.content}</h2>` + points.children.map(pt => `<h3>${pt.content}</h3>` + (pt.children.every(s => s.children.length) ? pt.children.map(s => `<h4>${s.content}</h4>${list(s.children)}`).join('') : list(pt.children))).join('');
+html += `<h2>${devoirs.content}</h2><ul class="todo">` + devoirs.children.map((d, i) =>
+  `<li><input type="checkbox" id="devoir-${i + 1}"><label for="devoir-${i + 1}">${bold(d.content)}</label></li>`).join('') + '</ul>';
+document.getElementById('doc').innerHTML = html;
+
+// Carte mentale : une teinte pastel par branche principale (couleurs Plaud), épaisseur décroissante avec la profondeur
+const BRANCH = ['#E5CCB3', '#E5DDB3', '#CCE5B3', '#B7E5C6'];
+data.payload.c = BRANCH[0];
+data.children.forEach((b, i) => {
+  (function paint(x) { x.payload.c = BRANCH[i % BRANCH.length]; x.children.forEach(paint); })(b);
+});
+(function mark(x) { if (x.payload.fold) x.payload.foldInit = 1; x.children.forEach(mark); })(data);
+const depthOf = node => (node.state && node.state.path ? node.state.path.split('.').length : 1);
+
+const { Markmap } = window.markmap;
+const mm = Markmap.create('#mm', {
+  color: node => node.payload.c,
+  lineWidth: node => 1 + 1.5 / Math.pow(2, depthOf(node) - 1),
+  maxWidth: 300,
+  duration: 400,
+  spacingVertical: 5,
+  paddingX: 8,
+  fitRatio: 0.95
+}, data);
+
+const card = document.getElementById('card');
+function setFull(on) {
+  card.classList.toggle('full', on);
+  document.body.style.overflow = on ? 'hidden' : '';
+  requestAnimationFrame(() => mm.fit());
+  if (on) document.getElementById('close').focus();
+}
+document.getElementById('open').onclick = () => setFull(true);
+document.getElementById('close').onclick = () => setFull(false);
+document.addEventListener('keydown', e => { if (e.key === 'Escape' && card.classList.contains('full')) setFull(false); });
+document.getElementById('zin').onclick = () => mm.rescale(1.25);
+document.getElementById('zout').onclick = () => mm.rescale(0.8);
+document.getElementById('fit').onclick = () => mm.fit();
+let open = false;
+document.getElementById('all').onclick = () => {
+  open = !open;
+  (function walk(x) {
+    if (x !== data && x.children && x.children.length) {
+      x.payload = { ...x.payload, fold: open ? 0 : (x.payload.foldInit ? 1 : 0) };
+    }
+    (x.children || []).forEach(walk);
+  })(mm.state.data);
+  mm.renderData().then(() => mm.fit());
+  const b = document.getElementById('all');
+  b.title = b.ariaLabel = open ? 'Replier' : 'Tout déplier';
+};
+window.addEventListener('resize', () => mm.fit());
+window.addEventListener('load', () => setTimeout(() => mm.fit(), 300));
+</script>
+
+</body>
+</html>
