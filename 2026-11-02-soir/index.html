@@ -1,0 +1,297 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="Résumé en français et carte mentale de la conférence du soir du Cheikh Abd Razzaq Al Badr au Masjid Nabawi, 02/11/2026.">
+<style>*,*::before,*::after{box-sizing:border-box}body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style>
+<title>Cours du 02/11 (soir) : le Tawhid et ses conditions</title>
+
+<style>
+/* Layout : page de résumé type Plaud (colonne centrée 768px), puis carte mentale en encadré qui s'ouvre en plein écran */
+:root {
+  --bg: #ffffff;
+  --fg: #111113;
+  --muted: #6b6b70;
+  --line: #e6e6e8;
+  --quote: #c9c9ce;
+  --panel: #ffffff;
+  --panel-shadow: 0 2px 10px rgba(0,0,0,.10);
+  --circle-open: #ffffff;
+  --map-font: 300 16px/20px sans-serif;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #1c1c1e; --fg: #f2f2f2; --muted: #a1a1a6; --line: #38383a; --quote: #4a4a4e;
+    --panel: #2c2c2e; --panel-shadow: 0 2px 10px rgba(0,0,0,.45); --circle-open: #1c1c1e;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #1c1c1e; --fg: #f2f2f2; --muted: #a1a1a6; --line: #38383a; --quote: #4a4a4e;
+  --panel: #2c2c2e; --panel-shadow: 0 2px 10px rgba(0,0,0,.45); --circle-open: #1c1c1e;
+  color-scheme: dark;
+}
+body {
+  background: var(--bg); color: var(--fg);
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  font-size: 15px; line-height: 1.6;
+}
+body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-area-inset-top, 0px); z-index: 10; background: var(--bg); }
+.top {
+  position: sticky; top: env(safe-area-inset-top, 0px); z-index: 5;
+  background: var(--bg); border-bottom: 1px solid var(--line);
+  padding-block: 10px;
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+}
+.top h1 { margin: 0; font-size: 13px; font-weight: 600; line-height: 1.35; text-wrap: balance; }
+.top p { margin: 2px 0 0; font-size: 12px; color: var(--muted); font-variant-numeric: tabular-nums; }
+main {
+  max-width: 768px; margin: 0 auto;
+  padding-block: 24px 48px;
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+}
+.tabs { display: flex; gap: 20px; font-size: 13px; margin-bottom: 20px; }
+.tabs span { color: var(--muted); }
+.tabs strong { font-weight: 600; }
+blockquote { margin: 0 0 8px; padding: 2px 0 2px 14px; border-left: 3px solid var(--quote); color: var(--muted); font-size: 14px; }
+blockquote strong { color: var(--fg); font-weight: 600; }
+h2 { font-size: 21px; line-height: 1.3; margin: 32px 0 12px; text-wrap: balance; }
+h3 { font-size: 17px; line-height: 1.35; margin: 26px 0 8px; text-wrap: balance; }
+h4 { font-size: 15px; line-height: 1.4; margin: 16px 0 4px; color: var(--muted); }
+p { margin: 0 0 12px; }
+ul, ol { margin: 0 0 12px; padding-left: 22px; }
+li { margin: 6px 0; }
+li > ul, li > ol { margin: 6px 0 0; }
+.todo { list-style: none; padding-left: 0; }
+.todo li { display: flex; gap: 10px; align-items: flex-start; }
+.todo input { margin-top: 5px; flex: none; width: 15px; height: 15px; accent-color: var(--muted); }
+.todo label { min-width: 0; }
+
+.mapcard {
+  position: relative; margin-top: 40px; height: 320px;
+  border: 1px solid var(--line); border-radius: 10px; overflow: hidden; background: var(--bg);
+}
+.mapcard .label { position: absolute; top: 10px; left: 12px; font-size: 12px; color: var(--muted); z-index: 2; }
+.mapcard .open {
+  position: absolute; inset: 0; z-index: 3; border: 0; background: transparent; cursor: zoom-in;
+}
+.mapcard .open:focus-visible { outline: 2px solid var(--muted); outline-offset: -3px; }
+#mm {
+  width: 100%; height: 100%; display: block;
+  --markmap-text-color: var(--fg);
+  --markmap-circle-open-bg: var(--circle-open);
+  --markmap-max-width: 300px;
+  --markmap-font: var(--map-font);
+}
+.controls, .close { display: none; }
+.mapcard.full {
+  position: fixed; inset: 0; z-index: 20; margin: 0; height: auto; border: 0; border-radius: 0;
+  padding: env(safe-area-inset-top, 0px) env(safe-area-inset-right, 0px) env(safe-area-inset-bottom, 0px) env(safe-area-inset-left, 0px);
+}
+.mapcard.full .open, .mapcard.full .label { display: none; }
+.mapcard.full .controls {
+  display: flex; position: absolute;
+  right: calc(16px + env(safe-area-inset-right, 0px));
+  bottom: calc(16px + env(safe-area-inset-bottom, 0px));
+  gap: 4px; padding: 6px; background: var(--panel); border-radius: 10px; box-shadow: var(--panel-shadow);
+}
+.mapcard.full .close {
+  display: grid; place-items: center; position: absolute;
+  top: calc(12px + env(safe-area-inset-top, 0px)); right: calc(12px + env(safe-area-inset-right, 0px));
+  width: 36px; height: 36px; border: 0; border-radius: 8px; background: var(--panel); box-shadow: var(--panel-shadow);
+  color: var(--fg); cursor: pointer;
+}
+.controls button {
+  width: 32px; height: 32px; border: 0; border-radius: 6px;
+  background: transparent; color: var(--fg); cursor: pointer; display: grid; place-items: center;
+}
+.controls button:hover { background: var(--line); }
+.controls button:focus-visible, .close:focus-visible { outline: 2px solid var(--muted); outline-offset: 1px; }
+.ico { width: 18px; height: 18px; fill: none; stroke: currentColor; stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round; }
+footer { text-align: center; font-size: 12px; color: var(--muted); padding-block: 8px 32px; }
+</style>
+</head>
+<body>
+
+
+<div class="top">
+  <h1>Conférence : le Tawhid, les conditions de « Lâ ilâha illa Allah » et leurs effets</h1>
+  <p>2026-11-02 19:15 · Cheikh Abd Razzaq Al Badr</p>
+</div>
+
+<main>
+  <div class="tabs"><strong>Résumé</strong></div>
+  <div id="doc"></div>
+
+  <section class="mapcard" id="card" aria-label="Carte mentale">
+    <span class="label">Carte mentale</span>
+    <svg id="mm" class="markmap"></svg>
+    <button class="open" id="open" type="button" aria-label="Ouvrir la carte mentale en plein écran"></button>
+    <button class="close" id="close" type="button" title="Fermer" aria-label="Fermer la carte"><svg class="ico" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
+    <div class="controls" role="toolbar" aria-label="Commandes de la carte">
+      <button id="zin" type="button" title="Zoom avant" aria-label="Zoom avant"><svg class="ico" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="M11 8v6M8 11h6M16.5 16.5L21 21"/></svg></button>
+      <button id="zout" type="button" title="Zoom arrière" aria-label="Zoom arrière"><svg class="ico" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="M8 11h6M16.5 16.5L21 21"/></svg></button>
+      <button id="fit" type="button" title="Ajuster à l'écran" aria-label="Ajuster à l'écran"><svg class="ico" viewBox="0 0 24 24"><path d="M4 9V4h5M15 4h5v5M20 15v5h-5M9 20H4v-5"/><rect x="8" y="8" width="8" height="8" rx="1"/></svg></button>
+      <button id="all" type="button" title="Tout déplier" aria-label="Tout déplier"><svg class="ico" viewBox="0 0 24 24"><path d="M4 6h16M8 12h12M12 18h8"/><circle cx="4" cy="12" r="0.8"/><circle cx="8" cy="18" r="0.8"/></svg></button>
+    </div>
+  </section>
+</main>
+<footer>Traduction française de la note Plaud du 02/11/2026 (soir)</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/d3@7.9.0/dist/d3.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/markmap-view@0.18.10/dist/browser/index.js"></script>
+<script>
+const n = (content, children, fold) => ({ content, children: children || [], payload: fold ? { fold: 1 } : {} });
+const PBUH = 'ﷺ';
+
+const data = n("11-02 Conférence : le Tawhid et les cond...", [
+  n("", [
+    n("Date : 2026-11-02"),
+    n("Heure : 19:15:24"),
+    n("Lieu : Masjid Nabawi, Médine"),
+    n("Conférencier : Cheikh Abd Razzaq Al Badr")
+  ]),
+  n("Résumé", [
+    n("La leçon explique les mérites du Tawhid et ses questions, ainsi que ses effets : l'expiation des péchés, la sécurité, la bonne guidée et le salut. Elle montre que la parole « Lâ ilâha illa Allah » ne profite pas par sa seule prononciation : il faut connaître son sens, y croire, agir selon ce qu'elle impose, être sincère envers Allah et éviter le shirk. La leçon explique aussi comment concilier les hadiths absolus et les hadiths restreints, et la différence entre les gens du Tawhid dans la balance et dans leur destination finale. Elle traite également de questions liées à l'invisible et aux attributs d'Allah, à la servitude et au message, à ce qui est propre à Jésus (paix sur lui), et à la foi au Paradis et à l'Enfer. Elle s'est conclue par des invocations pour le pardon, la bonne guidée et la réforme de la religion, de ce bas monde et de l'au-delà.")
+  ]),
+  n("Points de connaissance", [
+    n("1. Le Tawhid, la miséricorde et le salut du Feu", [
+      n("La miséricorde propre aux gens du Tawhid : la preuve est la parole d'Allah ﴾Et Ma miséricorde embrasse toute chose﴿, puis ﴾Je la prescrirai à ceux qui Me craignent﴿. Le commentateur a expliqué que la miséricorde visée dans ce contexte est prescrite aux pieux. La piété inclut en premier lieu le fait d'éviter le shirk : il est rapporté d'Ibn 'Abbâs (qu'Allah les agrée) que « ceux qui craignent » sont ceux qui craignent le shirk. Celui qui n'évite pas le shirk n'obtient pas cette miséricorde particulière."),
+      n("Le Tawhid est ce qui expie le plus les péchés : la preuve est le hadith d'Anas : « Ô fils d'Adam, si tu venais à Moi avec presque la terre entière de péchés, puis que tu Me rencontrais sans rien M'associer, Je viendrais à toi avec presque autant de pardon. » « Qurâb al-ard » signifie ce qui remplit la terre ou presque. Le Tawhid est donc l'une des plus grandes causes du pardon, à condition qu'il n'y ait pas de shirk."),
+      n("Le Feu interdit à celui qui est sincère dans la parole du Tawhid : le hadith de 'Itbân « Allah a interdit au Feu celui qui dit Lâ ilâha illa Allah en recherchant par cela le Visage d'Allah » s'explique à la lumière du hadith d'Anas, qui pose comme condition de rencontrer Allah sans rien Lui associer. Les hadiths s'expliquent les uns les autres. La parole ne vise pas la simple prononciation : il faut que son sens se réalise, être sincère envers Allah et délaisser le shirk, car le shirk contredit le Tawhid."),
+      n("La sécurité et la bonne guidée : le commentateur a expliqué la parole d'Allah ﴾Ceux qui ont cru et n'ont pas troublé leur foi par quelque injustice, ceux-là ont la sécurité, et ce sont eux les bien-guidés﴿ : la foi ici est l'unicité d'Allah et le fait de Lui vouer un culte sincère, et l'injustice visée est le shirk. Quand le verset a posé problème aux Compagnons, le Prophète ﷺ l'a expliqué en citant la parole de Luqmân à son fils : ﴾L'association est vraiment une injustice énorme﴿. La sécurité et la bonne guidée du verset sont donc pour les gens du Tawhid qui n'ont pas mêlé leur Tawhid de shirk."),
+      n("La prononciation seule ne suffit pas : prononcer l'attestation ne suffit pas pour obtenir sa récompense si on la contredit par une parole ou un acte, ou si on tombe dans ce qui fait sortir de l'islam. Le commentateur a expliqué que celui qui se réclame de l'islam puis commet ce qui l'en fait sortir ne tire aucun profit de cette appartenance ni de la prononciation, et qu'il y a consensus sur le fait que la prononciation seule ne suffit pas. Tomber dans ce qui fait sortir de l'islam ne se repousse ni par la simple parole, ni par le hajj, le jeûne ou la zakât. Se laisser tromper par la seule prononciation de l'attestation, sans la réaliser, est une erreur et une ignorance de ce qu'a apporté le Messager ﷺ.")
+    ], true),
+    n("2. Les deux attestations et les conditions pour profiter de la parole du Tawhid", [
+      n("Les cinq éléments du hadith de 'Ubâda ibn as-Sâmit : le commentateur a appelé à les méditer, à bien les comprendre, à les réaliser et à les mettre en pratique. Ce sont :", [
+        n("1. Attester qu'il n'y a de divinité qu'Allah."),
+        n("2. Et que Muhammad est le serviteur d'Allah et Son Messager."),
+        n("3. Et que Jésus est le serviteur d'Allah, Son Messager et Sa parole qu'Il a déposée en Marie."),
+        n("4. Et que le Paradis est vrai."),
+        n("5. Et que l'Enfer est vrai.", [
+          n("La suite du hadith indique qu'Allah fait entrer au Paradis celui qui réunit ces qualités, quelles que soient ses œuvres. C'est un mérite immense, qui demande de comprendre le hadith et d'agir selon ce qu'il impose.")
+        ])
+      ]),
+      n("Concilier les hadiths absolus et restreints : le hadith de 'Ubâda cite l'attestation et la récompense, puis d'autres hadiths précisent les conditions, comme le hadith de 'Itbân sur celui qui dit « Lâ ilâha illa Allah » en recherchant le Visage d'Allah, et le hadith d'Anas sur celui qui rencontre Allah sans rien Lui associer. Ce qui est rapporté de façon absolue s'interprète selon ce qui est rapporté de façon restreinte."),
+      n("Les conditions de la parole : il faut connaître son sens, en être certain, être véridique et sincère, avec la croyance, la parole et les œuvres conformes à ce qu'elle impose, et être préservé de ce qui l'annule. Parmi les textes qui le prouvent : « L'homme le plus heureux de mon intercession est celui qui a dit Lâ ilâha illa Allah sincèrement de son cœur », la version qui pose la condition de la véracité du cœur, le hadith d'Abû Hurayra sur le fait de la dire avec certitude, et le hadith de 'Uthmân sur celui qui meurt en sachant qu'il n'y a de divinité qu'Allah."),
+      n("La sincérité et la recherche du Visage d'Allah : « en recherchant par cela le Visage d'Allah » signifie la dire sincèrement pour Allah, et non pour la simple prononciation ou pour un autre but. Le commentateur a expliqué que cette expression est une condition prise en compte pour ce qui découle de l'attestation. La sincérité est prouvée par les paroles d'Allah ﴾C'est à Allah qu'appartient la religion pure﴿, ﴾Il ne leur a été commandé que d'adorer Allah, en Lui vouant un culte exclusif﴿ et ﴾Invoquez-Le donc en Lui vouant un culte exclusif﴿, ainsi que par le hadith « sincèrement de son cœur »."),
+      n("Exemples qui montrent qu'on ne peut se contenter de la parole : certains disent la parole du Tawhid sans que son sens se réalise dans leur croyance et leurs œuvres, et l'on peut reconnaître la religion puis la contredire par ce qui en fait sortir. Le commentateur a indiqué que l'apostat est plus grave dans la mécréance que le mécréant d'origine, car il a reconnu la religion puis l'a contredite. Il a aussi signalé une phrase du commentaire sur le grand nombre de juifs qui disent « Lâ ilâha illa Allah », et le conférencier a précisé qu'elle est discutable et doit être vérifiée.")
+    ], true),
+    n("3. Le mérite de la parole du Tawhid et son poids dans la balance", [
+      n("L'immense récompense du Tawhid : les textes montrent l'abondance de la récompense du Tawhid et la grandeur de son mérite. Il est l'une des plus grandes causes de l'entrée au Paradis, et une cause de sécurité et de bonne guidée dans ce bas monde et dans l'au-delà."),
+      n("Le poids de la parole dans la balance : le hadith d'Abû Sa'îd rapporte que si l'on mettait les sept cieux, ceux qui les peuplent en dehors d'Allah, et les sept terres dans un plateau, et « Lâ ilâha illa Allah » dans l'autre, elle l'emporterait sur eux. Il en va de même dans le testament de Noé (paix sur lui) à son fils."),
+      n("Les prophètes rappelés à son mérite : Moïse (paix sur lui) a demandé à son Seigneur de lui enseigner une invocation par laquelle L'invoquer, et il lui a été dit de dire « Lâ ilâha illa Allah ». Quand il a fait remarquer que tous les serviteurs d'Allah la disent, la grandeur de son mérite lui a été expliquée. Cela ne veut pas dire que les prophètes ignorent le sens de cette parole : ils sont les plus savants des créatures sur le Tawhid et ceux qui s'acquittent le mieux de ses droits. Il s'agit d'un rappel de la grandeur de son mérite. De même, Allah a dit au Prophète ﷺ : ﴾Sache donc qu'il n'y a de divinité qu'Allah﴿."),
+      n("La différence entre ceux qui la disent : que la parole l'emporte dans la balance ne veut pas dire que ce mérite se réalise pour quiconque la prononce, sans condition ni règle. Son effet varie selon la connaissance de son sens, la croyance, les œuvres et la préservation de ce qui l'annule. La balance de celui qui l'apporte de façon incomplète peut être légère, à cause de l'abondance de ses péchés ou de la faiblesse de sa réalisation du Tawhid."),
+      n("Certains gens du Tawhid entrent en Enfer : certains gens de « Lâ ilâha illa Allah » peuvent entrer en Enfer à cause de leurs péchés et de leurs désobéissances, sans être mécréants, puis en sortent. Parmi les preuves : le hadith sur la sortie de celui qui a dans le cœur le moindre poids d'un atome de foi, et le hadith selon lequel le Feu ne mange pas la place de la prosternation chez le fils d'Adam. Quant au Tawhid réalisé, le commentateur a décrit son effet comme un élixir qui fait fondre des montagnes de péchés."),
+      n("Explication de la comparaison avec l'élixir : « l'élixir chimique » est cité comme image rhétorique. Les alchimistes prétendent qu'une substance appelée élixir transforme le cuivre en or. Le commentateur a cité la phrase d'Ibn al-Qayyim dans « Madârij as-Sâlikîn » : le poids d'un atome de cet élixir, posé sur des quintaux de cuivre des œuvres, les change en or. Il a signalé qu'Ibn Rajab emploie ce mot dans son explication du hadith d'Anas dans « Jâmi' al-'Ulûm wal-Hikam ».")
+    ], true),
+    n("4. Questions sur les cieux, la terre et les attributs d'Allah", [
+      n("Le nombre des terres : la dixième question établit que les terres sont sept, comme les cieux sont sept. La preuve est le hadith d'Abû Sa'îd qui cite « les sept cieux » et « les sept terres », et la parole d'Allah à la fin de la sourate at-Talâq : ﴾Allah est Celui qui a créé sept cieux et autant de terres﴿, c'est-à-dire sept terres."),
+      n("Les cieux sont peuplés d'anges : la onzième question établit que les cieux ont des habitants, les anges, qui les peuplent par l'obéissance à Allah, Son rappel et Son adoration. Le hadith cité est : « Le ciel gémit, et il a le droit de gémir. » La leçon a expliqué que ce gémissement vient du poids, et qu'il n'y a pas dans le ciel l'espace d'un empan sans un ange prosterné devant Allah."),
+      n("L'élévation d'Allah et l'affirmation des attributs : l'attribut de l'élévation est prouvé par le hadith d'Abû Sa'îd, par la parole d'Allah ﴾Êtes-vous à l'abri que Celui qui est au ciel﴿ et par le hadith « Faites miséricorde à ceux qui sont sur la terre, Celui qui est au ciel vous fera miséricorde ». La leçon a expliqué « au ciel » au sens de « au-dessus du ciel ». L'attribut de la parole est prouvé par « Il dit : Ô Moïse », et l'attribut du Visage par « en recherchant par cela le Visage d'Allah »."),
+      n("La méthode des gens de la Sunna dans les attributs : les gens de la Sunna décrivent Allah par ce par quoi Il S'est décrit dans Son Livre et par ce par quoi Son Messager ﷺ L'a décrit dans la Sunna, sans déformation, sans négation, sans questionner le comment et sans comparaison, conformément à la parole d'Allah ﴾Rien ne Lui ressemble, et Il est Celui qui entend tout et voit tout﴿. Cette méthode s'éloigne de l'excès qui mène à l'anthropomorphisme et de la négation qui mène à vider Allah de Ses attributs. La leçon a rapporté que l'anthropomorphiste adore une idole et que celui qui nie adore le néant, tandis que le monothéiste affirme pour Allah les attributs qu'Il S'est affirmés et qui Lui conviennent.")
+    ], true),
+    n("5. La servitude, le message et ce qui est propre à Jésus (paix sur lui)", [
+      n("Réunir la servitude et le message : la quatorzième question invite à méditer le fait que Jésus et Muhammad (prière et paix d'Allah sur eux) sont chacun décrits comme serviteur d'Allah et Son Messager. La servitude particulière est une servitude d'honneur et de distinction. Réunir les deux qualités réalise le juste milieu entre l'excès et la négligence : « serviteur d'Allah » répond à l'excès, et « Son Messager » répond à la négligence du droit du message. Le hadith cité est la parole du Prophète ﷺ : « Ne m'élogiez pas à l'excès comme les chrétiens l'ont fait pour Jésus fils de Marie. Je ne suis qu'un serviteur, dites donc : le serviteur d'Allah et Son Messager. »"),
+      n("Jésus (paix sur lui) est la parole d'Allah : la quinzième question explique qu'il est seul à avoir cette qualité, car il a été créé d'une femme sans homme, par l'ordre d'Allah et Sa parole « Sois ». Le verset cité est : ﴾Pour Allah, Jésus est comme Adam qu'Il créa de terre, puis Il lui dit « Sois », et il fut﴿. Le sens est qu'il a été créé par la parole d'Allah, et non qu'il est une partie de Lui."),
+      n("Jésus (paix sur lui) est un esprit venant d'Allah : la seizième question explique que le décrire comme « un esprit venant de Lui » est une attribution d'honneur et de distinction, et qu'il fait partie des esprits qu'Allah a fait exister et a créés. Cette attribution ne veut pas dire que Jésus est une partie d'Allah. Le verset cité pour montrer l'attribution qui indique la création est : ﴾Et Il vous a assujetti tout ce qui est dans les cieux et sur la terre, le tout venant de Lui﴿. Le verset ﴾La révélation du Livre, nul doute à son sujet, émane du Seigneur des mondes﴿ a aussi été cité pour distinguer les types d'attribution.")
+    ], true),
+    n("6. La foi au Paradis et à l'Enfer, et la destination des monothéistes", [
+      n("La foi au Paradis et à l'Enfer : la dix-septième question explique que la foi en eux fait partie des fondements de la croyance, et que leur présence parmi les qualités citées dans le hadith de 'Ubâda montre leur importance. La leçon a indiqué que le hadith prouve que le Paradis et l'Enfer sont déjà créés."),
+      n("Le sens d'entrer au Paradis « quelles que soient ses œuvres » : la dix-huitième question a deux sens :", [
+        n("Les demeures et les degrés du serviteur au Paradis sont selon ses œuvres, d'après la parole d'Allah ﴾Et à chacun des degrés selon ce qu'il a fait﴿."),
+        n("Ou bien il entre au Paradis selon l'état où il était, de droiture ou de manquement et de corruption.", [
+          n("L'expression ne veut pas dire qu'on minimise les péchés ni qu'on les permet. Elle montre le mérite du Tawhid et la destination du monothéiste, sans impliquer qu'il entre au Paradis dès le départ. Celui qui meurt monothéiste sans mauvaises actions entre au Paradis dès le départ. Celui qui meurt en persistant dans certains grands péchés sans repentir, son sort revient à Allah : Il peut lui pardonner et le faire entrer au Paradis dès le départ, ou le châtier et le purifier dans le Feu, ou il peut avoir de bonnes actions qui effacent ses mauvaises. Dans tous les cas, sa destination finale est le Paradis.")
+        ])
+      ]),
+      n("La balance du Jour de la Résurrection : la dix-neuvième question affirme la foi en une balance réelle à deux plateaux, dressée le Jour de la Résurrection pour peser les œuvres. Les bonnes actions sont placées dans un plateau et les mauvaises dans l'autre. Ce détail est tiré du hadith d'Abû Sa'îd.")
+    ], true),
+    n("7. Conclusion de la leçon par des invocations", [
+      n("Le conférencier a conclu par la prière et le salut sur le Prophète ﷺ, et par des invocations pour demander la piété, la bonne guidée, la chasteté et la richesse, la réforme de la religion, de ce bas monde et de l'au-delà, et le pardon pour lui-même, ses parents, sa descendance, ses maîtres, les gouvernants, les musulmans et les musulmanes. Les invocations ont aussi demandé le bien dans ce bas monde et dans l'au-delà, la protection contre le châtiment du Feu, une part de crainte d'Allah, d'obéissance et de certitude, la bénédiction dans l'ouïe, la vue et la force, la victoire sur les agresseurs, que l'épreuve ne touche pas la religion et que ce bas monde ne soit pas la plus grande préoccupation, la droiture de l'intention, de la descendance et des œuvres, ainsi que le pardon et le repentir.")
+    ], true)
+  ]),
+  n("Devoirs", [
+    n("Méditer les cinq éléments du hadith de 'Ubâda (qu'Allah l'agrée), en les comprenant bien, en les réalisant et en les mettant en pratique."),
+    n("Concilier les hadiths du Tawhid absolus et restreints, et en tirer les conditions pour profiter de la parole « Lâ ilâha illa Allah »."),
+    n("Réviser les questions de la dixième à la vingtième, en insistant sur ce que prouvent les hadiths, les conditions de réalisation du Tawhid, et le sens de l'entrée du monothéiste au Paradis « quelles que soient ses œuvres »."),
+    n("Vérifier l'emploi par Ibn Rajab de l'expression « le plus grand élixir » dans son explication du hadith d'Anas, dans le livre « Jâmi' al-'Ulûm wal-Hikam ».")
+  ])
+]);
+
+// Résumé écrit, généré depuis le même arbre que la carte
+const bold = s => s.replace(/﴾[^﴿]*﴿/g, m => `<strong>${m}</strong>`);
+const [meta, resume, points, devoirs] = data.children;
+const NUM = /^(\d+)\.\s+/;
+function list(items) {
+  const ordered = items.every(i => NUM.test(i.content));
+  const tag = ordered ? 'ol' : 'ul';
+  return `<${tag}>` + items.map(i => {
+    const txt = ordered ? i.content.replace(NUM, '') : i.content;
+    return `<li><p>${bold(txt)}</p>${i.children.length ? list(i.children) : ''}</li>`;
+  }).join('') + `</${tag}>`;
+}
+let html = '<blockquote><p>' + meta.children.map(m => {
+  const k = m.content.indexOf(' : ');
+  return `<strong>${m.content.slice(0, k)} :</strong> ${m.content.slice(k + 3)}`;
+}).join('<br>') + '</p></blockquote>';
+html += `<h2>${resume.content}</h2>` + resume.children.map(p => `<p>${bold(p.content)}</p>`).join('');
+html += `<h2>${points.content}</h2>` + points.children.map(pt => `<h3>${pt.content}</h3>` + (pt.children.every(s => s.children.length) ? pt.children.map(s => `<h4>${s.content}</h4>${list(s.children)}`).join('') : list(pt.children))).join('');
+html += `<h2>${devoirs.content}</h2><ul class="todo">` + devoirs.children.map((d, i) =>
+  `<li><input type="checkbox" id="devoir-${i + 1}"><label for="devoir-${i + 1}">${bold(d.content)}</label></li>`).join('') + '</ul>';
+document.getElementById('doc').innerHTML = html;
+
+// Carte mentale : une teinte pastel par branche principale (couleurs Plaud), épaisseur décroissante avec la profondeur
+const BRANCH = ['#E5CCB3', '#E5DDB3', '#CCE5B3', '#B7E5C6'];
+data.payload.c = BRANCH[0];
+data.children.forEach((b, i) => {
+  (function paint(x) { x.payload.c = BRANCH[i % BRANCH.length]; x.children.forEach(paint); })(b);
+});
+(function mark(x) { if (x.payload.fold) x.payload.foldInit = 1; x.children.forEach(mark); })(data);
+const depthOf = node => (node.state && node.state.path ? node.state.path.split('.').length : 1);
+
+const { Markmap } = window.markmap;
+const mm = Markmap.create('#mm', {
+  color: node => node.payload.c,
+  lineWidth: node => 1 + 1.5 / Math.pow(2, depthOf(node) - 1),
+  maxWidth: 300,
+  duration: 400,
+  spacingVertical: 5,
+  paddingX: 8,
+  fitRatio: 0.95
+}, data);
+
+const card = document.getElementById('card');
+function setFull(on) {
+  card.classList.toggle('full', on);
+  document.body.style.overflow = on ? 'hidden' : '';
+  requestAnimationFrame(() => mm.fit());
+  if (on) document.getElementById('close').focus();
+}
+document.getElementById('open').onclick = () => setFull(true);
+document.getElementById('close').onclick = () => setFull(false);
+document.addEventListener('keydown', e => { if (e.key === 'Escape' && card.classList.contains('full')) setFull(false); });
+document.getElementById('zin').onclick = () => mm.rescale(1.25);
+document.getElementById('zout').onclick = () => mm.rescale(0.8);
+document.getElementById('fit').onclick = () => mm.fit();
+let open = false;
+document.getElementById('all').onclick = () => {
+  open = !open;
+  (function walk(x) {
+    if (x !== data && x.children && x.children.length) {
+      x.payload = { ...x.payload, fold: open ? 0 : (x.payload.foldInit ? 1 : 0) };
+    }
+    (x.children || []).forEach(walk);
+  })(mm.state.data);
+  mm.renderData().then(() => mm.fit());
+  const b = document.getElementById('all');
+  b.title = b.ariaLabel = open ? 'Replier' : 'Tout déplier';
+};
+window.addEventListener('resize', () => mm.fit());
+window.addEventListener('load', () => setTimeout(() => mm.fit(), 300));
+</script>
+
+</body>
+</html>
