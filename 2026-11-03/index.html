@@ -1,0 +1,286 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="Résumé en français et carte mentale de la conférence du Cheikh Abd Razzaq Al Badr au Masjid Nabawi, 03/11/2026.">
+<style>*,*::before,*::after{box-sizing:border-box}body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style>
+<title>Cours du 03/11 : la réalisation du Tawhid</title>
+
+<style>
+/* Layout : page de résumé type Plaud (colonne centrée 768px), puis carte mentale en encadré qui s'ouvre en plein écran */
+:root {
+  --bg: #ffffff;
+  --fg: #111113;
+  --muted: #6b6b70;
+  --line: #e6e6e8;
+  --quote: #c9c9ce;
+  --panel: #ffffff;
+  --panel-shadow: 0 2px 10px rgba(0,0,0,.10);
+  --circle-open: #ffffff;
+  --map-font: 300 16px/20px sans-serif;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #1c1c1e; --fg: #f2f2f2; --muted: #a1a1a6; --line: #38383a; --quote: #4a4a4e;
+    --panel: #2c2c2e; --panel-shadow: 0 2px 10px rgba(0,0,0,.45); --circle-open: #1c1c1e;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #1c1c1e; --fg: #f2f2f2; --muted: #a1a1a6; --line: #38383a; --quote: #4a4a4e;
+  --panel: #2c2c2e; --panel-shadow: 0 2px 10px rgba(0,0,0,.45); --circle-open: #1c1c1e;
+  color-scheme: dark;
+}
+body {
+  background: var(--bg); color: var(--fg);
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  font-size: 15px; line-height: 1.6;
+}
+body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-area-inset-top, 0px); z-index: 10; background: var(--bg); }
+.top {
+  position: sticky; top: env(safe-area-inset-top, 0px); z-index: 5;
+  background: var(--bg); border-bottom: 1px solid var(--line);
+  padding-block: 10px;
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+}
+.top h1 { margin: 0; font-size: 13px; font-weight: 600; line-height: 1.35; text-wrap: balance; }
+.top p { margin: 2px 0 0; font-size: 12px; color: var(--muted); font-variant-numeric: tabular-nums; }
+main {
+  max-width: 768px; margin: 0 auto;
+  padding-block: 24px 48px;
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+}
+.tabs { display: flex; gap: 20px; font-size: 13px; margin-bottom: 20px; }
+.tabs span { color: var(--muted); }
+.tabs strong { font-weight: 600; }
+blockquote { margin: 0 0 8px; padding: 2px 0 2px 14px; border-left: 3px solid var(--quote); color: var(--muted); font-size: 14px; }
+blockquote strong { color: var(--fg); font-weight: 600; }
+h2 { font-size: 21px; line-height: 1.3; margin: 32px 0 12px; text-wrap: balance; }
+h3 { font-size: 17px; line-height: 1.35; margin: 26px 0 8px; text-wrap: balance; }
+h4 { font-size: 15px; line-height: 1.4; margin: 16px 0 4px; color: var(--muted); }
+p { margin: 0 0 12px; }
+ul, ol { margin: 0 0 12px; padding-left: 22px; }
+li { margin: 6px 0; }
+li > ul, li > ol { margin: 6px 0 0; }
+.todo { list-style: none; padding-left: 0; }
+.todo li { display: flex; gap: 10px; align-items: flex-start; }
+.todo input { margin-top: 5px; flex: none; width: 15px; height: 15px; accent-color: var(--muted); }
+.todo label { min-width: 0; }
+
+.mapcard {
+  position: relative; margin-top: 40px; height: 320px;
+  border: 1px solid var(--line); border-radius: 10px; overflow: hidden; background: var(--bg);
+}
+.mapcard .label { position: absolute; top: 10px; left: 12px; font-size: 12px; color: var(--muted); z-index: 2; }
+.mapcard .open {
+  position: absolute; inset: 0; z-index: 3; border: 0; background: transparent; cursor: zoom-in;
+}
+.mapcard .open:focus-visible { outline: 2px solid var(--muted); outline-offset: -3px; }
+#mm {
+  width: 100%; height: 100%; display: block;
+  --markmap-text-color: var(--fg);
+  --markmap-circle-open-bg: var(--circle-open);
+  --markmap-max-width: 300px;
+  --markmap-font: var(--map-font);
+}
+.controls, .close { display: none; }
+.mapcard.full {
+  position: fixed; inset: 0; z-index: 20; margin: 0; height: auto; border: 0; border-radius: 0;
+  padding: env(safe-area-inset-top, 0px) env(safe-area-inset-right, 0px) env(safe-area-inset-bottom, 0px) env(safe-area-inset-left, 0px);
+}
+.mapcard.full .open, .mapcard.full .label { display: none; }
+.mapcard.full .controls {
+  display: flex; position: absolute;
+  right: calc(16px + env(safe-area-inset-right, 0px));
+  bottom: calc(16px + env(safe-area-inset-bottom, 0px));
+  gap: 4px; padding: 6px; background: var(--panel); border-radius: 10px; box-shadow: var(--panel-shadow);
+}
+.mapcard.full .close {
+  display: grid; place-items: center; position: absolute;
+  top: calc(12px + env(safe-area-inset-top, 0px)); right: calc(12px + env(safe-area-inset-right, 0px));
+  width: 36px; height: 36px; border: 0; border-radius: 8px; background: var(--panel); box-shadow: var(--panel-shadow);
+  color: var(--fg); cursor: pointer;
+}
+.controls button {
+  width: 32px; height: 32px; border: 0; border-radius: 6px;
+  background: transparent; color: var(--fg); cursor: pointer; display: grid; place-items: center;
+}
+.controls button:hover { background: var(--line); }
+.controls button:focus-visible, .close:focus-visible { outline: 2px solid var(--muted); outline-offset: 1px; }
+.ico { width: 18px; height: 18px; fill: none; stroke: currentColor; stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round; }
+footer { text-align: center; font-size: 12px; color: var(--muted); padding-block: 8px 32px; }
+</style>
+</head>
+<body>
+
+
+<div class="top">
+  <h1>Conférence : la réalisation du Tawhid, les rangs de ses gens et les qualités des monothéistes</h1>
+  <p>2026-11-03 19:11 · Cheikh Abd Razzaq Al Badr</p>
+</div>
+
+<main>
+  <div class="tabs"><strong>Résumé</strong></div>
+  <div id="doc"></div>
+
+  <section class="mapcard" id="card" aria-label="Carte mentale">
+    <span class="label">Carte mentale</span>
+    <svg id="mm" class="markmap"></svg>
+    <button class="open" id="open" type="button" aria-label="Ouvrir la carte mentale en plein écran"></button>
+    <button class="close" id="close" type="button" title="Fermer" aria-label="Fermer la carte"><svg class="ico" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
+    <div class="controls" role="toolbar" aria-label="Commandes de la carte">
+      <button id="zin" type="button" title="Zoom avant" aria-label="Zoom avant"><svg class="ico" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="M11 8v6M8 11h6M16.5 16.5L21 21"/></svg></button>
+      <button id="zout" type="button" title="Zoom arrière" aria-label="Zoom arrière"><svg class="ico" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="M8 11h6M16.5 16.5L21 21"/></svg></button>
+      <button id="fit" type="button" title="Ajuster à l'écran" aria-label="Ajuster à l'écran"><svg class="ico" viewBox="0 0 24 24"><path d="M4 9V4h5M15 4h5v5M20 15v5h-5M9 20H4v-5"/><rect x="8" y="8" width="8" height="8" rx="1"/></svg></button>
+      <button id="all" type="button" title="Tout déplier" aria-label="Tout déplier"><svg class="ico" viewBox="0 0 24 24"><path d="M4 6h16M8 12h12M12 18h8"/><circle cx="4" cy="12" r="0.8"/><circle cx="8" cy="18" r="0.8"/></svg></button>
+    </div>
+  </section>
+</main>
+<footer>Traduction française de la note Plaud du 03/11/2026</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/d3@7.9.0/dist/d3.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/markmap-view@0.18.10/dist/browser/index.js"></script>
+<script>
+const n = (content, children, fold) => ({ content, children: children || [], payload: fold ? { fold: 1 } : {} });
+const PBUH = 'ﷺ';
+
+const data = n("11-03 Conférence : la réalisation du Tawh...", [
+  n("", [
+    n("Date : 2026-11-03"),
+    n("Heure : 19:11:30"),
+    n("Lieu : Masjid Nabawi, Médine"),
+    n("Conférencier : Cheikh Abd Razzaq Al Badr")
+  ]),
+  n("Résumé", [
+    n("La conférence traite de la réalité de la réalisation du Tawhid et de ses degrés (obligatoire et recommandé), ainsi que de ce qui l'atteint : le shirk, les innovations et les péchés. Elle explique les rangs des gens du Tawhid (ceux qui devancent, ceux qui sont modérés et ceux qui se font du tort à eux-mêmes) et leur rétribution. Elle met en avant l'exemple d'Abraham (paix sur lui) comme imam des monothéistes, détaille ses immenses qualités et le désaveu du shirk et de ses gens, et encourage à renouveler chaque jour les sens du Tawhid par les invocations du matin. Elle explique aussi les qualités des croyants accomplis citées dans la sourate al-Mu'minûn, en insistant sur le fait que la préservation du shirk est la base de la validité et de l'acceptation de toutes les œuvres. Elle se termine par un rappel : réunir la bonne action et la crainte, et une invocation complète.")
+  ]),
+  n("Points de connaissance", [
+    n("1. La réalité de la réalisation du Tawhid, ses obstacles et les rangs de ses gens", [
+      n("Le sens de la réalisation du Tawhid et ses degrés", [
+        n("Réaliser le Tawhid, c'est le compléter, le parfaire et le purifier. Il a deux degrés :", [
+          n("Le degré obligatoire : débarrasser et purifier le Tawhid des souillures du shirk dans ses deux formes (majeur et mineur), des innovations et des péchés, accomplir les obligations et délaisser les interdits."),
+          n("Le degré recommandé : ajouter à l'accomplissement des obligations et à l'abandon des interdits l'abandon des choses détestables et de certaines choses permises, et rivaliser dans les actes recommandés et désirables.")
+        ])
+      ]),
+      n("Ce qui atteint le Tawhid et les obstacles sur le chemin vers Allah", [
+        n("Le shirk majeur contredit le fondement du Tawhid et annule entièrement les œuvres. Le shirk mineur atteint sa perfection obligatoire. Les innovations l'atteignent. Les péchés diminuent sa perfection et la récompense de ses gens."),
+        n("On se préserve de l'obstacle du shirk en dégageant le Tawhid et en étant sincère envers Allah, de l'obstacle de l'innovation en suivant exclusivement le Messager d'Allah ﷺ, et de l'obstacle des péchés en luttant contre son âme et en se hâtant vers le repentir sincère, d'après la parole du Prophète ﷺ : « Tous les fils d'Adam commettent des fautes. »")
+      ]),
+      n("Les rangs des gens du Tawhid et leur rétribution", [
+        n("L'explication cite le verset de la sourate Fâtir : ﴾Puis Nous avons fait hériter le Livre à ceux de Nos serviteurs que Nous avons choisis. Parmi eux, il en est qui se font du tort à eux-mêmes, d'autres qui sont modérés, et d'autres qui, par la permission d'Allah, devancent dans les bonnes œuvres...﴿. Elle montre que le pronom dans ﴾les jardins d'Éden où ils entreront﴿ renvoie aux trois catégories. Celui qui se fait du tort à lui-même est cité en premier pour qu'il ne désespère pas, et celui qui devance est cité en dernier pour qu'il ne s'enorgueillisse pas."),
+        n("Ceux qui devancent dans les bonnes œuvres et ceux qui sont modérés (les vertueux, les gens de la droite) entrent au Paradis dès le départ, sans jugement ni châtiment, car ils accomplissent les obligations et délaissent les interdits."),
+        n("Celui qui se fait du tort à lui-même (par les péchés, sans shirk) : sa destination finale est le Paradis, même s'il subit une purification et un châtiment dans le Feu, d'après la parole du Prophète ﷺ : « Faites sortir du Feu celui qui a dit Lâ ilâha illa Allah et qui a dans le cœur le moindre poids d'un atome de foi. » Il en va autrement des mécréants, qui restent éternellement dans le Feu.")
+      ])
+    ], true),
+    n("2. Abraham (paix sur lui), imam des monothéistes et modèle de ceux qui réalisent le Tawhid", [
+      n("Explication des qualités d'Abraham (paix sur lui) dans la sourate an-Nahl", [
+        n("L'auteur (le Cheikh Muhammad ibn 'Abd al-Wahhâb) a pris pour preuve la parole d'Allah : ﴾Abraham était une communauté à lui seul, dévoué à Allah, hanîf, et il n'était pas du nombre des associateurs﴿."),
+        n("« Une communauté » (umma) : expliqué par le fait qu'il était seul sur la vérité et le monothéisme pur quand les gens étaient dans le shirk (la communauté, c'est ce qui est conforme à la vérité, même si tu es seul), et par le fait qu'il est un imam que l'on suit. On obtient l'imamat dans la religion en réunissant la patience et la certitude."),
+        n("« Dévoué à Allah » (qânit) : le qunût est la constance dans l'obéissance et l'attachement à l'adoration. La précision « à Allah » implique une sincérité exclusive."),
+        n("« Hanîf » : tourné vers Allah, s'écartant et se détournant du shirk volontairement et délibérément.")
+      ]),
+      n("Le désaveu du shirk et de ses gens", [
+        n("« Il n'était pas du nombre des associateurs » : il n'était pas des leurs, ni dans la croyance, ni dans la parole, ni dans les actes, ni par l'habitation, et il s'est séparé d'eux. Le désaveu implique de se séparer d'eux, de détester ce qu'ils suivent, et de s'éloigner des adorateurs avant les objets adorés, comme dans la parole : ﴾Nous vous désavouons, vous et ce que vous adorez en dehors d'Allah﴿.")
+      ]),
+      n("Renouveler le Tawhid par les invocations du matin", [
+        n("Encouragement à dire régulièrement l'invocation rapportée par 'Abd ar-Rahmân ibn Abzâ : « Nous voici au matin sur la nature saine de l'islam, sur la parole de la sincérité, sur la religion de notre Prophète Muhammad ﷺ et sur la voie de notre père Abraham, monothéiste pur et soumis, qui n'était pas du nombre des associateurs. » Elle permet de renouveler chaque matin le Tawhid, la foi et l'attachement à la voie d'Abraham.")
+      ])
+    ], true),
+    n("3. Les qualités des croyants accomplis dans la sourate al-Mu'minûn", [
+      n("Les quatre qualités citées dans les versets", [
+        n("1. La crainte révérencielle : craindre Allah et être conscient qu'Il nous observe. C'est ce qui pousse à se hâter vers les bonnes œuvres."),
+        n("2. La foi aux versets d'Allah : croire aux versets du Coran, se guider par eux et s'y soumettre."),
+        n("3. La préservation du shirk : dans la parole ﴾et ceux qui n'associent rien à leur Seigneur﴿. C'est la base de la validité des œuvres et la condition de leur acceptation : le shirk majeur les annule, et le shirk mineur empêche leur perfection et leur pureté. C'est pourquoi l'auteur s'est limité à elle comme preuve."),
+        n("4. La crainte que l'œuvre soit rejetée : dans la parole ﴾et ceux qui donnent ce qu'ils donnent, le cœur plein de crainte﴿. Le Prophète ﷺ a expliqué à 'Âïcha (qu'Allah l'agrée) que ce sont ceux qui prient, jeûnent et donnent l'aumône tout en craignant que cela ne soit pas accepté. Le croyant réunit la bonne action et la crainte (comme Abraham et Ismaël en construisant la Maison), tandis que l'hypocrite réunit la mauvaise action et le sentiment de sécurité.")
+      ]),
+      n("Conclusion de la conférence et invocation", [
+        n("Insistance sur la méditation de ces qualités et sur la lutte contre son âme pour les réaliser."),
+        n("La séance s'est conclue par des invocations pour la bonne guidée et la piété, la purification des âmes, le pardon pour les proches et les musulmans, la droiture des gouvernants et l'affermissement des cœurs dans l'obéissance et la foi, puis par la glorification d'Allah, la demande de pardon et la prière sur le Prophète et sa famille.")
+      ])
+    ], true)
+  ]),
+  n("Devoirs", [
+    n("Préserver chaque jour les invocations du matin (en particulier : « Nous voici au matin sur la nature saine de l'islam... »), en gardant à l'esprit les sens du Tawhid et en renouvelant l'engagement envers lui."),
+    n("Travailler sérieusement à réaliser le Tawhid en le purifiant du shirk, des innovations et des péchés, et lutter contre son âme pour se repentir et demander pardon en permanence."),
+    n("Suivre l'exemple d'Abraham (paix sur lui) et se parer de ses qualités : la patience, la certitude, la dévotion, la sincérité, le désaveu du shirk et de ses gens."),
+    n("Méditer les qualités des croyants accomplis dans la sourate al-Mu'minûn et revoir leurs explications, en veillant à réunir la bonne œuvre et la crainte qu'elle ne soit pas acceptée, sans se considérer comme pur.")
+  ])
+]);
+
+// Résumé écrit, généré depuis le même arbre que la carte
+const bold = s => s.replace(/﴾[^﴿]*﴿/g, m => `<strong>${m}</strong>`);
+const [meta, resume, points, devoirs] = data.children;
+const NUM = /^(\d+)\.\s+/;
+function list(items) {
+  const ordered = items.every(i => NUM.test(i.content));
+  const tag = ordered ? 'ol' : 'ul';
+  return `<${tag}>` + items.map(i => {
+    const txt = ordered ? i.content.replace(NUM, '') : i.content;
+    return `<li><p>${bold(txt)}</p>${i.children.length ? list(i.children) : ''}</li>`;
+  }).join('') + `</${tag}>`;
+}
+let html = '<blockquote><p>' + meta.children.map(m => {
+  const k = m.content.indexOf(' : ');
+  return `<strong>${m.content.slice(0, k)} :</strong> ${m.content.slice(k + 3)}`;
+}).join('<br>') + '</p></blockquote>';
+html += `<h2>${resume.content}</h2>` + resume.children.map(p => `<p>${bold(p.content)}</p>`).join('');
+html += `<h2>${points.content}</h2>` + points.children.map(pt => `<h3>${pt.content}</h3>` + (pt.children.every(s => s.children.length) ? pt.children.map(s => `<h4>${s.content}</h4>${list(s.children)}`).join('') : list(pt.children))).join('');
+html += `<h2>${devoirs.content}</h2><ul class="todo">` + devoirs.children.map((d, i) =>
+  `<li><input type="checkbox" id="devoir-${i + 1}"><label for="devoir-${i + 1}">${bold(d.content)}</label></li>`).join('') + '</ul>';
+document.getElementById('doc').innerHTML = html;
+
+// Carte mentale : une teinte pastel par branche principale (couleurs Plaud), épaisseur décroissante avec la profondeur
+const BRANCH = ['#E5CCB3', '#E5DDB3', '#CCE5B3', '#B7E5C6'];
+data.payload.c = BRANCH[0];
+data.children.forEach((b, i) => {
+  (function paint(x) { x.payload.c = BRANCH[i % BRANCH.length]; x.children.forEach(paint); })(b);
+});
+(function mark(x) { if (x.payload.fold) x.payload.foldInit = 1; x.children.forEach(mark); })(data);
+const depthOf = node => (node.state && node.state.path ? node.state.path.split('.').length : 1);
+
+const { Markmap } = window.markmap;
+const mm = Markmap.create('#mm', {
+  color: node => node.payload.c,
+  lineWidth: node => 1 + 1.5 / Math.pow(2, depthOf(node) - 1),
+  maxWidth: 300,
+  duration: 400,
+  spacingVertical: 5,
+  paddingX: 8,
+  fitRatio: 0.95
+}, data);
+
+const card = document.getElementById('card');
+function setFull(on) {
+  card.classList.toggle('full', on);
+  document.body.style.overflow = on ? 'hidden' : '';
+  requestAnimationFrame(() => mm.fit());
+  if (on) document.getElementById('close').focus();
+}
+document.getElementById('open').onclick = () => setFull(true);
+document.getElementById('close').onclick = () => setFull(false);
+document.addEventListener('keydown', e => { if (e.key === 'Escape' && card.classList.contains('full')) setFull(false); });
+document.getElementById('zin').onclick = () => mm.rescale(1.25);
+document.getElementById('zout').onclick = () => mm.rescale(0.8);
+document.getElementById('fit').onclick = () => mm.fit();
+let open = false;
+document.getElementById('all').onclick = () => {
+  open = !open;
+  (function walk(x) {
+    if (x !== data && x.children && x.children.length) {
+      x.payload = { ...x.payload, fold: open ? 0 : (x.payload.foldInit ? 1 : 0) };
+    }
+    (x.children || []).forEach(walk);
+  })(mm.state.data);
+  mm.renderData().then(() => mm.fit());
+  const b = document.getElementById('all');
+  b.title = b.ariaLabel = open ? 'Replier' : 'Tout déplier';
+};
+window.addEventListener('resize', () => mm.fit());
+window.addEventListener('load', () => setTimeout(() => mm.fit(), 300));
+</script>
+
+</body>
+</html>
