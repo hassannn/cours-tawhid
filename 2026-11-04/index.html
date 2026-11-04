@@ -1,0 +1,334 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="Résumé en français et carte mentale de la conférence du Cheikh Abd Razzaq Al Badr au Masjid Nabawi, 04/11/2026.">
+<style>*,*::before,*::after{box-sizing:border-box}body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style>
+<title>Cours du 04/11 : le hadith des soixante-dix mille</title>
+
+<style>
+/* Layout : page de résumé type Plaud (colonne centrée 768px), puis carte mentale en encadré qui s'ouvre en plein écran */
+:root {
+  --bg: #ffffff;
+  --fg: #111113;
+  --muted: #6b6b70;
+  --line: #e6e6e8;
+  --quote: #c9c9ce;
+  --panel: #ffffff;
+  --panel-shadow: 0 2px 10px rgba(0,0,0,.10);
+  --circle-open: #ffffff;
+  --map-font: 300 16px/20px sans-serif;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #1c1c1e; --fg: #f2f2f2; --muted: #a1a1a6; --line: #38383a; --quote: #4a4a4e;
+    --panel: #2c2c2e; --panel-shadow: 0 2px 10px rgba(0,0,0,.45); --circle-open: #1c1c1e;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #1c1c1e; --fg: #f2f2f2; --muted: #a1a1a6; --line: #38383a; --quote: #4a4a4e;
+  --panel: #2c2c2e; --panel-shadow: 0 2px 10px rgba(0,0,0,.45); --circle-open: #1c1c1e;
+  color-scheme: dark;
+}
+body {
+  background: var(--bg); color: var(--fg);
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  font-size: 15px; line-height: 1.6;
+}
+body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-area-inset-top, 0px); z-index: 10; background: var(--bg); }
+.top {
+  position: sticky; top: env(safe-area-inset-top, 0px); z-index: 5;
+  background: var(--bg); border-bottom: 1px solid var(--line);
+  padding-block: 10px;
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+}
+.top h1 { margin: 0; font-size: 13px; font-weight: 600; line-height: 1.35; text-wrap: balance; }
+.top p { margin: 2px 0 0; font-size: 12px; color: var(--muted); font-variant-numeric: tabular-nums; }
+main {
+  max-width: 768px; margin: 0 auto;
+  padding-block: 24px 48px;
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+}
+.tabs { display: flex; gap: 20px; font-size: 13px; margin-bottom: 20px; }
+.tabs span { color: var(--muted); }
+.tabs strong { font-weight: 600; }
+blockquote { margin: 0 0 8px; padding: 2px 0 2px 14px; border-left: 3px solid var(--quote); color: var(--muted); font-size: 14px; }
+blockquote strong { color: var(--fg); font-weight: 600; }
+h2 { font-size: 21px; line-height: 1.3; margin: 32px 0 12px; text-wrap: balance; }
+h3 { font-size: 17px; line-height: 1.35; margin: 26px 0 8px; text-wrap: balance; }
+h4 { font-size: 15px; line-height: 1.4; margin: 16px 0 4px; color: var(--muted); }
+p { margin: 0 0 12px; }
+ul, ol { margin: 0 0 12px; padding-left: 22px; }
+li { margin: 6px 0; }
+li > ul, li > ol { margin: 6px 0 0; }
+.todo { list-style: none; padding-left: 0; }
+.todo li { display: flex; gap: 10px; align-items: flex-start; }
+.todo input { margin-top: 5px; flex: none; width: 15px; height: 15px; accent-color: var(--muted); }
+.todo label { min-width: 0; }
+
+.mapcard {
+  position: relative; margin-top: 40px; height: 320px;
+  border: 1px solid var(--line); border-radius: 10px; overflow: hidden; background: var(--bg);
+}
+.mapcard .label { position: absolute; top: 10px; left: 12px; font-size: 12px; color: var(--muted); z-index: 2; }
+.mapcard .open {
+  position: absolute; inset: 0; z-index: 3; border: 0; background: transparent; cursor: zoom-in;
+}
+.mapcard .open:focus-visible { outline: 2px solid var(--muted); outline-offset: -3px; }
+#mm {
+  width: 100%; height: 100%; display: block;
+  --markmap-text-color: var(--fg);
+  --markmap-circle-open-bg: var(--circle-open);
+  --markmap-max-width: 300px;
+  --markmap-font: var(--map-font);
+}
+.controls, .close { display: none; }
+.mapcard.full {
+  position: fixed; inset: 0; z-index: 20; margin: 0; height: auto; border: 0; border-radius: 0;
+  padding: env(safe-area-inset-top, 0px) env(safe-area-inset-right, 0px) env(safe-area-inset-bottom, 0px) env(safe-area-inset-left, 0px);
+}
+.mapcard.full .open, .mapcard.full .label { display: none; }
+.mapcard.full .controls {
+  display: flex; position: absolute;
+  right: calc(16px + env(safe-area-inset-right, 0px));
+  bottom: calc(16px + env(safe-area-inset-bottom, 0px));
+  gap: 4px; padding: 6px; background: var(--panel); border-radius: 10px; box-shadow: var(--panel-shadow);
+}
+.mapcard.full .close {
+  display: grid; place-items: center; position: absolute;
+  top: calc(12px + env(safe-area-inset-top, 0px)); right: calc(12px + env(safe-area-inset-right, 0px));
+  width: 36px; height: 36px; border: 0; border-radius: 8px; background: var(--panel); box-shadow: var(--panel-shadow);
+  color: var(--fg); cursor: pointer;
+}
+.controls button {
+  width: 32px; height: 32px; border: 0; border-radius: 6px;
+  background: transparent; color: var(--fg); cursor: pointer; display: grid; place-items: center;
+}
+.controls button:hover { background: var(--line); }
+.controls button:focus-visible, .close:focus-visible { outline: 2px solid var(--muted); outline-offset: 1px; }
+.ico { width: 18px; height: 18px; fill: none; stroke: currentColor; stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round; }
+footer { text-align: center; font-size: 12px; color: var(--muted); padding-block: 8px 32px; }
+</style>
+</head>
+<body>
+
+
+<div class="top">
+  <h1>Leçon : le hadith des soixante-dix mille, la réalisation du Tawhid et la confiance en Allah</h1>
+  <p>2026-11-04 19:24 · Cheikh Abd Razzaq Al Badr</p>
+</div>
+
+<main>
+  <div class="tabs"><strong>Résumé</strong></div>
+  <div id="doc"></div>
+
+  <section class="mapcard" id="card" aria-label="Carte mentale">
+    <span class="label">Carte mentale</span>
+    <svg id="mm" class="markmap"></svg>
+    <button class="open" id="open" type="button" aria-label="Ouvrir la carte mentale en plein écran"></button>
+    <button class="close" id="close" type="button" title="Fermer" aria-label="Fermer la carte"><svg class="ico" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
+    <div class="controls" role="toolbar" aria-label="Commandes de la carte">
+      <button id="zin" type="button" title="Zoom avant" aria-label="Zoom avant"><svg class="ico" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="M11 8v6M8 11h6M16.5 16.5L21 21"/></svg></button>
+      <button id="zout" type="button" title="Zoom arrière" aria-label="Zoom arrière"><svg class="ico" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="M8 11h6M16.5 16.5L21 21"/></svg></button>
+      <button id="fit" type="button" title="Ajuster à l'écran" aria-label="Ajuster à l'écran"><svg class="ico" viewBox="0 0 24 24"><path d="M4 9V4h5M15 4h5v5M20 15v5h-5M9 20H4v-5"/><rect x="8" y="8" width="8" height="8" rx="1"/></svg></button>
+      <button id="all" type="button" title="Tout déplier" aria-label="Tout déplier"><svg class="ico" viewBox="0 0 24 24"><path d="M4 6h16M8 12h12M12 18h8"/><circle cx="4" cy="12" r="0.8"/><circle cx="8" cy="18" r="0.8"/></svg></button>
+    </div>
+  </section>
+</main>
+<footer>Traduction française de la note Plaud du 04/11/2026</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/d3@7.9.0/dist/d3.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/markmap-view@0.18.10/dist/browser/index.js"></script>
+<script>
+const n = (content, children, fold) => ({ content, children: children || [], payload: fold ? { fold: 1 } : {} });
+const PBUH = 'ﷺ';
+
+const data = n("11-04 Leçon : le hadith des soixante-dix...", [
+  n("", [
+    n("Date : 2026-11-04"),
+    n("Heure : 19:24:45"),
+    n("Lieu : Masjid Nabawi, Médine"),
+    n("Conférencier : Cheikh Abd Razzaq Al Badr")
+  ]),
+  n("Résumé", [
+    n("La leçon a expliqué le hadith des soixante-dix mille qui entrent au Paradis sans jugement ni châtiment. Elle a présenté les qualités de ceux qui réalisent le Tawhid, le sens de la vraie confiance en Allah (tawakkul) et la façon de la concilier avec le recours aux causes. Elle a aussi traité du mérite des communautés de Moïse et de Muhammad (paix sur eux), expliqué certains enseignements du hadith et certaines attitudes des Compagnons, puis s'est conclue par un résumé des questions du chapitre et des invocations. À la fin de l'enregistrement figure un passage pédagogique indépendant sur l'écriture du tanwîn al-fath et du alif qui l'accompagne.")
+  ]),
+  n("Points de connaissance", [
+    n("1. Le hadith de la présentation des communautés et le mérite de la communauté de Muhammad ﷺ", [
+      n("L'état des prophètes et de leurs suiveurs", [
+        n("Le hadith rapporte que le Prophète ﷺ a vu les prophètes et leurs suiveurs : certains avaient avec eux un petit groupe (un « rahṭ », de trois à neuf personnes), d'autres un ou deux hommes, et d'autres personne. Certains prophètes ont appelé leur peuple au Tawhid pendant longtemps sans que personne ne leur réponde, et certains ont même été tués par leur peuple."),
+        n("On en retient que la mission du prédicateur est d'expliquer la religion, de conseiller et d'enseigner, tandis que la guidée est entre les mains d'Allah. Le prédicateur ne doit donc ni désespérer, ni se décourager, ni se lasser si peu de gens répondent, et il ne doit pas mesurer la réussite de la prédication au nombre de ses suiveurs.")
+      ]),
+      n("Ne pas se laisser tromper par le grand nombre ni mépriser le petit nombre", [
+        n("Le grand nombre n'est pas une balance pour connaître la vérité : la majorité peut être dans l'erreur, et la vérité peut être avec un, deux ou trois. La vérité ne se connaît pas par les hommes : on connaît la vérité, puis on connaît ses gens."),
+        n("Les gens de la vérité sont les moins nombreux en tout temps et en tout lieu. Les versets cités sont : ﴾Et peu nombreux sont ceux de Mes serviteurs qui sont reconnaissants﴿ et ﴾La plupart des gens ne sont pas croyants, malgré ton désir﴿.")
+      ]),
+      n("Le mérite des communautés de Moïse et de Muhammad (paix sur eux)", [
+        n("Quand le Prophète ﷺ a vu une immense foule, il a pensé que c'était sa communauté, et il lui a été dit que c'étaient Moïse et son peuple. C'est un mérite pour Moïse (paix sur lui) : sa communauté est celle qui compte le plus de suiveurs de son prophète, après la communauté de Muhammad ﷺ."),
+        n("Une version rapporte que la foule de la communauté de Muhammad a rempli l'horizon, ce qui prouve qu'elle est la plus nombreuse des communautés. La parole du Prophète ﷺ a été citée : « Épousez la femme affectueuse et féconde, car je rivaliserai en nombre avec les autres communautés grâce à vous le Jour de la Résurrection. »")
+      ]),
+      n("Les soixante-dix mille et leur mérite", [
+        n("Le hadith rapporte qu'il y a, avec la communauté de Muhammad ﷺ, soixante-dix mille personnes qui entrent au Paradis sans jugement ni châtiment. Certaines versions précisent que leurs visages brillent comme la lune la nuit où elle est pleine."),
+        n("C'est un mérite de la communauté en quantité et en qualité : en quantité par le grand nombre des suiveurs du Prophète ﷺ, et en qualité par l'existence de ce nombre qui entre au Paradis directement, dès le départ, sans jugement ni châtiment. Certaines versions rapportent que le Prophète ﷺ a demandé davantage à son Seigneur, qui a ajouté soixante-dix mille avec chaque millier.")
+      ]),
+      n("La réflexion des Compagnons sur les qualités de ceux qui entrent sans jugement ni châtiment", [
+        n("Après que le Prophète ﷺ est entré chez lui, les Compagnons ont discuté des qualités possibles de ces gens. Certains ont dit : peut-être ceux qui ont accompagné le Messager d'Allah ﷺ. D'autres ont dit : peut-être ceux qui sont nés dans l'islam et n'ont rien associé à Allah. Ils ont évoqué d'autres possibilités, sans rien affirmer."),
+        n("Leur discussion montre leur zèle pour les œuvres, et leur compréhension que ce rang s'obtient par de grandes œuvres, dont la plus importante est le Tawhid. Puis le Prophète ﷺ a expliqué leurs qualités.")
+      ])
+    ], true),
+    n("2. Les qualités de ceux qui réalisent le Tawhid et le sens de sa réalisation", [
+      n("Ne pas demander la ruqya", [
+        n("Parmi leurs qualités : ils ne demandent pas la ruqya, c'est-à-dire qu'ils ne demandent pas à quelqu'un d'autre de leur faire la ruqya. Il s'agit de la ruqya permise, comme demander qu'on récite la Fâtiha, et non de la ruqya interdite, que le praticien n'a pas le droit de faire ni le malade de demander."),
+        n("Demander la ruqya permise est autorisé, comme l'ont montré les versions citées plus tôt dans la leçon : ce n'est ni une faute ni un interdit. Mais ne pas la demander est plus parfait dans la réalisation du Tawhid, car cela contient la perfection de la confiance en Allah et le fait de ne pas s'attacher aux autres. Faire la ruqya sur soi-même n'entre pas dans ce qui est dit sur le fait de la demander.")
+      ]),
+      n("Ne pas recourir à la cautérisation", [
+        n("La cautérisation est permise et n'est pas interdite. Elle est citée parmi les trois causes de guérison : l'incision de la hijâma, une gorgée de miel et une cautérisation par le feu."),
+        n("Bien que la cautérisation soit permise, la délaisser, ainsi que la demande de ruqya, est plus parfait dans la réalisation du Tawhid si cela vient de la confiance en Allah. Le commentaire décrit leur état ainsi : ils ont voué leurs œuvres sincèrement à Allah et ont délaissé ce qui ne pose pas de problème, par prudence envers ce qui en pose.")
+      ]),
+      n("Ne pas tirer de mauvais présages", [
+        n("La tiyara est le fait de tirer un mauvais présage, qu'il soit lié aux oiseaux ou à autre chose. La leçon a indiqué que la tiyara est du shirk, et que le mauvais présage blâmable est celui qui pousse à agir ou à renoncer à cause d'un signe ou d'un événement qu'on imagine."),
+        n("Parmi les qualités de ceux qui réalisent le Tawhid : ils ne prêtent pas attention au mouvement d'un oiseau ou à une chose semblable qui les empêcherait d'aller vers le bien. Ils avancent au contraire en plaçant leur confiance en Allah.")
+      ]),
+      n("La confiance en Allah, racine des trois qualités", [
+        n("Les trois qualités (ne pas demander la ruqya, ne pas recourir à la cautérisation, ne pas tirer de mauvais présages) reviennent à la quatrième : placer sa confiance en Allah et Lui remettre ses affaires. Le fait de délaisser vient de la perfection de l'appui sur Allah, et non d'une simple endurance ou d'un simple effort de patience."),
+        n("Si l'on délaisse la cautérisation, la demande de ruqya ou le mauvais présage sans que la confiance en Allah en soit la cause, cela ne fait pas partie du Tawhid ni de sa réalisation. Mais si le fait de délaisser vient de la force de la confiance en Allah, il entre dans la réalisation du Tawhid.")
+      ]),
+      n("La réalisation obligatoire et la réalisation recommandée du Tawhid", [
+        n("La leçon a expliqué que la réalisation du Tawhid a deux aspects : obligatoire et recommandé. Sa réalisation obligatoire consiste à purifier le Tawhid des souillures du shirk, des innovations et des péchés. Délaisser certaines choses permises, comme demander la ruqya et la cautérisation, par confiance en Allah, relève de la perfection de la réalisation recommandée dont parle le hadith.")
+      ])
+    ], true),
+    n("3. La confiance en Allah et le recours aux causes", [
+      n("Définition de la confiance en Allah et son rang", [
+        n("La confiance en Allah (tawakkul) est la sincérité dans le fait de s'en remettre à Lui et l'appui du cœur sur Allah. C'est une grande adoration du cœur, qui accompagne le musulman dans ses affaires religieuses et mondaines, et l'une des qualités des croyants. La leçon l'a reliée à la foi et à l'islam, en citant la parole d'Allah ﴾Et c'est en Allah que vous devez placer votre confiance, si vous êtes croyants﴿ et la parole de Moïse (paix sur lui) ﴾Placez votre confiance en Lui, si vous êtes soumis﴿."),
+        n("Il est prescrit au musulman de dire en sortant de chez lui : « Au nom d'Allah, je place ma confiance en Allah, il n'y a de force ni de puissance que par Allah. » Il lui est alors dit : « Tu es guidé, tu es suffi et tu es protégé. »")
+      ]),
+      n("L'obligation de recourir aux causes", [
+        n("Avec la confiance en Allah, il faut agir par les causes : on ne fait pas de son incapacité une confiance en Allah, ni de sa confiance en Allah une incapacité. Celui qui délaisse la recherche du savoir, la lecture, l'étude et la présence aux cercles de science, puis se contente de dire qu'il place sa confiance en Allah, n'a pas pris les causes nécessaires pour acquérir le savoir."),
+        n("La parole du Prophète ﷺ a été citée : « Le savoir ne s'acquiert que par l'apprentissage », ainsi que l'invocation du matin : « Ô Allah, je Te demande un savoir utile, une subsistance pure et une œuvre acceptée. » Ce sont les trois objectifs du musulman dans sa journée, mais invoquer pour obtenir le savoir ne dispense pas de faire l'effort de le chercher."),
+        n("La parole du Prophète ﷺ a aussi été citée : « Recherche avec zèle ce qui t'est utile, demande l'aide d'Allah et ne te laisse pas aller à l'incapacité », ainsi que le hadith des oiseaux qui partent le matin affamés et reviennent le soir rassasiés : ils sortent et accomplissent la cause, ils ne restent pas dans leurs nids à attendre leur subsistance. La directive « Attache-la et place ta confiance en Allah » a aussi été citée.")
+      ]),
+      n("Les catégories de gens face aux causes et à la confiance en Allah", [
+        n("La première catégorie réunit l'action par les causes et la confiance en Allah : c'est ce qui est demandé."),
+        n("La deuxième catégorie délaisse les causes en s'appuyant sur la confiance en Allah : elle fait de l'incapacité une confiance en Allah."),
+        n("La troisième catégorie agit par les causes mais s'appuie sur elles seules, sans placer sa confiance en Allah : elle exagère dans les causes et délaisse la confiance en Allah, alors que cette confiance est l'une des causes les plus fortes."),
+        n("Ce qui est demandé au musulman, c'est de réunir les deux, comme dans les paroles d'Allah ﴾Adore-Le donc et place ta confiance en Lui﴿ et ﴾C'est Toi que nous adorons, et c'est Toi dont nous implorons le secours﴿, et comme dans l'encouragement à rechercher ce qui est utile en demandant l'aide d'Allah. Il a été dit que celui qui sort sans provisions en prétendant qu'il place sa confiance en Allah ne place pas sa confiance en Allah : il se repose sur les autres.")
+      ])
+    ], true),
+    n("4. Des attitudes tirées du hadith et le résumé du chapitre", [
+      n("L'attitude de 'Ukkâcha ibn Mihsan", [
+        n("Après avoir entendu les qualités de ceux qui entrent au Paradis sans jugement ni châtiment, 'Ukkâcha ibn Mihsan (qu'Allah l'agrée) s'est empressé de demander au Prophète ﷺ d'invoquer Allah pour qu'il en fasse partie, et il lui a dit : « Tu en fais partie. » C'est un mérite pour 'Ukkâcha, à qui le Prophète ﷺ a attesté ce rang. La leçon a indiqué qu'il est mort martyr en combattant les apostats avec Khâlid ibn al-Walîd et les Compagnons.")
+      ]),
+      n("La parole du Prophète à l'autre homme", [
+        n("Quand un autre homme a demandé qu'on invoque pour lui, le Prophète ﷺ a dit : « 'Ukkâcha t'a devancé. » La leçon a expliqué que c'est une allusion délicate, qui fait comprendre que le second n'a pas ce qu'avait 'Ukkâcha, tout en mettant fin à la suite de demandes, sans lui dire une parole qui lui déplaise.")
+      ]),
+      n("Ce que prouve le hadith par rapport au titre du chapitre", [
+        n("Le hadith prouve que celui qui réalise le Tawhid avec les qualités citées entre au Paradis sans jugement ni châtiment. Cette expression est le passage qui sert de preuve au titre du chapitre sur celui qui réalise le Tawhid."),
+        n("Le commentaire a résumé les versets ainsi : Allah a fait l'éloge d'Abraham (paix sur lui) par des qualités qui sont le sommet de la perfection dans la réalisation du Tawhid, et Il a fait l'éloge des croyants qui n'associent rien à leur Seigneur. Il a conclu du hadith que délaisser la ruqya, la cautérisation et le mauvais présage par confiance en Allah, avec la réalisation du Tawhid obligatoire, est une cause d'entrée au Paradis sans jugement ni châtiment.")
+      ]),
+      n("L'invocation finale", [
+        n("La leçon s'est conclue par des invocations pour le savoir, la réussite, la bonne guidée et la piété, la réforme de la religion, de ce bas monde et de l'au-delà, le pardon des péchés, et la droiture pour les parents, la descendance, les maîtres et les musulmans."),
+        n("L'invocation a inclus la sécurité des pays et la droiture des dirigeants et des gouvernants, leur réussite à appliquer le Livre d'Allah, à juger selon Sa loi et à suivre la Sunna du Prophète ﷺ, et qu'ils soient une miséricorde pour les croyants."),
+        n("L'invocation a aussi demandé de soulager les soucieux, de dissiper l'angoisse des affligés, de régler les dettes, de guérir les malades, de faire miséricorde aux morts, de réconcilier les gens et d'unir les cœurs, de guider vers les chemins de la paix, de sauver des épreuves, de secourir les opprimés et d'épargner leur sang, ainsi que le Paradis, la protection contre le Feu et la constance dans la religion et l'obéissance.")
+      ])
+    ], true),
+    n("5. L'écriture du tanwîn al-fath et du alif qui l'accompagne", [
+      n("La règle d'écriture du tanwîn al-fath", [
+        n("Le passage pédagogique final indique que les mots qui se terminent par le tanwîn al-fath s'écrivent en ajoutant un alif à la fin s'ils ne se terminent pas par un tâ' marbûta, et que le tanwîn se place sur la lettre qui précède le alif."),
+        n("Des exemples ont été donnés : « ملعبًا » (mal'aban), « جيشًا » (jaychan), « قوسًا » (qawsan) et « قويًا » (qawiyyan). « صورة » (sûra) figure aussi parmi les exemples : elle se termine par un tâ' marbûta, donc le alif du tanwîn al-fath ne s'y ajoute pas.")
+      ]),
+      n("Le nom du alif", [
+        n("Le passage a proposé d'appeler le alif qui accompagne le tanwîn al-fath « le alif magique » au lieu de « le faux alif », puis a évoqué l'écriture correcte des mots qui se terminent par le tanwîn al-fath et la distinction entre le nûn et le tanwîn."),
+        n("Les expressions « نائمًا » (nâ'iman) et « تنويم الفتى » ont aussi été citées dans ce passage, avec d'autres exemples de mots à écrire correctement.")
+      ])
+    ], true),
+    n("6. Remarques passagères au début de l'enregistrement", [
+      n("Phrases d'ouverture", [
+        n("Au début de l'enregistrement, il est dit que le premier gagnant d'un concours de Coran en Libye est français, puis une phrase en français qui signifie : « Attends, attends, je serai là. » L'enregistrement ne donne pas plus de détails sur ces deux phrases.")
+      ])
+    ], true)
+  ]),
+  n("Devoirs", [
+    n("Réviser les qualités des soixante-dix mille, et distinguer le fait de délaisser une chose permise par confiance en Allah du fait de la délaisser pour d'autres raisons."),
+    n("Appliquer dans les affaires de la vie la réunion de la confiance en Allah et du recours aux causes, notamment dans la recherche du savoir."),
+    n("S'exercer à écrire correctement les mots avec tanwîn al-fath, en distinguant les mots qui se terminent par un tâ' marbûta des autres.")
+  ])
+]);
+
+// Résumé écrit, généré depuis le même arbre que la carte
+const bold = s => s.replace(/﴾[^﴿]*﴿/g, m => `<strong>${m}</strong>`);
+const [meta, resume, points, devoirs] = data.children;
+const NUM = /^(\d+)\.\s+/;
+function list(items) {
+  const ordered = items.every(i => NUM.test(i.content));
+  const tag = ordered ? 'ol' : 'ul';
+  return `<${tag}>` + items.map(i => {
+    const txt = ordered ? i.content.replace(NUM, '') : i.content;
+    return `<li><p>${bold(txt)}</p>${i.children.length ? list(i.children) : ''}</li>`;
+  }).join('') + `</${tag}>`;
+}
+let html = '<blockquote><p>' + meta.children.map(m => {
+  const k = m.content.indexOf(' : ');
+  return `<strong>${m.content.slice(0, k)} :</strong> ${m.content.slice(k + 3)}`;
+}).join('<br>') + '</p></blockquote>';
+html += `<h2>${resume.content}</h2>` + resume.children.map(p => `<p>${bold(p.content)}</p>`).join('');
+html += `<h2>${points.content}</h2>` + points.children.map(pt => `<h3>${pt.content}</h3>` + (pt.children.every(s => s.children.length) ? pt.children.map(s => `<h4>${s.content}</h4>${list(s.children)}`).join('') : list(pt.children))).join('');
+html += `<h2>${devoirs.content}</h2><ul class="todo">` + devoirs.children.map((d, i) =>
+  `<li><input type="checkbox" id="devoir-${i + 1}"><label for="devoir-${i + 1}">${bold(d.content)}</label></li>`).join('') + '</ul>';
+document.getElementById('doc').innerHTML = html;
+
+// Carte mentale : une teinte pastel par branche principale (couleurs Plaud), épaisseur décroissante avec la profondeur
+const BRANCH = ['#E5CCB3', '#E5DDB3', '#CCE5B3', '#B7E5C6'];
+data.payload.c = BRANCH[0];
+data.children.forEach((b, i) => {
+  (function paint(x) { x.payload.c = BRANCH[i % BRANCH.length]; x.children.forEach(paint); })(b);
+});
+(function mark(x) { if (x.payload.fold) x.payload.foldInit = 1; x.children.forEach(mark); })(data);
+const depthOf = node => (node.state && node.state.path ? node.state.path.split('.').length : 1);
+
+const { Markmap } = window.markmap;
+const mm = Markmap.create('#mm', {
+  color: node => node.payload.c,
+  lineWidth: node => 1 + 1.5 / Math.pow(2, depthOf(node) - 1),
+  maxWidth: 300,
+  duration: 400,
+  spacingVertical: 5,
+  paddingX: 8,
+  fitRatio: 0.95
+}, data);
+
+const card = document.getElementById('card');
+function setFull(on) {
+  card.classList.toggle('full', on);
+  document.body.style.overflow = on ? 'hidden' : '';
+  requestAnimationFrame(() => mm.fit());
+  if (on) document.getElementById('close').focus();
+}
+document.getElementById('open').onclick = () => setFull(true);
+document.getElementById('close').onclick = () => setFull(false);
+document.addEventListener('keydown', e => { if (e.key === 'Escape' && card.classList.contains('full')) setFull(false); });
+document.getElementById('zin').onclick = () => mm.rescale(1.25);
+document.getElementById('zout').onclick = () => mm.rescale(0.8);
+document.getElementById('fit').onclick = () => mm.fit();
+let open = false;
+document.getElementById('all').onclick = () => {
+  open = !open;
+  (function walk(x) {
+    if (x !== data && x.children && x.children.length) {
+      x.payload = { ...x.payload, fold: open ? 0 : (x.payload.foldInit ? 1 : 0) };
+    }
+    (x.children || []).forEach(walk);
+  })(mm.state.data);
+  mm.renderData().then(() => mm.fit());
+  const b = document.getElementById('all');
+  b.title = b.ariaLabel = open ? 'Replier' : 'Tout déplier';
+};
+window.addEventListener('resize', () => mm.fit());
+window.addEventListener('load', () => setTimeout(() => mm.fit(), 300));
+</script>
+
+</body>
+</html>
