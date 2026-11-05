@@ -1,0 +1,325 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="Résumé en français et carte mentale de la conférence du Cheikh Abd Razzaq Al Badr au Masjid Nabawi, 05/11/2026.">
+<style>*,*::before,*::after{box-sizing:border-box}body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style>
+<title>Cours du 05/11 : la réalisation du Tawhid et les rangs des proches d'Allah</title>
+
+<style>
+/* Layout : page de résumé type Plaud (colonne centrée 768px), puis carte mentale en encadré qui s'ouvre en plein écran */
+:root {
+  --bg: #ffffff;
+  --fg: #111113;
+  --muted: #6b6b70;
+  --line: #e6e6e8;
+  --quote: #c9c9ce;
+  --panel: #ffffff;
+  --panel-shadow: 0 2px 10px rgba(0,0,0,.10);
+  --circle-open: #ffffff;
+  --map-font: 300 16px/20px sans-serif;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #1c1c1e; --fg: #f2f2f2; --muted: #a1a1a6; --line: #38383a; --quote: #4a4a4e;
+    --panel: #2c2c2e; --panel-shadow: 0 2px 10px rgba(0,0,0,.45); --circle-open: #1c1c1e;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #1c1c1e; --fg: #f2f2f2; --muted: #a1a1a6; --line: #38383a; --quote: #4a4a4e;
+  --panel: #2c2c2e; --panel-shadow: 0 2px 10px rgba(0,0,0,.45); --circle-open: #1c1c1e;
+  color-scheme: dark;
+}
+body {
+  background: var(--bg); color: var(--fg);
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  font-size: 15px; line-height: 1.6;
+}
+body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-area-inset-top, 0px); z-index: 10; background: var(--bg); }
+.top {
+  position: sticky; top: env(safe-area-inset-top, 0px); z-index: 5;
+  background: var(--bg); border-bottom: 1px solid var(--line);
+  padding-block: 10px;
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+}
+.top h1 { margin: 0; font-size: 13px; font-weight: 600; line-height: 1.35; text-wrap: balance; }
+.top p { margin: 2px 0 0; font-size: 12px; color: var(--muted); font-variant-numeric: tabular-nums; }
+main {
+  max-width: 768px; margin: 0 auto;
+  padding-block: 24px 48px;
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+}
+.tabs { display: flex; gap: 20px; font-size: 13px; margin-bottom: 20px; }
+.tabs span { color: var(--muted); }
+.tabs strong { font-weight: 600; }
+blockquote { margin: 0 0 8px; padding: 2px 0 2px 14px; border-left: 3px solid var(--quote); color: var(--muted); font-size: 14px; }
+blockquote strong { color: var(--fg); font-weight: 600; }
+h2 { font-size: 21px; line-height: 1.3; margin: 32px 0 12px; text-wrap: balance; }
+h3 { font-size: 17px; line-height: 1.35; margin: 26px 0 8px; text-wrap: balance; }
+h4 { font-size: 15px; line-height: 1.4; margin: 16px 0 4px; color: var(--muted); }
+p { margin: 0 0 12px; }
+ul, ol { margin: 0 0 12px; padding-left: 22px; }
+li { margin: 6px 0; }
+li > ul, li > ol { margin: 6px 0 0; }
+.todo { list-style: none; padding-left: 0; }
+.todo li { display: flex; gap: 10px; align-items: flex-start; }
+.todo input { margin-top: 5px; flex: none; width: 15px; height: 15px; accent-color: var(--muted); }
+.todo label { min-width: 0; }
+
+.mapcard {
+  position: relative; margin-top: 40px; height: 320px;
+  border: 1px solid var(--line); border-radius: 10px; overflow: hidden; background: var(--bg);
+}
+.mapcard .label { position: absolute; top: 10px; left: 12px; font-size: 12px; color: var(--muted); z-index: 2; }
+.mapcard .open {
+  position: absolute; inset: 0; z-index: 3; border: 0; background: transparent; cursor: zoom-in;
+}
+.mapcard .open:focus-visible { outline: 2px solid var(--muted); outline-offset: -3px; }
+#mm {
+  width: 100%; height: 100%; display: block;
+  --markmap-text-color: var(--fg);
+  --markmap-circle-open-bg: var(--circle-open);
+  --markmap-max-width: 300px;
+  --markmap-font: var(--map-font);
+}
+.controls, .close { display: none; }
+.mapcard.full {
+  position: fixed; inset: 0; z-index: 20; margin: 0; height: auto; border: 0; border-radius: 0;
+  padding: env(safe-area-inset-top, 0px) env(safe-area-inset-right, 0px) env(safe-area-inset-bottom, 0px) env(safe-area-inset-left, 0px);
+}
+.mapcard.full .open, .mapcard.full .label { display: none; }
+.mapcard.full .controls {
+  display: flex; position: absolute;
+  right: calc(16px + env(safe-area-inset-right, 0px));
+  bottom: calc(16px + env(safe-area-inset-bottom, 0px));
+  gap: 4px; padding: 6px; background: var(--panel); border-radius: 10px; box-shadow: var(--panel-shadow);
+}
+.mapcard.full .close {
+  display: grid; place-items: center; position: absolute;
+  top: calc(12px + env(safe-area-inset-top, 0px)); right: calc(12px + env(safe-area-inset-right, 0px));
+  width: 36px; height: 36px; border: 0; border-radius: 8px; background: var(--panel); box-shadow: var(--panel-shadow);
+  color: var(--fg); cursor: pointer;
+}
+.controls button {
+  width: 32px; height: 32px; border: 0; border-radius: 6px;
+  background: transparent; color: var(--fg); cursor: pointer; display: grid; place-items: center;
+}
+.controls button:hover { background: var(--line); }
+.controls button:focus-visible, .close:focus-visible { outline: 2px solid var(--muted); outline-offset: 1px; }
+.ico { width: 18px; height: 18px; fill: none; stroke: currentColor; stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round; }
+footer { text-align: center; font-size: 12px; color: var(--muted); padding-block: 8px 32px; }
+</style>
+</head>
+<body>
+
+
+<div class="top">
+  <h1>Conférence : la réalisation du Tawhid, les qualités des soixante-dix mille et les rangs des proches d'Allah</h1>
+  <p>2026-11-05 19:13 · Cheikh Abd Razzaq Al Badr</p>
+</div>
+
+<main>
+  <div class="tabs"><strong>Résumé</strong></div>
+  <div id="doc"></div>
+
+  <section class="mapcard" id="card" aria-label="Carte mentale">
+    <span class="label">Carte mentale</span>
+    <svg id="mm" class="markmap"></svg>
+    <button class="open" id="open" type="button" aria-label="Ouvrir la carte mentale en plein écran"></button>
+    <button class="close" id="close" type="button" title="Fermer" aria-label="Fermer la carte"><svg class="ico" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
+    <div class="controls" role="toolbar" aria-label="Commandes de la carte">
+      <button id="zin" type="button" title="Zoom avant" aria-label="Zoom avant"><svg class="ico" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="M11 8v6M8 11h6M16.5 16.5L21 21"/></svg></button>
+      <button id="zout" type="button" title="Zoom arrière" aria-label="Zoom arrière"><svg class="ico" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="M8 11h6M16.5 16.5L21 21"/></svg></button>
+      <button id="fit" type="button" title="Ajuster à l'écran" aria-label="Ajuster à l'écran"><svg class="ico" viewBox="0 0 24 24"><path d="M4 9V4h5M15 4h5v5M20 15v5h-5M9 20H4v-5"/><rect x="8" y="8" width="8" height="8" rx="1"/></svg></button>
+      <button id="all" type="button" title="Tout déplier" aria-label="Tout déplier"><svg class="ico" viewBox="0 0 24 24"><path d="M4 6h16M8 12h12M12 18h8"/><circle cx="4" cy="12" r="0.8"/><circle cx="8" cy="18" r="0.8"/></svg></button>
+    </div>
+  </section>
+</main>
+<footer>Traduction française de la note Plaud du 05/11/2026</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/d3@7.9.0/dist/d3.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/markmap-view@0.18.10/dist/browser/index.js"></script>
+<script>
+const n = (content, children, fold) => ({ content, children: children || [], payload: fold ? { fold: 1 } : {} });
+const PBUH = 'ﷺ';
+
+const data = n("11-05 Conférence : la réalisation du Tawh...", [
+  n("", [
+    n("Date : 2026-11-05"),
+    n("Heure : 19:13:53"),
+    n("Lieu : Masjid Nabawi, Médine"),
+    n("Conférencier : Cheikh Abd Razzaq Al Badr")
+  ]),
+  n("Résumé", [
+    n("La leçon traite des enseignements du hadith des soixante-dix mille qui entrent au Paradis sans jugement ni châtiment, des rangs des gens dans le Tawhid et du sens de sa réalisation, et de la différence entre la réalisation obligatoire et la réalisation recommandée. Elle explique l'effet du shirk, des innovations et des péchés sur le Tawhid, et ce que signifie l'éloge d'Abraham (paix sur lui) et des croyants pour avoir délaissé le shirk, quant à la perfection du Tawhid. Elle explique aussi le rang de la confiance en Allah, le statut de la ruqya, de la cautérisation et du mauvais présage, et la façon de concilier les hadiths sur la ruqya. Elle présente ce que le hadith enseigne sur la compréhension et le zèle des Compagnons, le mérite de la communauté de Muhammad ﷺ et des suiveurs de Moïse (paix sur lui), et le petit nombre de ceux qui ont répondu aux prophètes. Elle traite enfin du mérite de 'Ukkâcha (qu'Allah l'agrée), du bon caractère du Prophète ﷺ et de son usage des allusions, et explique les rangs des proches d'Allah : les vertueux modérés et ceux qui devancent et sont rapprochés, avant de se conclure par une invocation.")
+  ]),
+  n("Points de connaissance", [
+    n("1. Les rangs des gens et la réalisation du Tawhid", [
+      n("La différence des rangs parmi les gens", [
+        n("Les gens diffèrent dans leurs rangs, et ne sont pas tous au même niveau. Leurs rangs sont cités globalement comme : celui qui se fait du tort à lui-même, celui qui est modéré, et celui qui devance dans les bonnes œuvres."),
+        n("Les proches d'Allah forment deux catégories : les vertueux modérés, et ceux qui devancent et sont rapprochés. Cette répartition est liée à l'accomplissement des obligations et à l'abandon des interdits, puis à l'augmentation du rapprochement d'Allah par les actes surérogatoires.")
+      ]),
+      n("Le sens de la réalisation du Tawhid", [
+        n("Réaliser le Tawhid, c'est l'accomplir de façon réalisée, complète et parfaite. Le Cheikh 'Abd ar-Rahmân ibn Hasan l'a défini dans « Fath al-Majîd » comme le fait de purifier le Tawhid des souillures du shirk, des innovations et des péchés."),
+        n("Ces choses sont appelées des obstacles car elles entravent la progression de la personne : on se préserve du shirk en vouant sincèrement le Tawhid à Allah, de l'innovation en suivant exclusivement le Messager ﷺ, et du péché en luttant contre son âme pour ne pas y tomber, et en se repentant si l'on y tombe.")
+      ]),
+      n("L'effet du shirk, des innovations et des péchés", [
+        n("Le shirk majeur contredit entièrement le Tawhid et atteint son fondement même. Le shirk mineur contredit la perfection obligatoire du Tawhid, sans atteindre son fondement."),
+        n("Les innovations atteignent la perfection obligatoire du Tawhid, et les péchés diminuent la récompense de ses gens."),
+        n("Le Tawhid obligatoire se réalise par la sincérité de la religion envers Allah et le fait de Lui vouer un Tawhid exclusif, par le fait de suivre exclusivement le Messager ﷺ, et par la lutte contre son âme pour délaisser les péchés et s'en repentir sincèrement en cas de chute.")
+      ]),
+      n("La réalisation obligatoire et la réalisation recommandée", [
+        n("La définition du Cheikh 'Abd ar-Rahmân ibn Hasan explique la réalisation obligatoire du Tawhid comme sa purification du shirk, des innovations et des péchés, tandis que le Cheikh Sulaymân ibn 'Abdallah, dans « Taysîr al-'Azîz al-Hamîd », décrit un rang plus élevé : la réalisation recommandée, dont les gens font partie des soixante-dix mille qui entrent au Paradis sans jugement ni châtiment."),
+        n("Le Cheikh Sulaymân définit la réalisation du Tawhid comme la connaissance de sa réalité, le fait d'en prendre conscience et de l'accomplir, en science et en œuvre. Sa réalité est l'attraction de l'âme vers Allah par l'amour, la crainte, le retour à Lui, la confiance, l'invocation, la sincérité, la vénération, la crainte révérencielle, la glorification et l'adoration, de sorte qu'il n'y ait dans le cœur rien pour un autre qu'Allah, ni volonté de ce qu'Allah a interdit, ni aversion pour ce qu'Allah a ordonné."),
+        n("Ce sens rejoint la réalité de « Lâ ilâha illa Allah », car l'« ilâh » est celui qu'on adore et qu'on voue au culte, et rejoint la réalité des deux attestations. La parole d'Ibn al-Qayyim a été citée : « Pour l'Unique, sois un dans l'un, je veux dire dans la voie de la vérité et de la foi. » Celui qui accomplit les deux attestations de cette manière obtient la perfection du Tawhid et de la confiance en Allah, qu'Il soit glorifié et exalté.")
+      ])
+    ], true),
+    n("2. L'éloge pour avoir délaissé le shirk et ce qu'il indique sur la perfection du Tawhid", [
+      n("Abraham (paix sur lui)", [
+        n("Allah, qu'Il soit glorifié et exalté, a fait l'éloge d'Abraham, l'ami intime d'Allah (paix sur lui), en disant : ﴾Abraham était une communauté à lui seul, dévoué à Allah, hanîf, et il n'était pas du nombre des associateurs﴿. L'éloge selon lequel il n'était pas du nombre des associateurs indique le délaissement du shirk avec la perfection du Tawhid : le simple délaissement du shirk sans Tawhid ni sincérité envers Allah ne réalise pas ce sens."),
+        n("L'ordre d'éviter le shirk, comme la parole d'Allah ﴾Ne Lui associez rien﴿, implique l'unicité d'Allah, la sincérité de la religion envers Lui et le fait de Lui vouer exclusivement l'adoration. De même, l'interdiction de prendre des égaux à Allah implique de Lui vouer exclusivement l'adoration."),
+        n("L'expression « il n'était pas du nombre des associateurs » est plus forte que simplement « il n'a pas associé » : elle implique la préservation de tout rattachement aux associateurs, en croyance comme en œuvre, et le fait de ne pas être compté parmi eux, de quelque manière que ce soit. Le verset du bel exemple en Abraham et ceux qui étaient avec lui est cité : ils se sont désavoués de leur peuple et de ce qu'ils adoraient en dehors d'Allah, jusqu'à ce qu'ils croient en Allah Seul.")
+      ]),
+      n("Les croyants qui n'associent rien à leur Seigneur", [
+        n("Parmi les qualités des croyants accomplis dans la sourate al-Mu'minûn, la parole d'Allah : ﴾et ceux qui n'associent rien à leur Seigneur﴿, puis ﴾ceux-là se hâtent vers les bonnes œuvres et ce sont eux qui les devancent﴿."),
+        n("La négation du shirk à leur sujet, dans un contexte d'éloge, indique leur préservation du shirk et la perfection de leur Tawhid et de leur sincérité envers Allah. Le fait qu'ils devancent dans les bonnes œuvres est lié aux qualités de ceux qui réalisent le Tawhid et à leur récompense, dont l'entrée au Paradis sans jugement ni châtiment.")
+      ])
+    ], true),
+    n("3. La confiance en Allah et les qualités citées dans le hadith des soixante-dix mille", [
+      n("La confiance en Allah réunit les trois qualités citées dans le hadith : ne pas demander la ruqya, ne pas recourir à la cautérisation, ne pas tirer de mauvais présage, et cela se rattache à la parole « et ils placent leur confiance en leur Seigneur »."),
+      n("La confiance en Allah est le fondement qui rend ces qualités valables : délaisser la ruqya ou la cautérisation fait partie des bonnes œuvres lorsque cela vient de la confiance en Allah, et non d'une démonstration de force, d'une simple endurance, ou de la prétention de ne pas ressentir la douleur."),
+      n("Plus la confiance du serviteur en Allah se renforce, plus sa foi, sa servitude, son attachement à Allah et sa réalisation du Tawhid augmentent.")
+    ], true),
+    n("4. La ruqya, la cautérisation et le mauvais présage", [
+      n("Le statut de la ruqya et comment concilier les hadiths", [
+        n("Le hadith « Il n'y a de ruqya que pour le mauvais œil ou une piqûre venimeuse » et le hadith de Buraïda (qu'Allah l'agrée) prouvent la permission de la ruqya pour celui qui est atteint par le mauvais œil ou une piqûre venimeuse. La restriction du hadith est comprise comme indiquant la priorité et l'utilité, et non l'interdiction de la ruqya dans les autres cas."),
+        n("La leçon a expliqué que le mauvais œil est appelé en dialecte « an-nadla », et que celui qui en est atteint est appelé « manzûl ». Elle a précisé que l'atteinte comporte un effet d'origine satanique, et que la ruqya le combat par une force miséricordieuse spirituelle."),
+        n("Il n'y a pas de contradiction entre le hadith « Il n'y a de ruqya que pour le mauvais œil ou une piqûre venimeuse » et le hadith « ils ne demandent pas la ruqya » : le premier indique la permission, le second indique un rang plus élevé et plus parfait dans l'attachement à Allah et le fait de Lui remettre ses affaires. Délaisser la ruqya est plus parfait pour celui qui le fait par confiance en Allah, mais cela ne signifie pas qu'elle est interdite ou déconseillée.")
+      ]),
+      n("Délaisser la ruqya et la cautérisation fait partie de la réalisation recommandée", [
+        n("Délaisser la ruqya et la cautérisation fait partie de la réalisation recommandée ou méritoire du Tawhid, et non de sa réalisation obligatoire : les deux sont permis, et les pratiquer ne signifie pas tomber dans le shirk, l'innovation ou le péché, ni sortir du rang des gens modérés."),
+        n("Les délaisser est préférable pour celui qui le fait en recherchant la perfection de la confiance en Allah et par prudence envers ce qui pourrait mener à un interdit, mais ce n'est pas obligatoire. Parmi les qualités des soixante-dix mille : « ils ne demandent pas la ruqya, ne se font pas cautériser, ne tirent pas de mauvais présage et placent leur confiance en leur Seigneur »."),
+        n("Le statut du mauvais présage diffère de celui de la ruqya et de la cautérisation : le mauvais présage est interdit et fait partie du shirk ; il faut en purifier le Tawhid, contrairement à la ruqya et à la cautérisation qui sont permises.")
+      ])
+    ], true),
+    n("5. La compréhension des Compagnons, le mérite de la communauté et la présentation des communautés", [
+      n("Le zèle des Compagnons et la profondeur de leur compréhension", [
+        n("Quand le Prophète ﷺ a annoncé les soixante-dix mille qui entrent au Paradis sans jugement ni châtiment, les Compagnons ont réfléchi à leurs qualités et à leurs rangs : certains ont évoqué la possibilité qu'ils aient accompagné le Prophète ﷺ, d'autres qu'ils soient ceux qui ont grandi dans l'islam sans avoir associé à Allah."),
+        n("Leurs raisonnements tournaient autour de l'œuvre par laquelle ils avaient obtenu ce mérite, ce qui montre qu'ils comprenaient que l'atteindre est lié à une bonne œuvre. Leur recherche était motivée par le zèle pour le bien et le désir d'agir en conséquence, et non par la seule connaissance."),
+        n("Leurs questions au Prophète ﷺ sur les meilleures personnes, les meilleures œuvres et les œuvres les plus aimées d'Allah étaient nombreuses, et leurs questions étaient un moyen vers le savoir et l'action.")
+      ]),
+      n("Le mérite de la communauté de Muhammad ﷺ et des suiveurs de Moïse (paix sur lui)", [
+        n("La communauté de Muhammad ﷺ se distingue par la quantité, c'est-à-dire le grand nombre : son prophète ﷺ est celui qui a le plus de suiveurs parmi les prophètes, et le hadith décrit une immense foule qui a rempli l'horizon."),
+        n("Elle se distingue aussi par la qualité, c'est-à-dire les belles qualités et les mérites, dont l'entrée des soixante-dix mille au Paradis sans jugement ni châtiment."),
+        n("Les suiveurs de Moïse (paix sur lui) sont la communauté qui compte le plus de suiveurs de son prophète après la communauté de Muhammad ﷺ, comme l'indique la mention de l'immense foule dans le hadith, quand il a été dit au Prophète ﷺ que c'étaient Moïse et son peuple.")
+      ]),
+      n("La présentation des communautés et le petit nombre de ceux qui ont répondu aux prophètes", [
+        n("Le Prophète ﷺ a annoncé que les communautés lui ont été présentées ; quant à la façon et au moment de cette présentation, Allah seul les connaît, et les savants ont indiqué qu'il s'agissait de la présentation d'exemples de communautés. Chaque communauté est rassemblée avec son prophète séparément, sans que les communautés se mélangent, et un prophète peut avoir avec lui un homme, deux hommes, ou d'autres de ses suiveurs."),
+        n("Malgré la véracité des preuves des prophètes, la force de leur conseil et de leur zèle, la longueur de leur prédication et la diversité de leurs preuves et des signes qui les appuyaient, seul un petit nombre de leur peuple leur a répondu. Certains prophètes n'ont eu personne pour leur répondre, d'autres n'ont eu qu'un ou deux hommes, et les suiveurs de certains étaient parfois moins de dix."),
+        n("Parmi les fruits de cette connaissance : ne pas se laisser tromper par le grand nombre des gens de l'erreur, ni mépriser le petit nombre des gens de la vérité. Le grand nombre n'est pas un critère de la justesse d'une voie, et les gens de la vérité sont les moins nombreux en tout temps et en tout lieu. Parmi les preuves : ﴾Et si tu obéis à la plupart de ceux qui sont sur la terre, ils t'égareront du chemin d'Allah﴿, ﴾La plupart des gens ne sont pas croyants, malgré ton désir﴿ et ﴾Il y a assurément là un signe, mais la plupart d'entre eux ne sont pas croyants﴿.")
+      ])
+    ], true),
+    n("6. Les rangs des proches d'Allah, 'Ukkâcha et le bon caractère du Prophète", [
+      n("Les modérés et ceux qui devancent et sont rapprochés", [
+        n("Les vertueux modérés accomplissent les obligations et délaissent les interdits, et ils ne sortent pas de ce rang par le simple fait de demander la ruqya ou de se faire cautériser, car les deux sont permis."),
+        n("Ceux qui devancent et sont rapprochés délaissent le shirk et tout ce qui risque d'y mener, et ajoutent à l'accomplissement des obligations et à l'abandon des interdits le délaissement de certaines choses permises et détestables, en recherchant la perfection de la réalisation."),
+        n("Dans le hadith qudsî : « Celui qui se montre hostile à un de Mes proches, Je lui déclare la guerre. » La proximité comprend celui qui se rapproche d'Allah en accomplissant ce qu'Il lui a prescrit, et le rang du serviteur s'élève en continuant à se rapprocher par les actes surérogatoires jusqu'à ce qu'Allah l'aime, et qu'Il le guide alors dans son ouïe, sa vue, sa main et son pied, exauce son invocation et le protège s'il cherche refuge en Lui."),
+        n("La proximité à Allah ne repose pas sur des prétentions ou des suppositions, mais sur l'accomplissement des obligations de la religion, le délaissement des interdits, puis l'augmentation du rapprochement par les actes surérogatoires.")
+      ]),
+      n("Les prédécesseurs pieux et 'Ukkâcha (qu'Allah l'agrée)", [
+        n("La parole d'al-Husayn ibn 'Abd ar-Rahmân : « Je n'étais pourtant pas en prière » montre la retenue des prédécesseurs pieux, qui craignaient d'être loués pour quelque chose qu'ils n'avaient pas fait, malgré leur droiture et leur rectitude."),
+        n("Quand 'Ukkâcha (qu'Allah l'agrée) a demandé au Prophète ﷺ d'invoquer Allah pour qu'il fasse partie des soixante-dix mille, il lui a dit : « Tu en fais partie. » C'est un témoignage en sa faveur d'un mérite immense, et l'annonce du Prophète ﷺ à ce sujet est un signe de prophétie."),
+        n("Quand une autre personne a fait la même demande que 'Ukkâcha, le Prophète ﷺ a dit : « 'Ukkâcha t'a devancé. » Cette parole contient une allusion délicate qui met fin à la série de demandes sans gêner celui qui demandait : il n'a pas déclaré clairement qu'il n'en faisait pas partie, ne l'a pas réprimandé, et ne lui a pas non plus affirmé qu'il en faisait partie. Cela montre le bon caractère du Prophète ﷺ, en accord avec la parole d'Allah : ﴾Et tu es certes d'un caractère immense﴿.")
+      ])
+    ], true),
+    n("7. L'invocation finale de la leçon", [
+      n("La leçon s'est conclue par une invocation demandant la piété, la bonne guidée et la réussite, la réforme de la religion, de ce bas monde et de l'au-delà, et que la vie soit un surcroît de bien et la mort un repos du mal. L'invocation a inclus le pardon pour les parents, leur descendance, les maîtres, les gouvernants, les musulmans et les musulmanes, la constance dans la religion, le regard vers le Visage d'Allah et le désir de Le rencontrer sans adversité nuisible ni épreuve égarante. Elle a aussi demandé la parure de la foi et la bonne guidée, une part d'obéissance, de crainte et de certitude, la préservation de l'ouïe, de la vue et de la force, la victoire sur les injustes, la préservation des épreuves dans la religion et de la domination de qui n'a pas de pitié, puis s'est conclue par la demande de pardon, le repentir et la prière sur le Prophète ﷺ, sa famille et ses Compagnons.")
+    ], true)
+  ]),
+  n("Devoirs", [
+    n("Réviser la différence entre la réalisation obligatoire du Tawhid et sa réalisation recommandée, en expliquant l'effet du shirk, des innovations et des péchés sur le Tawhid."),
+    n("Méditer ce qu'indique l'éloge d'Abraham (paix sur lui) et des croyants pour avoir délaissé le shirk, quant à la perfection du Tawhid."),
+    n("Fixer la différence entre le statut de la ruqya, de la cautérisation et du mauvais présage, et expliquer pourquoi délaisser la ruqya et la cautérisation fait partie de la réalisation recommandée."),
+    n("Réviser les rangs des proches d'Allah : les modérés qui accomplissent les obligations et délaissent les interdits, et ceux qui devancent et sont rapprochés, qui se rapprochent d'Allah par les actes surérogatoires."),
+    n("Renforcer sa confiance en Allah, rechercher le savoir dans l'intention d'agir, et ne pas se laisser tromper par le grand nombre des gens de l'erreur ni mépriser le petit nombre des gens de la vérité.")
+  ])
+]);
+
+// Résumé écrit, généré depuis le même arbre que la carte
+const bold = s => s.replace(/﴾[^﴿]*﴿/g, m => `<strong>${m}</strong>`);
+const [meta, resume, points, devoirs] = data.children;
+const NUM = /^(\d+)\.\s+/;
+function list(items) {
+  const ordered = items.every(i => NUM.test(i.content));
+  const tag = ordered ? 'ol' : 'ul';
+  return `<${tag}>` + items.map(i => {
+    const txt = ordered ? i.content.replace(NUM, '') : i.content;
+    return `<li><p>${bold(txt)}</p>${i.children.length ? list(i.children) : ''}</li>`;
+  }).join('') + `</${tag}>`;
+}
+let html = '<blockquote><p>' + meta.children.map(m => {
+  const k = m.content.indexOf(' : ');
+  return `<strong>${m.content.slice(0, k)} :</strong> ${m.content.slice(k + 3)}`;
+}).join('<br>') + '</p></blockquote>';
+html += `<h2>${resume.content}</h2>` + resume.children.map(p => `<p>${bold(p.content)}</p>`).join('');
+html += `<h2>${points.content}</h2>` + points.children.map(pt => `<h3>${pt.content}</h3>` + (pt.children.every(s => s.children.length) ? pt.children.map(s => `<h4>${s.content}</h4>${list(s.children)}`).join('') : list(pt.children))).join('');
+html += `<h2>${devoirs.content}</h2><ul class="todo">` + devoirs.children.map((d, i) =>
+  `<li><input type="checkbox" id="devoir-${i + 1}"><label for="devoir-${i + 1}">${bold(d.content)}</label></li>`).join('') + '</ul>';
+document.getElementById('doc').innerHTML = html;
+
+// Carte mentale : une teinte pastel par branche principale (couleurs Plaud), épaisseur décroissante avec la profondeur
+const BRANCH = ['#E5CCB3', '#E5DDB3', '#CCE5B3', '#B7E5C6'];
+data.payload.c = BRANCH[0];
+data.children.forEach((b, i) => {
+  (function paint(x) { x.payload.c = BRANCH[i % BRANCH.length]; x.children.forEach(paint); })(b);
+});
+(function mark(x) { if (x.payload.fold) x.payload.foldInit = 1; x.children.forEach(mark); })(data);
+const depthOf = node => (node.state && node.state.path ? node.state.path.split('.').length : 1);
+
+const { Markmap } = window.markmap;
+const mm = Markmap.create('#mm', {
+  color: node => node.payload.c,
+  lineWidth: node => 1 + 1.5 / Math.pow(2, depthOf(node) - 1),
+  maxWidth: 300,
+  duration: 400,
+  spacingVertical: 5,
+  paddingX: 8,
+  fitRatio: 0.95
+}, data);
+
+const card = document.getElementById('card');
+function setFull(on) {
+  card.classList.toggle('full', on);
+  document.body.style.overflow = on ? 'hidden' : '';
+  requestAnimationFrame(() => mm.fit());
+  if (on) document.getElementById('close').focus();
+}
+document.getElementById('open').onclick = () => setFull(true);
+document.getElementById('close').onclick = () => setFull(false);
+document.addEventListener('keydown', e => { if (e.key === 'Escape' && card.classList.contains('full')) setFull(false); });
+document.getElementById('zin').onclick = () => mm.rescale(1.25);
+document.getElementById('zout').onclick = () => mm.rescale(0.8);
+document.getElementById('fit').onclick = () => mm.fit();
+let open = false;
+document.getElementById('all').onclick = () => {
+  open = !open;
+  (function walk(x) {
+    if (x !== data && x.children && x.children.length) {
+      x.payload = { ...x.payload, fold: open ? 0 : (x.payload.foldInit ? 1 : 0) };
+    }
+    (x.children || []).forEach(walk);
+  })(mm.state.data);
+  mm.renderData().then(() => mm.fit());
+  const b = document.getElementById('all');
+  b.title = b.ariaLabel = open ? 'Replier' : 'Tout déplier';
+};
+window.addEventListener('resize', () => mm.fit());
+window.addEventListener('load', () => setTimeout(() => mm.fit(), 300));
+</script>
+
+</body>
+</html>
