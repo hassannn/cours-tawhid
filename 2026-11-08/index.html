@@ -1,0 +1,302 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="Résumé en français et carte mentale de la conférence du Cheikh Abd Razzaq Al Badr au Masjid Nabawi, 08/11/2026.">
+<style>*,*::before,*::after{box-sizing:border-box}body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style>
+<title>Cours du 08/11 : le Tawhid et la mise en garde contre le shirk</title>
+
+<style>
+/* Layout : page de résumé type Plaud (colonne centrée 768px), puis carte mentale en encadré qui s'ouvre en plein écran */
+:root {
+  --bg: #ffffff;
+  --fg: #111113;
+  --muted: #6b6b70;
+  --line: #e6e6e8;
+  --quote: #c9c9ce;
+  --panel: #ffffff;
+  --panel-shadow: 0 2px 10px rgba(0,0,0,.10);
+  --circle-open: #ffffff;
+  --map-font: 300 16px/20px sans-serif;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #1c1c1e; --fg: #f2f2f2; --muted: #a1a1a6; --line: #38383a; --quote: #4a4a4e;
+    --panel: #2c2c2e; --panel-shadow: 0 2px 10px rgba(0,0,0,.45); --circle-open: #1c1c1e;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #1c1c1e; --fg: #f2f2f2; --muted: #a1a1a6; --line: #38383a; --quote: #4a4a4e;
+  --panel: #2c2c2e; --panel-shadow: 0 2px 10px rgba(0,0,0,.45); --circle-open: #1c1c1e;
+  color-scheme: dark;
+}
+body {
+  background: var(--bg); color: var(--fg);
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  font-size: 15px; line-height: 1.6;
+}
+body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-area-inset-top, 0px); z-index: 10; background: var(--bg); }
+.top {
+  position: sticky; top: env(safe-area-inset-top, 0px); z-index: 5;
+  background: var(--bg); border-bottom: 1px solid var(--line);
+  padding-block: 10px;
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+}
+.top h1 { margin: 0; font-size: 13px; font-weight: 600; line-height: 1.35; text-wrap: balance; }
+.top p { margin: 2px 0 0; font-size: 12px; color: var(--muted); font-variant-numeric: tabular-nums; }
+main {
+  max-width: 768px; margin: 0 auto;
+  padding-block: 24px 48px;
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+}
+.tabs { display: flex; gap: 20px; font-size: 13px; margin-bottom: 20px; }
+.tabs span { color: var(--muted); }
+.tabs strong { font-weight: 600; }
+blockquote { margin: 0 0 8px; padding: 2px 0 2px 14px; border-left: 3px solid var(--quote); color: var(--muted); font-size: 14px; }
+blockquote strong { color: var(--fg); font-weight: 600; }
+h2 { font-size: 21px; line-height: 1.3; margin: 32px 0 12px; text-wrap: balance; }
+h3 { font-size: 17px; line-height: 1.35; margin: 26px 0 8px; text-wrap: balance; }
+h4 { font-size: 15px; line-height: 1.4; margin: 16px 0 4px; color: var(--muted); }
+p { margin: 0 0 12px; }
+ul, ol { margin: 0 0 12px; padding-left: 22px; }
+li { margin: 6px 0; }
+li > ul, li > ol { margin: 6px 0 0; }
+.todo { list-style: none; padding-left: 0; }
+.todo li { display: flex; gap: 10px; align-items: flex-start; }
+.todo input { margin-top: 5px; flex: none; width: 15px; height: 15px; accent-color: var(--muted); }
+.todo label { min-width: 0; }
+
+.mapcard {
+  position: relative; margin-top: 40px; height: 320px;
+  border: 1px solid var(--line); border-radius: 10px; overflow: hidden; background: var(--bg);
+}
+.mapcard .label { position: absolute; top: 10px; left: 12px; font-size: 12px; color: var(--muted); z-index: 2; }
+.mapcard .open {
+  position: absolute; inset: 0; z-index: 3; border: 0; background: transparent; cursor: zoom-in;
+}
+.mapcard .open:focus-visible { outline: 2px solid var(--muted); outline-offset: -3px; }
+#mm {
+  width: 100%; height: 100%; display: block;
+  --markmap-text-color: var(--fg);
+  --markmap-circle-open-bg: var(--circle-open);
+  --markmap-max-width: 300px;
+  --markmap-font: var(--map-font);
+}
+.controls, .close { display: none; }
+.mapcard.full {
+  position: fixed; inset: 0; z-index: 20; margin: 0; height: auto; border: 0; border-radius: 0;
+  padding: env(safe-area-inset-top, 0px) env(safe-area-inset-right, 0px) env(safe-area-inset-bottom, 0px) env(safe-area-inset-left, 0px);
+}
+.mapcard.full .open, .mapcard.full .label { display: none; }
+.mapcard.full .controls {
+  display: flex; position: absolute;
+  right: calc(16px + env(safe-area-inset-right, 0px));
+  bottom: calc(16px + env(safe-area-inset-bottom, 0px));
+  gap: 4px; padding: 6px; background: var(--panel); border-radius: 10px; box-shadow: var(--panel-shadow);
+}
+.mapcard.full .close {
+  display: grid; place-items: center; position: absolute;
+  top: calc(12px + env(safe-area-inset-top, 0px)); right: calc(12px + env(safe-area-inset-right, 0px));
+  width: 36px; height: 36px; border: 0; border-radius: 8px; background: var(--panel); box-shadow: var(--panel-shadow);
+  color: var(--fg); cursor: pointer;
+}
+.controls button {
+  width: 32px; height: 32px; border: 0; border-radius: 6px;
+  background: transparent; color: var(--fg); cursor: pointer; display: grid; place-items: center;
+}
+.controls button:hover { background: var(--line); }
+.controls button:focus-visible, .close:focus-visible { outline: 2px solid var(--muted); outline-offset: 1px; }
+.ico { width: 18px; height: 18px; fill: none; stroke: currentColor; stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round; }
+footer { text-align: center; font-size: 12px; color: var(--muted); padding-block: 8px 32px; }
+</style>
+</head>
+<body>
+
+
+<div class="top">
+  <h1>Conférence : le Tawhid, la crainte du shirk et ses catégories</h1>
+  <p>2026-11-08 19:11 · Cheikh Abd Razzaq Al Badr</p>
+</div>
+
+<main>
+  <div class="tabs"><strong>Résumé</strong></div>
+  <div id="doc"></div>
+
+  <section class="mapcard" id="card" aria-label="Carte mentale">
+    <span class="label">Carte mentale</span>
+    <svg id="mm" class="markmap"></svg>
+    <button class="open" id="open" type="button" aria-label="Ouvrir la carte mentale en plein écran"></button>
+    <button class="close" id="close" type="button" title="Fermer" aria-label="Fermer la carte"><svg class="ico" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
+    <div class="controls" role="toolbar" aria-label="Commandes de la carte">
+      <button id="zin" type="button" title="Zoom avant" aria-label="Zoom avant"><svg class="ico" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="M11 8v6M8 11h6M16.5 16.5L21 21"/></svg></button>
+      <button id="zout" type="button" title="Zoom arrière" aria-label="Zoom arrière"><svg class="ico" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="M8 11h6M16.5 16.5L21 21"/></svg></button>
+      <button id="fit" type="button" title="Ajuster à l'écran" aria-label="Ajuster à l'écran"><svg class="ico" viewBox="0 0 24 24"><path d="M4 9V4h5M15 4h5v5M20 15v5h-5M9 20H4v-5"/><rect x="8" y="8" width="8" height="8" rx="1"/></svg></button>
+      <button id="all" type="button" title="Tout déplier" aria-label="Tout déplier"><svg class="ico" viewBox="0 0 24 24"><path d="M4 6h16M8 12h12M12 18h8"/><circle cx="4" cy="12" r="0.8"/><circle cx="8" cy="18" r="0.8"/></svg></button>
+    </div>
+  </section>
+</main>
+<footer>Traduction française de la note Plaud du 08/11/2026</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/d3@7.9.0/dist/d3.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/markmap-view@0.18.10/dist/browser/index.js"></script>
+<script>
+const n = (content, children, fold) => ({ content, children: children || [], payload: fold ? { fold: 1 } : {} });
+const PBUH = 'ﷺ';
+
+const data = n("11-08 Conférence : le Tawhid, la mise en ...", [
+  n("", [
+    n("Date : 2026-11-08"),
+    n("Heure : 19:11:56"),
+    n("Lieu : Masjid Nabawi, Médine"),
+    n("Conférencier : Cheikh Abd Razzaq Al Badr")
+  ]),
+  n("Résumé", [
+    n("La conférence a traité de l'obligation de craindre le shirk et de s'en prémunir, en montrant que la sincérité de cette crainte passe par le recours à Allah et l'attachement à Lui, ainsi que par l'apprentissage de la réalité du shirk, de ses causes et de ses prétextes, pour savoir ce dont il faut se garder. Elle a abordé la répartition du shirk en majeur et mineur, apparent et caché, et expliqué la réalité du shirk majeur et ses règles, en présentant la divergence sur le statut du shirk mineur et son éventuelle inclusion sous la volonté d'Allah. Elle a aussi montré la gravité de mourir sur le shirk majeur, le sens du verset ﴾Allah ne pardonne pas qu'on Lui associe quoi que ce soit, mais Il pardonne tout le reste à qui Il veut﴿, et la méthode des gens de la Sunna pour ramener les textes ambigus au texte clair. Elle a enfin souligné l'importance d'étudier le livre du Tawhid, et de retenir les invocations prophétiques par lesquelles on demande à Allah la constance et la préservation du shirk, de la mécréance et de l'égarement.")
+  ]),
+  n("Points de connaissance", [
+    n("1. La crainte du shirk et l'attachement à Allah", [
+      n("Prétendre craindre le shirk ne suffit pas : une crainte sincère implique de recourir à Allah, de placer sa confiance en Lui, de demander Son secours, de Lui remettre ses affaires, et de Lui demander la préservation et le salut face au shirk."),
+      n("L'homme fuit généralement ce qu'il craint, mais sa crainte d'Allah le pousse à se réfugier en Lui ; Allah dit : ﴾Fuyez donc vers Allah﴿, et il n'y a de refuge contre Allah qu'en Lui."),
+      n("Abraham, l'ami intime d'Allah (paix sur lui), a invoqué : ﴾Et éloigne-moi, ainsi que mes enfants, de l'adoration des idoles﴿, c'est-à-dire : tiens-nous, lui et ses enfants, éloignés de l'adoration des idoles. Son invocation montre l'importance de demander à Allah la préservation du shirk."),
+      n("Allah dit : ﴾Et quiconque s'attache fermement à Allah est guidé vers un chemin droit﴿ ; cet attachement à Allah fait partie des demandes constantes du musulman.")
+    ], true),
+    n("2. Les invocations prophétiques pour la préservation du shirk, de la mécréance et de l'égarement", [
+      n("Il est rapporté dans « al-Adab al-Mufrad » de Bukhârî que le shirk dans cette communauté est plus caché que le pas d'une fourmi, image qui exprime sa discrétion et sa finesse."),
+      n("Le Prophète ﷺ a enseigné à sa communauté de dire : « Ô Allah, nous cherchons refuge auprès de Toi contre le fait de T'associer quelque chose en le sachant, et nous Te demandons pardon pour ce que nous ne savons pas » ; il est recommandé de retenir cette invocation et de la répéter régulièrement."),
+      n("Parmi les invocations citées par le conférencier : « Ô Allah, je cherche refuge auprès de Toi contre la mécréance et contre la pauvreté, et je cherche refuge auprès de Toi contre le châtiment de la tombe » ; il a précisé que le Prophète ﷺ cherchait refuge contre la mécréance trois fois le matin et trois fois le soir."),
+      n("Parmi ses invocations ﷺ : « Ô Allah, c'est à Toi que je me suis soumis, c'est en Toi que j'ai cru, c'est sur Toi que je me suis reposé, c'est vers Toi que je reviens, c'est pour Toi que j'ai disputé ; je cherche refuge dans Ta puissance, il n'y a de divinité que Toi, contre le fait que Tu m'égares », qui contient une demande de protection contre l'égarement."),
+      n("Le Prophète ﷺ disait souvent : « Ô Toi qui retournes les cœurs, affermis nos cœurs sur Ta religion. » Les cœurs des serviteurs sont entre deux doigts du Tout Miséricordieux, qu'Il retourne comme Il veut ; c'est pourquoi le musulman a besoin de demander à Allah la constance et la protection contre la déviation.")
+    ], true),
+    n("3. Apprendre à connaître le shirk pour s'en préserver", [
+      n("Une crainte réelle du shirk exige d'en rechercher la réalité, les causes, les prétextes et les dangers, et d'apprendre comment il survient et atteint les gens ; connaître le mal est recherché pour s'en garder, non pour le suivre."),
+      n("Le conférencier a comparé cela au soin de connaître les causes des maladies graves, leurs modes de transmission et les moyens de s'en prémunir, en précisant que le shirk est le danger le plus grave et mérite donc une attention plus grande encore pour en connaître les causes et s'en protéger."),
+      n("Il a cité la parole de Hudhayfa ibn al-Yamân (qu'Allah l'agrée), qui interrogeait le Messager d'Allah ﷺ sur le mal par crainte d'y tomber, alors que les autres Compagnons l'interrogeaient sur le bien."),
+      n("Le conférencier a mis en garde contre les imams égarants, qui peuvent enseigner le shirk aux gens ou le leur présenter sous des formes trompeuses, citant la parole du Prophète ﷺ : « Ce que je crains le plus pour ma communauté, ce sont les imams égarants. »"),
+      n("Il a indiqué que le livre expliqué contient des règles, des fondements et des détails qui aident à distinguer le shirk et à s'en protéger, et que se contenter de connaître le nom « shirk » dans l'absolu ne suffit pas pour s'en prémunir.")
+    ], true),
+    n("4. La lecture du livre du Tawhid", [
+      n("Le conférencier a conseillé de lire le livre du Tawhid et d'approfondir ses chapitres et ses preuves, pour le bien et l'utilité qu'il apporte dans la connaissance du shirk et la préservation qu'il en donne."),
+      n("Les chapitres du livre contiennent des versets, des hadiths et des règles qui aident le lecteur à comprendre la réalité du shirk, ses causes et les moyens de s'en prémunir ; sa maîtrise et sa bonne compréhension aident à réaliser la crainte du shirk et la préservation qu'elle apporte."),
+      n("Celui qui ne connaît pas le shirk, ni ses causes, ni la manière dont il survient, ne peut pas s'en garder. On peut avancer en âge et découvrir alors qu'un acte habituel comportait une forme de shirk, et souhaiter l'avoir su plus tôt ; cela confirme l'importance de diffuser le savoir et de mettre en garde contre le shirk de bonne heure.")
+    ], true),
+    n("5. Les catégories du shirk et les critères pour distinguer ses types", [
+      n("Le shirk se répartit, selon son degré, en majeur et mineur, et selon son apparence, en apparent et caché. Ce sont deux répartitions différentes : la première concerne le rang et la règle, la seconde l'apparence et la discrétion."),
+      n("Le shirk apparent est visible, tandis que le shirk caché peut être très fin ; il a été décrit comme plus caché que le pas d'une fourmi."),
+      n("Il faut se garder du shirk sous ses deux formes, tout en distinguant ce qui fait sortir de la religion de ce qui n'en fait pas sortir."),
+      n("Cerner le shirk mineur dépend de la connaissance de la limite du shirk majeur : ce que les textes décrivent comme du shirk sans atteindre le degré du majeur est considéré comme mineur."),
+      n("Parmi les exemples cités : jurer par autre qu'Allah, et certaines expressions comme « ce qu'Allah veut et ce que tu veux » ou « sans telle chose, il en aurait été ainsi » ou « sans le capitaine du navire, il en aurait été ainsi », tant qu'elles n'atteignent pas le degré du shirk majeur. Le hadith rapporte : « Celui qui jure par autre qu'Allah a mécru ou a commis un shirk. »")
+    ], true),
+    n("6. Le shirk majeur : sa réalité et ses règles", [
+      n("La limite du shirk majeur est le fait d'égaler autre qu'Allah à Allah dans ce qui relève des caractéristiques ou des droits exclusifs d'Allah, c'est-à-dire faire d'autre qu'Allah un égal et un équivalent d'Allah dans une chose qui Lui est propre."),
+      n("Parmi ses exemples : vouer l'adoration à autre qu'Allah, comme l'invoquer, implorer son secours, lui sacrifier ou lui faire un vœu ; l'adoration est un droit exclusif d'Allah. Allah dit : ﴾Dis : Ma prière, mon sacrifice, ma vie et ma mort appartiennent à Allah, Seigneur des mondes, sans associé﴿."),
+      n("Parmi ses exemples aussi : égaler autre qu'Allah à Allah dans l'amour d'adoration. Allah dit : ﴾Et parmi les gens, il en est qui prennent en dehors d'Allah des égaux qu'ils aiment comme on aime Allah﴿, et ﴾puis ceux qui ont mécru donnent des égaux à leur Seigneur﴿."),
+      n("Celui qui meurt sur le shirk majeur sans repentir n'est pas pardonné par Allah ; il demeure éternellement dans le Feu, l'entrée au Paradis lui est interdite, et il sort de la religion de l'islam."),
+      n("Le shirk majeur annule toutes les œuvres, quel qu'en soit le nombre ; les versets cités sont : ﴾Et quiconque mécroit en la foi, son œuvre est vaine et il est, dans l'au-delà, parmi les perdants﴿, ﴾et s'ils avaient associé, ce qu'ils faisaient aurait été vain﴿, et ﴾Si tu associes, ton œuvre sera assurément vaine﴿."),
+      n("Le repentir sincère lève cette règle : celui qui se repent du shirk ou d'autre chose, Allah accepte son repentir. Il n'y a pas de contradiction entre la parole d'Allah selon laquelle Il ne pardonne pas qu'on Lui associe, et celle selon laquelle Il pardonne tous les péchés : la première concerne celui qui meurt sur le shirk, la seconde celui qui se repent.")
+    ], true),
+    n("7. Le shirk mineur et la divergence sur son statut", [
+      n("Le shirk mineur est ce que les textes décrivent comme du shirk, sans atteindre le degré du shirk majeur ni exiger la sortie de la religion."),
+      n("Le shirk mineur n'annule pas toutes les œuvres, ne fait pas sortir son auteur de la religion, et n'entraîne pas son séjour éternel dans le Feu. On ne déclare pas mécréant celui qui y tombe pour ce seul fait, tant qu'il ne commet pas un autre acte qui fait sortir de l'islam."),
+      n("Le conférencier a présenté deux avis sur ce qu'indique le verset ﴾Allah ne pardonne pas qu'on Lui associe quoi que ce soit, mais Il pardonne tout le reste à qui Il veut﴿ au sujet du shirk mineur :", [
+        n("1. Le premier avis : la généralité de la parole ﴾Allah ne pardonne pas qu'on Lui associe﴿ inclut le shirk mineur ; il n'est pas pardonné à celui qui meurt dessus sans repentir, et il en est puni, sans que cela n'implique de déclarer son auteur mécréant ni qu'il demeure éternellement dans le Feu."),
+        n("2. Le second avis : le shirk mineur entre dans la parole ﴾et Il pardonne tout le reste à qui Il veut﴿, et l'absence de pardon au début du verset concerne spécifiquement le shirk majeur. Les tenants de cet avis arguent que le shirk mineur n'entre pas dans les règles de l'interdiction du Paradis, du séjour éternel dans le Feu, ni de l'annulation de toutes les œuvres, et qu'il fait partie des péchés soumis à la volonté d'Allah.")
+      ]),
+      n("Parmi les preuves du second avis : les bonnes et les mauvaises actions en dessous du shirk majeur se compensent entre elles ; celui dont les bonnes actions l'emportent entre au Paradis sans châtiment, celui dont les mauvaises actions l'emportent mérite d'entrer dans le Feu à la mesure de ses péchés, et celui dont les deux s'équilibrent fait partie des gens d'al-A'râf, avant que sa destination finale soit le Paradis."),
+      n("La possibilité d'un châtiment pour l'auteur du shirk mineur avant la pesée, dans le monde intermédiaire ou sur les lieux de la Résurrection, a été discutée ; il a été signalé que les auteurs de grands péchés peuvent eux aussi être châtiés avant la pesée, ce qui ne tranche pas la divergence."),
+      n("Le conférencier n'a pas désigné explicitement l'avis le plus fort, mais a invité à méditer les preuves du Livre et de la Sunna, et a évoqué la parole du Cheikh 'Abd ar-Rahmân ibn Sa'dî sur cette question. Dans tous les cas, un repentir sincère du shirk mineur en lève la règle.")
+    ], true),
+    n("8. Le sens du verset du pardon et la méthode face aux textes", [
+      n("La parole d'Allah ﴾Allah ne pardonne pas qu'on Lui associe quoi que ce soit, mais Il pardonne tout le reste à qui Il veut﴿ est l'un des versets les plus propres à susciter la crainte du shirk ; il concerne celui qui meurt sur le shirk majeur, tandis que celui qui meurt sur des péchés inférieurs est soumis à la volonté d'Allah."),
+      n("Celui qui est encore vivant et tombe dans le shirk a la porte du repentir ouverte devant lui ; Allah dit : ﴾Dis : Ô Mes serviteurs qui avez commis des excès envers vous-mêmes, ne désespérez pas de la miséricorde d'Allah, car Allah pardonne tous les péchés﴿."),
+      n("Ce verset est une réponse aux Khawârij et aux Mu'tazila sur le statut de l'auteur d'un grand péché : les deux groupes affirment son séjour éternel dans le Feu, tout en divergeant sur son statut dans ce bas monde ; les Khawârij le déclarent mécréant, tandis que les Mu'tazila le placent dans « une position entre les deux positions », ni croyant ni mécréant."),
+      n("Les gens d'égarement suivent les textes ambigus et délaissent le texte clair, en quête de trouble ; un exemple cité est l'argumentation par le verset du meurtre volontaire : ﴾Et quiconque tue un croyant intentionnellement, sa rétribution sera l'Enfer où il demeurera éternellement﴿, alors que le meurtre est inférieur au shirk."),
+      n("La méthode de ceux qui sont enracinés dans le savoir est de ramener l'ambigu au texte clair ; le conférencier a signalé que le verset du meurtre se situe entre deux passages du verset clair qui établit que ce qui est inférieur au shirk relève de la volonté d'Allah. Ainsi disparaît la difficulté, et les textes de menace se comprennent à la lumière des textes clairs.")
+    ], true)
+  ]),
+  n("Devoirs", [
+    n("Lire le livre du Tawhid et étudier ses chapitres, ses preuves et ses règles, pour approfondir la réalité du shirk, ses critères, ses causes et les moyens de s'en prémunir."),
+    n("Retenir l'invocation de protection contre le shirk : « Ô Allah, nous cherchons refuge auprès de Toi contre le fait de T'associer quelque chose en le sachant, et nous Te demandons pardon pour ce que nous ne savons pas », et persévérer dans les invocations rapportées pour se protéger de la mécréance et de l'égarement et demander la constance."),
+    n("Méditer les preuves du Livre et de la Sunna concernant le statut du shirk mineur, et peser les deux avis cités sur son inclusion sous la volonté d'Allah."),
+    n("Méditer les versets clairs de la sourate an-Nisâ' et y revenir en cas d'ambiguïté dans les textes de menace."),
+    n("Se garder des manifestations du shirk, veiller à la pureté du Tawhid, à la constance dans la religion et à la droiture du cœur, et chercher refuge contre les épreuves égarantes.")
+  ])
+]);
+
+// Résumé écrit, généré depuis le même arbre que la carte
+const bold = s => s.replace(/﴾[^﴿]*﴿/g, m => `<strong>${m}</strong>`);
+const [meta, resume, points, devoirs] = data.children;
+const NUM = /^(\d+)\.\s+/;
+function list(items) {
+  const ordered = items.every(i => NUM.test(i.content));
+  const tag = ordered ? 'ol' : 'ul';
+  return `<${tag}>` + items.map(i => {
+    const txt = ordered ? i.content.replace(NUM, '') : i.content;
+    return `<li><p>${bold(txt)}</p>${i.children.length ? list(i.children) : ''}</li>`;
+  }).join('') + `</${tag}>`;
+}
+let html = '<blockquote><p>' + meta.children.map(m => {
+  const k = m.content.indexOf(' : ');
+  return `<strong>${m.content.slice(0, k)} :</strong> ${m.content.slice(k + 3)}`;
+}).join('<br>') + '</p></blockquote>';
+html += `<h2>${resume.content}</h2>` + resume.children.map(p => `<p>${bold(p.content)}</p>`).join('');
+html += `<h2>${points.content}</h2>` + points.children.map(pt => `<h3>${pt.content}</h3>` + (pt.children.every(s => s.children.length) ? pt.children.map(s => `<h4>${s.content}</h4>${list(s.children)}`).join('') : list(pt.children))).join('');
+html += `<h2>${devoirs.content}</h2><ul class="todo">` + devoirs.children.map((d, i) =>
+  `<li><input type="checkbox" id="devoir-${i + 1}"><label for="devoir-${i + 1}">${bold(d.content)}</label></li>`).join('') + '</ul>';
+document.getElementById('doc').innerHTML = html;
+
+// Carte mentale : une teinte pastel par branche principale (couleurs Plaud), épaisseur décroissante avec la profondeur
+const BRANCH = ['#E5CCB3', '#E5DDB3', '#CCE5B3', '#B7E5C6'];
+data.payload.c = BRANCH[0];
+data.children.forEach((b, i) => {
+  (function paint(x) { x.payload.c = BRANCH[i % BRANCH.length]; x.children.forEach(paint); })(b);
+});
+(function mark(x) { if (x.payload.fold) x.payload.foldInit = 1; x.children.forEach(mark); })(data);
+const depthOf = node => (node.state && node.state.path ? node.state.path.split('.').length : 1);
+
+const { Markmap } = window.markmap;
+const mm = Markmap.create('#mm', {
+  color: node => node.payload.c,
+  lineWidth: node => 1 + 1.5 / Math.pow(2, depthOf(node) - 1),
+  maxWidth: 300,
+  duration: 400,
+  spacingVertical: 5,
+  paddingX: 8,
+  fitRatio: 0.95
+}, data);
+
+const card = document.getElementById('card');
+function setFull(on) {
+  card.classList.toggle('full', on);
+  document.body.style.overflow = on ? 'hidden' : '';
+  requestAnimationFrame(() => mm.fit());
+  if (on) document.getElementById('close').focus();
+}
+document.getElementById('open').onclick = () => setFull(true);
+document.getElementById('close').onclick = () => setFull(false);
+document.addEventListener('keydown', e => { if (e.key === 'Escape' && card.classList.contains('full')) setFull(false); });
+document.getElementById('zin').onclick = () => mm.rescale(1.25);
+document.getElementById('zout').onclick = () => mm.rescale(0.8);
+document.getElementById('fit').onclick = () => mm.fit();
+let open = false;
+document.getElementById('all').onclick = () => {
+  open = !open;
+  (function walk(x) {
+    if (x !== data && x.children && x.children.length) {
+      x.payload = { ...x.payload, fold: open ? 0 : (x.payload.foldInit ? 1 : 0) };
+    }
+    (x.children || []).forEach(walk);
+  })(mm.state.data);
+  mm.renderData().then(() => mm.fit());
+  const b = document.getElementById('all');
+  b.title = b.ariaLabel = open ? 'Replier' : 'Tout déplier';
+};
+window.addEventListener('resize', () => mm.fit());
+window.addEventListener('load', () => setTimeout(() => mm.fit(), 300));
+</script>
+
+</body>
+</html>
