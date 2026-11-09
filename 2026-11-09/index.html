@@ -1,0 +1,299 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="Résumé en français et carte mentale de la conférence du Cheikh Abd Razzaq Al Badr au Masjid Nabawi, 09/11/2026.">
+<style>*,*::before,*::after{box-sizing:border-box}body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style>
+<title>Cours du 09/11 : la crainte du shirk et la réalisation du Tawhid</title>
+
+<style>
+/* Layout : page de résumé type Plaud (colonne centrée 768px), puis carte mentale en encadré qui s'ouvre en plein écran */
+:root {
+  --bg: #ffffff;
+  --fg: #111113;
+  --muted: #6b6b70;
+  --line: #e6e6e8;
+  --quote: #c9c9ce;
+  --panel: #ffffff;
+  --panel-shadow: 0 2px 10px rgba(0,0,0,.10);
+  --circle-open: #ffffff;
+  --map-font: 300 16px/20px sans-serif;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #1c1c1e; --fg: #f2f2f2; --muted: #a1a1a6; --line: #38383a; --quote: #4a4a4e;
+    --panel: #2c2c2e; --panel-shadow: 0 2px 10px rgba(0,0,0,.45); --circle-open: #1c1c1e;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #1c1c1e; --fg: #f2f2f2; --muted: #a1a1a6; --line: #38383a; --quote: #4a4a4e;
+  --panel: #2c2c2e; --panel-shadow: 0 2px 10px rgba(0,0,0,.45); --circle-open: #1c1c1e;
+  color-scheme: dark;
+}
+body {
+  background: var(--bg); color: var(--fg);
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  font-size: 15px; line-height: 1.6;
+}
+body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-area-inset-top, 0px); z-index: 10; background: var(--bg); }
+.top {
+  position: sticky; top: env(safe-area-inset-top, 0px); z-index: 5;
+  background: var(--bg); border-bottom: 1px solid var(--line);
+  padding-block: 10px;
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+}
+.top h1 { margin: 0; font-size: 13px; font-weight: 600; line-height: 1.35; text-wrap: balance; }
+.top p { margin: 2px 0 0; font-size: 12px; color: var(--muted); font-variant-numeric: tabular-nums; }
+main {
+  max-width: 768px; margin: 0 auto;
+  padding-block: 24px 48px;
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+}
+.tabs { display: flex; gap: 20px; font-size: 13px; margin-bottom: 20px; }
+.tabs span { color: var(--muted); }
+.tabs strong { font-weight: 600; }
+blockquote { margin: 0 0 8px; padding: 2px 0 2px 14px; border-left: 3px solid var(--quote); color: var(--muted); font-size: 14px; }
+blockquote strong { color: var(--fg); font-weight: 600; }
+h2 { font-size: 21px; line-height: 1.3; margin: 32px 0 12px; text-wrap: balance; }
+h3 { font-size: 17px; line-height: 1.35; margin: 26px 0 8px; text-wrap: balance; }
+h4 { font-size: 15px; line-height: 1.4; margin: 16px 0 4px; color: var(--muted); }
+p { margin: 0 0 12px; }
+ul, ol { margin: 0 0 12px; padding-left: 22px; }
+li { margin: 6px 0; }
+li > ul, li > ol { margin: 6px 0 0; }
+.todo { list-style: none; padding-left: 0; }
+.todo li { display: flex; gap: 10px; align-items: flex-start; }
+.todo input { margin-top: 5px; flex: none; width: 15px; height: 15px; accent-color: var(--muted); }
+.todo label { min-width: 0; }
+
+.mapcard {
+  position: relative; margin-top: 40px; height: 320px;
+  border: 1px solid var(--line); border-radius: 10px; overflow: hidden; background: var(--bg);
+}
+.mapcard .label { position: absolute; top: 10px; left: 12px; font-size: 12px; color: var(--muted); z-index: 2; }
+.mapcard .open {
+  position: absolute; inset: 0; z-index: 3; border: 0; background: transparent; cursor: zoom-in;
+}
+.mapcard .open:focus-visible { outline: 2px solid var(--muted); outline-offset: -3px; }
+#mm {
+  width: 100%; height: 100%; display: block;
+  --markmap-text-color: var(--fg);
+  --markmap-circle-open-bg: var(--circle-open);
+  --markmap-max-width: 300px;
+  --markmap-font: var(--map-font);
+}
+.controls, .close { display: none; }
+.mapcard.full {
+  position: fixed; inset: 0; z-index: 20; margin: 0; height: auto; border: 0; border-radius: 0;
+  padding: env(safe-area-inset-top, 0px) env(safe-area-inset-right, 0px) env(safe-area-inset-bottom, 0px) env(safe-area-inset-left, 0px);
+}
+.mapcard.full .open, .mapcard.full .label { display: none; }
+.mapcard.full .controls {
+  display: flex; position: absolute;
+  right: calc(16px + env(safe-area-inset-right, 0px));
+  bottom: calc(16px + env(safe-area-inset-bottom, 0px));
+  gap: 4px; padding: 6px; background: var(--panel); border-radius: 10px; box-shadow: var(--panel-shadow);
+}
+.mapcard.full .close {
+  display: grid; place-items: center; position: absolute;
+  top: calc(12px + env(safe-area-inset-top, 0px)); right: calc(12px + env(safe-area-inset-right, 0px));
+  width: 36px; height: 36px; border: 0; border-radius: 8px; background: var(--panel); box-shadow: var(--panel-shadow);
+  color: var(--fg); cursor: pointer;
+}
+.controls button {
+  width: 32px; height: 32px; border: 0; border-radius: 6px;
+  background: transparent; color: var(--fg); cursor: pointer; display: grid; place-items: center;
+}
+.controls button:hover { background: var(--line); }
+.controls button:focus-visible, .close:focus-visible { outline: 2px solid var(--muted); outline-offset: 1px; }
+.ico { width: 18px; height: 18px; fill: none; stroke: currentColor; stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round; }
+footer { text-align: center; font-size: 12px; color: var(--muted); padding-block: 8px 32px; }
+</style>
+</head>
+<body>
+
+
+<div class="top">
+  <h1>Conférence : le Tawhid, la crainte du shirk et sa réalisation</h1>
+  <p>2026-11-09 19:10 · Cheikh Abd Razzaq Al Badr</p>
+</div>
+
+<main>
+  <div class="tabs"><strong>Résumé</strong></div>
+  <div id="doc"></div>
+
+  <section class="mapcard" id="card" aria-label="Carte mentale">
+    <span class="label">Carte mentale</span>
+    <svg id="mm" class="markmap"></svg>
+    <button class="open" id="open" type="button" aria-label="Ouvrir la carte mentale en plein écran"></button>
+    <button class="close" id="close" type="button" title="Fermer" aria-label="Fermer la carte"><svg class="ico" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
+    <div class="controls" role="toolbar" aria-label="Commandes de la carte">
+      <button id="zin" type="button" title="Zoom avant" aria-label="Zoom avant"><svg class="ico" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="M11 8v6M8 11h6M16.5 16.5L21 21"/></svg></button>
+      <button id="zout" type="button" title="Zoom arrière" aria-label="Zoom arrière"><svg class="ico" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="M8 11h6M16.5 16.5L21 21"/></svg></button>
+      <button id="fit" type="button" title="Ajuster à l'écran" aria-label="Ajuster à l'écran"><svg class="ico" viewBox="0 0 24 24"><path d="M4 9V4h5M15 4h5v5M20 15v5h-5M9 20H4v-5"/><rect x="8" y="8" width="8" height="8" rx="1"/></svg></button>
+      <button id="all" type="button" title="Tout déplier" aria-label="Tout déplier"><svg class="ico" viewBox="0 0 24 24"><path d="M4 6h16M8 12h12M12 18h8"/><circle cx="4" cy="12" r="0.8"/><circle cx="8" cy="18" r="0.8"/></svg></button>
+    </div>
+  </section>
+</main>
+<footer>Traduction française de la note Plaud du 09/11/2026</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/d3@7.9.0/dist/d3.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/markmap-view@0.18.10/dist/browser/index.js"></script>
+<script>
+const n = (content, children, fold) => ({ content, children: children || [], payload: fold ? { fold: 1 } : {} });
+const data = n('Conférence : le Tawhid, la crainte du shirk et sa réalisation', [
+  n('Relevé', [
+    n('Date : 2026-11-09'),
+    n('Heure : 19:10:09'),
+    n('Lieu : Masjid Nabawi, Médine'),
+    n('Conférencier : Cheikh Abd Razzaq Al Badr'),
+  ], 1),
+  n('Résumé', [
+    n('La conférence traite de l’obligation de craindre le shirk, majeur et mineur, et de la nécessité de demander le secours d’Allah par l’invocation tout en mettant en œuvre les moyens pour s’en préserver. Elle expose la responsabilité du père dans l’enseignement du Tawhid à ses enfants et la mise en garde contre le shirk, apporte des preuves du Coran et de la Sunna sur la gravité du shirk, dont l’ostentation (riyâ) et le fait de détourner l’invocation vers un autre qu’Allah, et explique le mérite du Tawhid et ce qu’il faut pour le réaliser.'),
+  ], 1),
+  n('Points de connaissance', [
+    n('1. La crainte du shirk et la responsabilité du père envers ses enfants', [
+      n('La crainte d’Abraham pour lui-même et pour ses fils', [
+        n('Abraham (paix sur lui) a invoqué : ﴾Préserve-moi, ainsi que mes enfants, de l’adoration des idoles﴿, c’est-à-dire qu’Allah mette une distance entre lui et leur adoration, et l’éloigne d’elles et de toute proximité avec elles. Cela prouve que le musulman craint le shirk pour ses enfants comme il le craint pour lui-même.'),
+        n('Malgré le rang élevé d’Abraham, imam des monothéistes purs et ami intime du Tout-Miséricordieux, qui s’est acquitté de toutes les épreuves d’Allah et s’en est pris violemment aux idoles jusqu’à les briser et quitter son peuple, il ne s’est pas senti à l’abri de l’épreuve pour lui-même et pour ses fils ; il s’en est remis à Allah et Lui a demandé de les préserver de l’adoration des idoles. Ibrahim at-Taymî a dit en lisant ce verset : « Qui peut se sentir à l’abri de l’épreuve après Abraham ? »'),
+      ]),
+      n('L’invocation et les moyens dans l’éducation des enfants au Tawhid', [
+        n('La crainte du shirk ne se limite pas à un sentiment, elle s’accompagne d’une action : multiplier l’invocation pour soi-même et pour ses enfants afin d’en être préservé, leur enseigner le Tawhid, les en recommander, les y élever et les mettre en garde contre le shirk et le fait de prendre des égaux à Allah.'),
+        n('Abraham (paix sur lui) a réuni l’invocation, l’enseignement et la recommandation, dont sa recommandation à ses fils. Il est rapporté, dans ce même sujet, le récit de Jacob (paix sur lui) qui, à l’approche de sa mort, a demandé à ses fils ce qu’ils adoreraient après lui ; ils ont répondu qu’ils adorent le Dieu unique, le Dieu d’Abraham, d’Ismaël et d’Isaac, et qu’ils Lui sont soumis.'),
+        n('Enseigner le Tawhid aux enfants, les y élever et les mettre en garde contre le shirk figurent parmi les devoirs les plus importants du père. Parmi les moyens nécessaires à cela : connaître le Tawhid pour s’y attacher, et connaître le shirk, ses causes et ses voies pour l’éviter.'),
+      ]),
+    ], 1),
+    n('2. La tentation des idoles et les raisons de se méfier du shirk', [
+      n('Nombreux sont ceux qui ont été tentés par les idoles', [
+        n('Abraham (paix sur lui) a dit : ﴾Seigneur, elles ont égaré beaucoup de gens﴿, évoquant le grand nombre de personnes tentées par les idoles et leur adoration, en faisant une raison de les craindre et de s’en méfier, et un chemin vers le salut par la leçon tirée du sort de ceux qui s’y sont égarés.'),
+        n('Un témoignage de la force de cette tentation : ce qui est arrivé aux fils d’Israël. Après qu’Allah les ait sauvés de Pharaon et de son injustice, et qu’ils aient vu sa perdition et celle de son armée noyée, ils sont passés près d’un peuple qui vénérait des idoles, et ils ont demandé à Moïse (paix sur lui) de leur faire une divinité comme ils en avaient. Moïse a dénoncé leur ignorance et le caractère nul de leur demande, malgré les signes d’Allah et leur salut de Pharaon qu’ils avaient vus.'),
+        n('Les cœurs de certaines personnes, à différentes époques, peuvent être tentés par l’adoration des idoles et des statues, ou par l’attachement aux tombes. Certains peuvent propager cela par des récits et des expériences prétendues de recours à un autre qu’Allah, et d’autres s’y attachent ; ce qui confirme la nécessité de craindre le shirk et de le mettre en garde.'),
+      ]),
+      n('Plusieurs aspects montrant l’obligation de craindre le shirk', [
+        n('Parmi les raisons de le craindre : Allah ne pardonne pas à celui qui meurt associateur, les prophètes et les pieux l’ont craint et ont demandé à Allah de les en préserver, et les idoles ont égaré beaucoup de gens, surtout sous l’influence des chefs de l’égarement.'),
+        n('Le Prophète (paix et salut sur lui) a craint le shirk pour sa communauté, et a spécifiquement mentionné le shirk mineur tant il le craignait. D’autres hadiths montrent la proximité du Feu pour l’associateur : il n’y a entre lui et son entrée dans le Feu, selon le commentaire du hadith, que le fait de mourir sur son shirk.'),
+        n('Une mise en garde est rapportée contre la survenue du shirk dans la communauté, dont l’annonce que des groupes de la communauté adoreront des idoles, que les cuisses des femmes de Daws trembleront autour de Dhul-Khalasa, qui est une idole. Une mise en garde est aussi rapportée contre le fait de suivre pas à pas les voies des nations précédentes. Ces preuves sont des exemples des aspects de la crainte du shirk, et non un recensement exhaustif.'),
+      ]),
+    ], 1),
+    n('3. Le shirk mineur et l’ostentation (riyâ)', [
+      n('La mise en garde contre le shirk mineur', [
+        n('Il est rapporté du Prophète (paix et salut sur lui) : « Ce que je crains le plus pour vous, c’est le shirk mineur. » Interrogé à ce sujet, il a répondu : « L’ostentation (riyâ). » La mention du shirk mineur montre que le shirk est de deux types, majeur et mineur, et que l’on doit se méfier des deux.'),
+        n('Il s’agit ici de l’ostentation mineure, non de l’ostentation pure qui caractérise les hypocrites, c’est-à-dire montrer la foi et cacher la mécréance. L’ostentation elle-même peut être majeure ou mineure, et le hadith traite de sa forme légère.'),
+        n('Exemple d’ostentation : un homme commence sa prière sincèrement pour Allah, puis une personne qu’il considère passe devant lui, et il embellit sa prière ou en rajoute en cherchant son regard. On rapporte l’histoire d’un homme qui a embelli sa prière en voyant quelqu’un qui l’estimait le regarder, puis, une fois cette personne partie, l’a rejointe pour lui dire qu’il jeûnait aussi ; récit qui met en garde contre la recherche de louange sur les actes d’adoration et son danger.'),
+        n('Si le Prophète (paix et salut sur lui) a craint ce shirk pour les Compagnons, ceux qui leur sont inférieurs en mérite et en rang doivent le craindre davantage. Parmi les invocations rapportées pour s’en préserver : « Ô Allah, je me réfugie auprès de Toi contre le fait de T’associer un partenaire sciemment, et je Te demande pardon pour ce que je ne sais pas. »'),
+      ]),
+      n('L’ostentation, un exemple de shirk mineur', [
+        n('L’explication du Prophète (paix et salut sur lui) du shirk mineur par l’ostentation est une explication par l’exemple, non un recensement de toutes ses formes. Parmi ses autres exemples : dire « Si Allah le veut et si tu le veux », jurer par un autre qu’Allah, et ce qui s’en rapproche parmi les formes de shirk des paroles.'),
+      ]),
+    ], 1),
+    n('4. Prendre un égal à Allah et détourner l’adoration de Lui', [
+      n('Le sens du mot « égal » et son danger', [
+        n('Le mot « égal » signifie en langue l’équivalent, le semblable, le pareil ; il peut aussi désigner le contraire ou l’adversaire, mais le sens le plus connu est le semblable. L’emploi du mot « égal » indéfini dans le hadith indique la généralité : cela englobe tout ce qui est pris comme égal, qu’il s’agisse d’un prophète, d’un saint, d’un roi, d’un arbre, d’une pierre, ou autre.'),
+        n('Prendre un égal se divise en deux : le shirk majeur, qui consiste à donner à Allah un associé dans l’adoration, en tout ou en partie, et le shirk mineur, comme l’ostentation légère ou certaines formules d’égalité entre la volonté d’Allah et celle de la créature.'),
+        n('Prendre un égal devient un shirk majeur en détournant une part de l’adoration vers un autre qu’Allah, comme l’invocation, l’espoir, la demande de secours, le sacrifice et le vœu, la crainte secrète, ou l’amour propre à Allah qui implique l’humilité, la soumission et la divinisation. En revanche, la crainte naturelle d’un ennemi, d’un serpent ou d’un scorpion, ainsi que l’amour naturel, n’en font pas partie.'),
+        n('Exemple de shirk mineur : dire « Si Allah le veut et si tu le veux ». Le Prophète (paix et salut sur lui) a désapprouvé celui qui a dit cela en répondant : « M’as-tu pris comme égal à Allah ? » Ibn Abbas a rapporté que le shirk peut être plus discret que le pas d’une fourmi, citant comme exemples le serment par un autre qu’Allah, dire « Sans ce chien, les voleurs seraient venus », ou « Sans les canards dans la maison, les voleurs seraient venus », ou dire « Si Allah le veut et si untel le veut » ou « Sans Allah et untel ». Ce sont des exemples de shirk mineur, non majeur.'),
+      ]),
+      n('L’invocation, une adoration qui ne se détourne que vers Allah', [
+        n('Le hadith évoquant l’entrée au Feu de celui qui meurt en invoquant un égal à Allah montre que l’invocation est une adoration, comme il est rapporté : « L’invocation est l’adoration. » Quiconque invoque un autre qu’Allah, lui demande secours ou Lui demande ce que seul Allah peut accorder, a détourné une adoration vers un autre qu’Allah.'),
+        n('Des versets sont cités montrant que ceux qu’on invoque en dehors d’Allah ne possèdent rien, n’entendent pas l’invocation ou n’y répondent pas, et se désavoueront du shirk de leurs adorateurs au Jour de la Résurrection. Une menace est rapportée contre qui invoque une autre divinité avec Allah, précisant qu’il ne réussira pas.'),
+        n('L’état de celui qui invoque un autre qu’Allah est comparé à celui qui tend ses mains vers l’eau pour l’atteindre sans y parvenir. L’image est précisée par un homme assoiffé devant un puits profond, l’eau étant au fond, tendant les mains en attendant qu’elle monte vers lui sans jamais l’atteindre. Le but est de montrer l’égarement de l’invocation d’un autre qu’Allah.'),
+      ]),
+    ], 1),
+    n('5. Le mérite du Tawhid, la fin du shirk et les conditions de la parole du Tawhid', [
+      n('Le sort de celui qui rencontre Allah en monothéiste ou en associateur', [
+        n('Il est rapporté de Jabir (qu’Allah soit satisfait de lui) que le Messager d’Allah (paix et salut sur lui) a dit : « Quiconque rencontre Allah sans Lui associer quoi que ce soit entre au Paradis, et quiconque Le rencontre en Lui associant quelque chose entre au Feu. » Le mot « quelque chose », indéfini dans un contexte conditionnel, indique la généralité et englobe tout type de shirk.'),
+        n('Celui qui rencontre Allah sauf du shirk, ayant réalisé le Tawhid, entre au Paradis d’emblée, sans jugement ni châtiment. Celui qui est monothéiste mais a commis de grands péchés ou des désobéissances hors shirk aura pour issue le Paradis, précédée éventuellement d’une purification. Quant à celui qui rencontre Allah en associateur, la menace du hadith montre la gravité du shirk et sa proximité avec le Feu.'),
+        n('Ce hadith restreint les hadiths absolus sur le mérite de dire « Lâ ilâha illa Allah », dont le hadith d’Ubada ibn as-Samit et le hadith d’Itban sur l’interdiction du Feu pour qui la dit en recherchant la Face d’Allah. La parole ne profite donc pas si l’on prend des égaux et des associés ; il faut nécessairement être préservé du shirk et réaliser ses conditions et ses règles, telles qu’indiquées par le Livre et la Sunna.'),
+      ]),
+      n('Les conditions de « Lâ ilâha illa Allah »', [
+        n('Il est rapporté de Wahb ibn Munabbih, l’un des savants parmi les successeurs, une comparaison des conditions de la parole du Tawhid, de ses restrictions et de ses dents, aux dents d’une clé : de même qu’une clé n’ouvre qu’en correspondant à la serrure, il faut nécessairement remplir les conditions de la parole et ses restrictions, et non simplement la prononcer en tombant dans le shirk.'),
+        n('Le commentateur a résumé le sens des versets et des hadiths en disant qu’ils indiquent la crainte du shirk, sa mauvaise fin, l’obligation de s’en méfier, et que les hadiths de menace restreignent les hadiths absolus sur le mérite du Tawhid.'),
+      ]),
+    ], 1),
+  ], 1),
+  n('Devoirs', [
+    n('Multiplier l’invocation pour soi-même et pour ses enfants afin d’être préservé du shirk, dont l’invocation : ﴾Préserve-moi, ainsi que mes enfants, de l’adoration des idoles﴿.'),
+    n('Enseigner le Tawhid aux enfants et les y élever, en les recommandant de se méfier du shirk et des égaux à Allah.'),
+    n('Apprendre le Tawhid, connaître les formes du shirk, ses causes et ses voies, et les éviter.'),
+    n('Réviser les formes du shirk majeur et mineur, en faisant attention à l’ostentation, au shirk des paroles et au fait de détourner l’invocation vers un autre qu’Allah.'),
+  ], 1),
+], 1);
+
+// Résumé écrit, généré depuis le même arbre que la carte
+const bold = s => s.replace(/﴾[^﴿]*﴿/g, m => `<strong>${m}</strong>`);
+const [meta, resume, points, devoirs] = data.children;
+const NUM = /^(\d+)\.\s+/;
+function list(items) {
+  const ordered = items.every(i => NUM.test(i.content));
+  const tag = ordered ? 'ol' : 'ul';
+  return `<${tag}>` + items.map(i => {
+    const txt = ordered ? i.content.replace(NUM, '') : i.content;
+    return `<li><p>${bold(txt)}</p>${i.children.length ? list(i.children) : ''}</li>`;
+  }).join('') + `</${tag}>`;
+}
+let html = '<blockquote><p>' + meta.children.map(m => {
+  const k = m.content.indexOf(' : ');
+  return `<strong>${m.content.slice(0, k)} :</strong> ${m.content.slice(k + 3)}`;
+}).join('<br>') + '</p></blockquote>';
+html += `<h2>${resume.content}</h2>` + resume.children.map(p => `<p>${bold(p.content)}</p>`).join('');
+html += `<h2>${points.content}</h2>` + points.children.map(pt => `<h3>${pt.content}</h3>` + (pt.children.every(s => s.children.length) ? pt.children.map(s => `<h4>${s.content}</h4>${list(s.children)}`).join('') : list(pt.children))).join('');
+html += `<h2>${devoirs.content}</h2><ul class="todo">` + devoirs.children.map((d, i) =>
+  `<li><input type="checkbox" id="devoir-${i + 1}"><label for="devoir-${i + 1}">${bold(d.content)}</label></li>`).join('') + '</ul>';
+document.getElementById('doc').innerHTML = html;
+
+// Carte mentale : une teinte pastel par branche principale (couleurs Plaud), épaisseur décroissante avec la profondeur
+const BRANCH = ['#E5CCB3', '#E5DDB3', '#CCE5B3', '#B7E5C6'];
+data.payload.c = BRANCH[0];
+data.children.forEach((b, i) => {
+  (function paint(x) { x.payload.c = BRANCH[i % BRANCH.length]; x.children.forEach(paint); })(b);
+});
+(function mark(x) { if (x.payload.fold) x.payload.foldInit = 1; x.children.forEach(mark); })(data);
+const depthOf = node => (node.state && node.state.path ? node.state.path.split('.').length : 1);
+
+const { Markmap } = window.markmap;
+const mm = Markmap.create('#mm', {
+  color: node => node.payload.c,
+  lineWidth: node => 1 + 1.5 / Math.pow(2, depthOf(node) - 1),
+  maxWidth: 300,
+  duration: 400,
+  spacingVertical: 5,
+  paddingX: 8,
+  fitRatio: 0.95
+}, data);
+
+const card = document.getElementById('card');
+function setFull(on) {
+  card.classList.toggle('full', on);
+  document.body.style.overflow = on ? 'hidden' : '';
+  requestAnimationFrame(() => mm.fit());
+  if (on) document.getElementById('close').focus();
+}
+document.getElementById('open').onclick = () => setFull(true);
+document.getElementById('close').onclick = () => setFull(false);
+document.addEventListener('keydown', e => { if (e.key === 'Escape' && card.classList.contains('full')) setFull(false); });
+document.getElementById('zin').onclick = () => mm.rescale(1.25);
+document.getElementById('zout').onclick = () => mm.rescale(0.8);
+document.getElementById('fit').onclick = () => mm.fit();
+let open = false;
+document.getElementById('all').onclick = () => {
+  open = !open;
+  (function walk(x) {
+    if (x !== data && x.children && x.children.length) {
+      x.payload = { ...x.payload, fold: open ? 0 : (x.payload.foldInit ? 1 : 0) };
+    }
+    (x.children || []).forEach(walk);
+  })(mm.state.data);
+  mm.renderData().then(() => mm.fit());
+  const b = document.getElementById('all');
+  b.title = b.ariaLabel = open ? 'Replier' : 'Tout déplier';
+};
+window.addEventListener('resize', () => mm.fit());
+window.addEventListener('load', () => setTimeout(() => mm.fit(), 300));
+</script>
+
+</body>
+</html>
