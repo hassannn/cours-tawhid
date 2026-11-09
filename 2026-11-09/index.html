@@ -264,6 +264,7 @@ const mm = Markmap.create('#mm', {
   paddingX: 8,
   fitRatio: 0.95
 }, data);
+setTimeout(() => { mm.setData(data); }, 50);
 
 const card = document.getElementById('card');
 function setFull(on) {
