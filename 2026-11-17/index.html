@@ -1,0 +1,304 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="Résumé en français et carte mentale de la conférence du Cheikh Abd Razzaq Al Badr au Masjid Nabawi, 17/11/2026.">
+<style>*,*::before,*::after{box-sizing:border-box}body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style>
+<title>Cours du 17/11 : le hadith de Mu’adh au Yémen et de l’étendard à Khaybar</title>
+
+<style>
+/* Layout : page de résumé type Plaud (colonne centrée 768px), puis carte mentale en encadré qui s'ouvre en plein écran */
+:root {
+  --bg: #ffffff;
+  --fg: #111113;
+  --muted: #6b6b70;
+  --line: #e6e6e8;
+  --quote: #c9c9ce;
+  --panel: #ffffff;
+  --panel-shadow: 0 2px 10px rgba(0,0,0,.10);
+  --circle-open: #ffffff;
+  --map-font: 300 16px/20px sans-serif;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #1c1c1e; --fg: #f2f2f2; --muted: #a1a1a6; --line: #38383a; --quote: #4a4a4e;
+    --panel: #2c2c2e; --panel-shadow: 0 2px 10px rgba(0,0,0,.45); --circle-open: #1c1c1e;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #1c1c1e; --fg: #f2f2f2; --muted: #a1a1a6; --line: #38383a; --quote: #4a4a4e;
+  --panel: #2c2c2e; --panel-shadow: 0 2px 10px rgba(0,0,0,.45); --circle-open: #1c1c1e;
+  color-scheme: dark;
+}
+body {
+  background: var(--bg); color: var(--fg);
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  font-size: 15px; line-height: 1.6;
+}
+body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-area-inset-top, 0px); z-index: 10; background: var(--bg); }
+.top {
+  position: sticky; top: env(safe-area-inset-top, 0px); z-index: 5;
+  background: var(--bg); border-bottom: 1px solid var(--line);
+  padding-block: 10px;
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+}
+.top h1 { margin: 0; font-size: 13px; font-weight: 600; line-height: 1.35; text-wrap: balance; }
+.top p { margin: 2px 0 0; font-size: 12px; color: var(--muted); font-variant-numeric: tabular-nums; }
+main {
+  max-width: 768px; margin: 0 auto;
+  padding-block: 24px 48px;
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+}
+.tabs { display: flex; gap: 20px; font-size: 13px; margin-bottom: 20px; }
+.tabs span { color: var(--muted); }
+.tabs strong { font-weight: 600; }
+blockquote { margin: 0 0 8px; padding: 2px 0 2px 14px; border-left: 3px solid var(--quote); color: var(--muted); font-size: 14px; }
+blockquote strong { color: var(--fg); font-weight: 600; }
+h2 { font-size: 21px; line-height: 1.3; margin: 32px 0 12px; text-wrap: balance; }
+h3 { font-size: 17px; line-height: 1.35; margin: 26px 0 8px; text-wrap: balance; }
+h4 { font-size: 15px; line-height: 1.4; margin: 16px 0 4px; color: var(--muted); }
+p { margin: 0 0 12px; }
+ul, ol { margin: 0 0 12px; padding-left: 22px; }
+li { margin: 6px 0; }
+li > ul, li > ol { margin: 6px 0 0; }
+.todo { list-style: none; padding-left: 0; }
+.todo li { display: flex; gap: 10px; align-items: flex-start; }
+.todo input { margin-top: 5px; flex: none; width: 15px; height: 15px; accent-color: var(--muted); }
+.todo label { min-width: 0; }
+
+.mapcard {
+  position: relative; margin-top: 40px; height: 320px;
+  border: 1px solid var(--line); border-radius: 10px; overflow: hidden; background: var(--bg);
+}
+.mapcard .label { position: absolute; top: 10px; left: 12px; font-size: 12px; color: var(--muted); z-index: 2; }
+.mapcard .open {
+  position: absolute; inset: 0; z-index: 3; border: 0; background: transparent; cursor: zoom-in;
+}
+.mapcard .open:focus-visible { outline: 2px solid var(--muted); outline-offset: -3px; }
+#mm {
+  width: 100%; height: 100%; display: block;
+  --markmap-text-color: var(--fg);
+  --markmap-circle-open-bg: var(--circle-open);
+  --markmap-max-width: 300px;
+  --markmap-font: var(--map-font);
+}
+.controls, .close { display: none; }
+.mapcard.full {
+  position: fixed; inset: 0; z-index: 20; margin: 0; height: auto; border: 0; border-radius: 0;
+  padding: env(safe-area-inset-top, 0px) env(safe-area-inset-right, 0px) env(safe-area-inset-bottom, 0px) env(safe-area-inset-left, 0px);
+}
+.mapcard.full .open, .mapcard.full .label { display: none; }
+.mapcard.full .controls {
+  display: flex; position: absolute;
+  right: calc(16px + env(safe-area-inset-right, 0px));
+  bottom: calc(16px + env(safe-area-inset-bottom, 0px));
+  gap: 4px; padding: 6px; background: var(--panel); border-radius: 10px; box-shadow: var(--panel-shadow);
+}
+.mapcard.full .close {
+  display: grid; place-items: center; position: absolute;
+  top: calc(12px + env(safe-area-inset-top, 0px)); right: calc(12px + env(safe-area-inset-right, 0px));
+  width: 36px; height: 36px; border: 0; border-radius: 8px; background: var(--panel); box-shadow: var(--panel-shadow);
+  color: var(--fg); cursor: pointer;
+}
+.controls button {
+  width: 32px; height: 32px; border: 0; border-radius: 6px;
+  background: transparent; color: var(--fg); cursor: pointer; display: grid; place-items: center;
+}
+.controls button:hover { background: var(--line); }
+.controls button:focus-visible, .close:focus-visible { outline: 2px solid var(--muted); outline-offset: 1px; }
+.ico { width: 18px; height: 18px; fill: none; stroke: currentColor; stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round; }
+footer { text-align: center; font-size: 12px; color: var(--muted); padding-block: 8px 32px; }
+</style>
+</head>
+<body>
+
+
+<div class="top">
+  <h1>Conférence : le hadith de Mu’adh au Yémen et le hadith de l’étendard à Khaybar</h1>
+  <p>2026-11-17 21:50 · Cheikh Abd Razzaq Al Badr</p>
+</div>
+
+<main>
+  <div class="tabs"><strong>Résumé</strong></div>
+  <div id="doc"></div>
+
+  <section class="mapcard" id="card" aria-label="Carte mentale">
+    <span class="label">Carte mentale</span>
+    <svg id="mm" class="markmap"></svg>
+    <button class="open" id="open" type="button" aria-label="Ouvrir la carte mentale en plein écran"></button>
+    <button class="close" id="close" type="button" title="Fermer" aria-label="Fermer la carte"><svg class="ico" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
+    <div class="controls" role="toolbar" aria-label="Commandes de la carte">
+      <button id="zin" type="button" title="Zoom avant" aria-label="Zoom avant"><svg class="ico" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="M11 8v6M8 11h6M16.5 16.5L21 21"/></svg></button>
+      <button id="zout" type="button" title="Zoom arrière" aria-label="Zoom arrière"><svg class="ico" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="M8 11h6M16.5 16.5L21 21"/></svg></button>
+      <button id="fit" type="button" title="Ajuster à l'écran" aria-label="Ajuster à l'écran"><svg class="ico" viewBox="0 0 24 24"><path d="M4 9V4h5M15 4h5v5M20 15v5h-5M9 20H4v-5"/><rect x="8" y="8" width="8" height="8" rx="1"/></svg></button>
+      <button id="all" type="button" title="Tout déplier" aria-label="Tout déplier"><svg class="ico" viewBox="0 0 24 24"><path d="M4 6h16M8 12h12M12 18h8"/><circle cx="4" cy="12" r="0.8"/><circle cx="8" cy="18" r="0.8"/></svg></button>
+    </div>
+  </section>
+</main>
+<footer>Traduction française de la note Plaud du 17/11/2026</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/d3@7.9.0/dist/d3.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/markmap-view@0.18.10/dist/browser/index.js"></script>
+<script>
+const n = (content, children, fold) => ({ content, children: children || [], payload: fold ? { fold: 1 } : {} });
+const data = n('Conférence : le hadith de Mu’adh au Yémen et le hadith de l’étendard à Khaybar', [
+  n('Relevé', [
+    n('Date : 2026-11-17'),
+    n('Heure : 21:50:42'),
+    n('Lieu : Masjid Nabawi, Médine'),
+    n('Conférencier : Cheikh Abd Razzaq Al Badr'),
+  ], 1),
+  n('Résumé', [
+    n('La leçon expose des questions et enseignements tirés du hadith de l’envoi de Mu’adh au Yémen et du hadith de l’étendard à Khaybar. Elle commence par la progressivité dans l’enseignement et la priorité donnée au Tawhid, puis traite des règles de la zakat et de la justice, des bonnes manières de la prédication et de l’obligation d’exposer la vérité et de lever les ambiguïtés. Elle explique aussi les enseignements du Tawhid et les signes de la prophétie, les mérites de Ali ibn Abi Talib et des Compagnons, et la foi au destin. Elle insiste sur la sincérité de l’adoration envers Allah seul, la distinction entre l’amour légitime et l’exagération, et l’appel à l’islam par la sagesse avant le combat. La leçon passe ensuite au chapitre de l’interprétation du Tawhid et de l’attestation « Lâ ilâha illa Allah », puis annonce l’arrêt des cours jusqu’au dimanche correspondant au 11/7 selon l’enregistrement, en raison des examens universitaires, et se conclut par l’invocation.'),
+  ], 1),
+  n('Points de connaissance', [
+    n('1. La progressivité dans l’enseignement et commencer par le plus important', [
+      n('On tire la progressivité dans l’enseignement de l’instruction du Prophète (paix et salut sur lui) à Mu’adh (qu’Allah l’agrée) lorsqu’il l’envoya au Yémen : il commence par appeler les gens à attester qu’il n’y a de divinité qu’Allah ; s’ils obéissent, on leur enseigne l’obligation des cinq prières, puis l’obligation de la zakat, prélevée sur leurs riches et rendue à leurs pauvres.'),
+      n('L’enseignant ne doit pas livrer le savoir d’un seul bloc, mais enseigner aux apprenants petit à petit, en tenant compte de leur compréhension et de leurs capacités, en donnant la priorité aux affaires essentielles de la religion et aux fondements de la foi.'),
+      n('L’instruction prophétique réunit la progressivité et la priorité au plus important : le Tawhid, puis la prière, puis la zakat. Le Tawhid est le fondement de la religion, comme la base d’une construction ou la racine des arbres. Il est fait référence à Sa parole : ﴾N’as-tu pas vu comment Allah propose en parabole une bonne parole, pareille à un arbre dont la racine est ferme et dont la ramure est dans le ciel﴿.'),
+    ], 1),
+    n('2. La zakat et la justice dans sa collecte', [
+      n('Les huit catégories bénéficiaires de la zakat mentionnées dans le verset sont : les pauvres, les nécessiteux, ceux qui sont chargés de la collecter, ceux dont les cœurs sont à rallier, l’affranchissement d’esclaves, les endettés, la cause d’Allah, et le voyageur en détresse.'),
+      n('Il n’est pas obligatoire de répartir la zakat sur les huit catégories ensemble ; le hadith montre qu’il est permis de la verser à une seule catégorie, et le Prophète (paix et salut sur lui) a orienté Mu’adh pour la rendre aux pauvres du Yémen. Le verset commence par les pauvres, ce qui montre l’importance de cette catégorie.'),
+      n('Sa parole (paix et salut sur lui) : « Garde-toi de prendre les biens les plus précieux de leurs fortunes » est une mise en garde contre le fait de prélever les biens les plus chers, car cela léserait le propriétaire, sauf s’il les donne volontiers. Il n’est pas non plus permis de prendre les biens les plus médiocres ; la justice consiste à prendre le moyen, ni le précieux ni le médiocre.'),
+      n('Il est fait référence au hadith : « Trois choses, quiconque les accomplit a goûté la foi », dont le fait d’acquitter la zakat de ses biens de bon cœur, sans donner la bête âgée, malade ou tarée, mais en prélevant sur la moyenne de ses biens ; Allah n’a demandé ni le meilleur ni le pire des biens.'),
+    ], 1),
+    n('3. La préparation du prédicateur et la levée des ambiguïtés', [
+      n('La parole du Prophète (paix et salut sur lui) à Mu’adh : « Tu vas vers des gens, Gens du Livre » le prépare à connaître l’état de ceux qu’il invite et à se préparer à leur méthode d’enseignement et à établir la preuve contre eux.'),
+      n('Il est possible que cette parole avertisse Mu’adh que ces gens, Gens du Livre, ont des ambiguïtés qu’il doit être prêt à lever par le savoir et la preuve, comme il est possible qu’elle avertisse les Gens du Livre eux-mêmes de se préparer à ce qui leur sera présenté comme vérité.'),
+      n('Il incombe au savant d’éclaircir pour l’apprenant ce qui pourrait lui sembler confus, de lever l’ambiguïté, et de lui expliquer ce dont il a besoin pour qu’il ne tombe pas dans une erreur qui nuirait à sa religion.'),
+    ], 1),
+    n('4. La justice et la mise en garde contre l’injustice', [
+      n('On se préserve de l’invocation du lésé par la justice et en évitant l’injustice ; il est rapporté que son invocation est exaucée et qu’il n’y a pas de voile entre elle et Allah.'),
+      n('L’interdiction de l’injustice est générale : il n’est permis à aucun musulman de léser quiconque, musulman ou mécréant ; l’injustice peut venir d’un musulman ou d’un mécréant, et peut toucher l’un comme l’autre.'),
+      n('La leçon rapporte le récit d’Abou Hourayra dans le Musnad d’Ahmad : « L’invocation du lésé est exaucée même s’il est débauché, sa débauche est contre lui-même », et le récit d’Anas ibn Malik : « Craignez l’invocation du lésé même s’il est mécréant, car il n’y a pas de voile en dessous d’elle. »'),
+    ], 1),
+    n('5. Le Tawhid, l’épreuve et les signes de la prophétie', [
+      n('Ce qui touche les prophètes et les saints comme peine, faim, maladie et épidémie montre que la création a besoin d’Allah ; les prophètes sont des êtres humains, nullement dispensés d’Allah même le temps d’un clin d’œil. La leçon évoque la peine, la faim et l’épidémie lors du siège de Khaybar, et ce qui a touché les Compagnons lorsqu’ils sont tombés sur des fruits.'),
+      n('Il est fait référence à la parole d’Abraham (paix sur lui) : « Et quand je suis malade, c’est Lui qui me guérit », et à l’invocation prophétique : « Ô Allah, Seigneur des hommes, qui dissipe le mal, guéris, Tu es le Guérisseur, il n’y a de guérison que la Tienne, une guérison qui ne laisse aucune maladie. »'),
+      n('Le recours des prophètes à Allah seul pour la guérison confirme que l’invocation, la demande de secours et toute autre forme d’adoration ne reviennent qu’à Allah : on n’invoque qu’Allah, on ne demande secours qu’à Lui, on ne Lui demande qu’à Lui, et aucun des droits du Seigneur des mondes n’est détourné vers un autre. Les gens de la vérité peuvent être éprouvés, tandis que les gens du faux ont leur part en ce bas monde, mais l’issue favorable revient aux gens du Tawhid.'),
+      n('Parmi les signes de la prophétie, son annonce (paix et salut sur lui) : « Je donnerai demain l’étendard à un homme qui aime Allah et Son Messager, et qu’Allah et Son Messager aiment », et dans la suite du récit : « Allah accordera la victoire par ses mains. » Il a ensuite remis l’étendard le lendemain à Ali ibn Abi Talib (qu’Allah l’agrée), et Allah a accordé la victoire par ses mains.'),
+      n('Le Prophète (paix et salut sur lui) a craché dans les yeux de Ali (qu’Allah l’agrée) et a invoqué pour lui, et celui-ci a guéri de l’ophtalmie ; la leçon précise qu’il n’en fut plus jamais atteint. Cela est compté parmi les signes de la prophétie et la bénédiction qu’Allah a placée dans la salive de Son Prophète, avec l’insistance que la guérison vient d’Allah seul.'),
+      n('Un récit rapporté au sujet de Musaylima est mentionné : il aurait craché dans l’œil d’un homme atteint d’ophtalmie, après qu’on lui eut dit que le Prophète avait craché dans l’œil d’un malade qui avait guéri, et l’œil de l’homme devint aveugle. Le conférencier a précisé qu’il ne certifie pas l’authenticité de ce récit, et qu’il le cite seulement parmi les récits rapportés.'),
+    ], 1),
+    n('6. Les mérites de Ali, des Compagnons et la foi au destin', [
+      n('Parmi les mérites de Ali (qu’Allah l’agrée) : le Prophète (paix et salut sur lui) lui a remis l’étendard, a annoncé qu’Allah accorderait la victoire par ses mains, et l’a décrit comme aimant Allah et Son Messager, et étant aimé d’Allah et de Son Messager. Parmi ses mérites : il est le quatrième des califes bien guidés, le père de Hassan et Hussein, l’époux de Fatima, fille du Prophète, et l’un des dix annoncés au Paradis.'),
+      n('Les gens de la Sunna magnifient la famille du Prophète, les aiment et reconnaissent leur mérite ; le refus de l’exagération à leur égard ne signifie ni haine ni dénigrement. L’exagération consiste à les invoquer ou à leur attribuer des attributs qui ne reviennent qu’à Allah ; ce n’est ni de l’amour ni de la religion. Ali (qu’Allah l’agrée) lui-même a désapprouvé ceux qui exagéraient à son sujet et lui attribuaient la seigneurie divine.'),
+      n('La leçon évoque l’accusation portée par certains opposants à l’appel du cheikh Mohammed ibn Abd al-Wahhab et de ses disciples, leur reprochant de haïr la famille du Prophète, et montre que cela provient d’une confusion entre l’amour et l’exagération. Il est aussi rapporté du cheikh de l’islam Ibn Taymiyya que les mérites de Ali (qu’Allah l’agrée) ont été transmis par les Compagnons que les chiites rejettent, de sorte qu’aucun mérite certain ne lui est établi selon leurs propres principes, d’après ce qu’a exposé la leçon.'),
+      n('Lorsque le Prophète (paix et salut sur lui) annonça qu’il donnerait l’étendard à un homme ayant la qualité décrite, les Compagnons passèrent la nuit à espérer que ce soit l’un d’eux. Leur rivalité pour ce mérite montre leur excellence, l’élévation de leurs aspirations et leur attachement au bien.'),
+      n('Dans le fait que l’étendard et la victoire reviennent à Ali (qu’Allah l’agrée), malgré son retard dû à l’ophtalmie, se trouve une preuve de la foi au destin. Le croyant qui cherche une subsistance ou un besoin sans l’obtenir doit se soumettre au décret d’Allah, tout en continuant à Lui demander de Sa grâce.'),
+    ], 1),
+    n('7. La mesure et l’appel à l’islam avant le combat', [
+      n('L’expression « Vas doucement » renferme une leçon de savoir-vivre dans la conduite des affaires : la mesure, l’absence de précipitation, la considération des conséquences et le recours à la consultation. Il est rapporté d’Ibn Mas’ûd (qu’Allah l’agrée) la mise en garde contre les affaires ambiguës et l’incitation à la mesure ; être un suiveur dans le bien vaut mieux qu’être un chef dans le mal.'),
+      n('L’appel à l’islam précède le combat, car il en est le véritable but, et le but est que la parole d’Allah soit la plus haute. Dans le récit de Khaybar, le Prophète (paix et salut sur lui) ordonna à Ali (qu’Allah l’agrée) d’avancer avec douceur puis d’appeler les gens à l’islam.'),
+      n('L’appel devient obligatoire s’il n’est pas déjà parvenu aux gens ; renouveler l’appel à ceux qui l’ont déjà reçu est recommandé. Il est permis de renouveler l’appel à ceux qui ont déjà été appelés et combattus, comme pour les habitants de Khaybar ; cela montre que le but n’est pas le combat en soi, mais l’entrée des gens dans l’islam et l’élévation de la parole d’Allah.'),
+      n('On en tire argument de l’attaque du Prophète (paix et salut sur lui) contre les Banu al-Mustaliq alors qu’ils étaient sans méfiance. Si les appelés répondent à l’islam, le but est atteint ; sinon, le combat devient licite, avec ce qui s’ensuit, mentionné dans la leçon, concernant les biens et les descendants.'),
+    ], 1),
+    n('8. L’appel par la sagesse et le mérite de la guidance', [
+      n('La sagesse a été interprétée comme la preuve, l’argument, le savoir et l’évidence ; il a aussi été dit qu’elle désigne le Coran, la jurisprudence ou la prophétie. Ces sens confirment la nécessité de suivre la révélation et la guidance du Prophète pour exposer le licite et l’illicite.'),
+      n('Il incombe au prédicateur de faire connaître aux gens le droit d’Allah et ce qui leur incombe en islam, dont l’accomplissement de la prière, le versement de la zakat, le jeûne du Ramadan et les autres obligations ; la leçon précise que l’accomplissement de ces obligations entraîne la protection de la vie et des biens.'),
+      n('La guidance d’un seul homme par l’entremise du prédicateur lui est meilleure que les chamelles rousses, c’est-à-dire meilleure que ce bas monde et tout ce qu’il contient ; les chamelles rousses étaient parmi les biens les plus précieux des Arabes, et le mérite se multiplie avec la guidance de plus d’une personne.'),
+      n('On tire de la parole du Prophète (paix et salut sur lui) : « Par Allah, qu’Allah guide par toi un seul homme vaut mieux pour toi que les chamelles rousses » la permission pour le mufti de jurer pour appuyer son avis et inciter au bien. Il est rapporté d’Ibn al-Qayyim dans « I’lam al-Muwaqqi’in » que le Prophète a juré dans près de quatre-vingts occasions, et que son serment dans ce hadith visait à encourager davantage, non à confirmer sa véracité.'),
+      n('La leçon mentionne des passages du Coran où le Prophète (paix et salut sur lui) reçut l’ordre de jurer sur la fermeté de la vérité, dont : ﴾Dis : Oui, par mon Seigneur﴿, ﴾Dis : Que si, par mon Seigneur, cela vous arrivera certainement﴿, et ﴾Dis : Que si, par mon Seigneur, vous serez certainement ressuscités﴿, et mentionne que les serments prophétiques sur la vérité apparaissent dans plus de quatre-vingts endroits des recueils authentiques et des Musnads.'),
+    ], 1),
+    n('9. Le titre du nouveau chapitre', [
+      n('La leçon passe au chapitre de l’interprétation du Tawhid et de l’attestation « Lâ ilâha illa Allah », et précise que le Tawhid visé dans ce chapitre est le Tawhid de la divinité et de l’adoration, ce qui est l’objet même du classement du livre.'),
+    ], 1),
+    n('10. L’arrêt du cours et l’invocation finale', [
+      n('Annonce de l’arrêt du cours du Maghrib jusqu’au dimanche, selon la date mentionnée dans l’enregistrement : le 11/7, en raison des examens universitaires, les cours devant reprendre après les examens avec le début des études.'),
+      n('L’invocation a comporté la demande à Allah de profiter du savoir et de son accroissement, de la réussite, de la guidance, de la droiture, de la piété et de la purification des âmes, de la droiture dans la religion, ce bas monde et l’au-delà, et du pardon pour l’orateur, ses parents, sa descendance, ses maîtres, ses dirigeants et pour tous les musulmans et musulmanes.'),
+      n('L’invocation a englobé la sécurité des pays, la droiture des dirigeants et des responsables et leur réussite, l’amélioration de la situation des musulmans et la désignation de leurs meilleurs éléments, le soulagement des chagrins et des détresses, le règlement des dettes, la guérison des malades, la miséricorde envers les morts, la réconciliation entre les gens, l’union des cœurs et la guidance vers les voies du salut et la préservation des épreuves.'),
+      n('L’invocation a comporté le secours aux musulmans faibles et la préservation de leur sang, la suffisance contre les ennemis de la religion, la demande des bienfaits de ce bas monde et de l’au-delà et la protection du châtiment du Feu, la fermeté dans la religion et la patience face aux épreuves, la préservation de l’ouïe, de la vue et de la force, la victoire sur les agresseurs, la droiture de l’intention, de la descendance et de l’œuvre, et le plaisir de contempler le Visage d’Allah et le désir de Le rencontrer sans préjudice nuisible ni épreuve égarante. Elle s’est conclue par la glorification d’Allah, la demande de pardon, le repentir et la prière et le salut sur le Prophète Muhammad, sa famille et ses compagnons.'),
+    ], 1),
+  ], 1),
+  n('Devoirs', [
+    n('Appliquer la progressivité dans l’enseignement, tenir compte de la compréhension des apprenants, et commencer par les questions les plus importantes de la religion, en premier lieu le Tawhid.'),
+    n('Connaître les huit catégories bénéficiaires de la zakat et la permission de la verser à une seule catégorie, et respecter la justice en prélevant la moyenne des biens, ni le précieux ni le médiocre.'),
+    n('Éviter de léser quiconque, et se méfier des conséquences de l’invocation du lésé.'),
+    n('Préparer les personnes invitées et éclaircir ce qui pourrait leur sembler confus, et appeler à l’islam par la sagesse et la douceur avant le combat.'),
+    n('Vouer sincèrement l’invocation, la demande de secours et toute adoration à Allah seul, et éviter l’exagération envers les prophètes, la famille du Prophète et les gens pieux.'),
+    n('Magnifier la famille du Prophète et les Compagnons et reconnaître leur mérite, en distinguant l’amour légitime de l’exagération interdite.'),
+    n('Faire preuve de mesure dans les affaires, et accepter le décret d’Allah tout en poursuivant les efforts et en demandant à Allah de Sa grâce.'),
+    n('Reprendre l’assiduité au cours après les examens universitaires, selon la date de reprise mentionnée.'),
+  ], 1),
+]);
+
+// Résumé écrit, généré depuis le même arbre que la carte
+const bold = s => s.replace(/﴾[^﴿]*﴿/g, m => `<strong>${m}</strong>`);
+const [meta, resume, points, devoirs] = data.children;
+const NUM = /^(\d+)\.\s+/;
+function list(items) {
+  const ordered = items.every(i => NUM.test(i.content));
+  const tag = ordered ? 'ol' : 'ul';
+  return `<${tag}>` + items.map(i => {
+    const txt = ordered ? i.content.replace(NUM, '') : i.content;
+    return `<li><p>${bold(txt)}</p>${i.children.length ? list(i.children) : ''}</li>`;
+  }).join('') + `</${tag}>`;
+}
+let html = '<blockquote><p>' + meta.children.map(m => {
+  const k = m.content.indexOf(' : ');
+  return `<strong>${m.content.slice(0, k)} :</strong> ${m.content.slice(k + 3)}`;
+}).join('<br>') + '</p></blockquote>';
+html += `<h2>${resume.content}</h2>` + resume.children.map(p => `<p>${bold(p.content)}</p>`).join('');
+html += `<h2>${points.content}</h2>` + points.children.map(pt => `<h3>${pt.content}</h3>` + (pt.children.every(s => s.children.length) ? pt.children.map(s => `<h4>${s.content}</h4>${list(s.children)}`).join('') : list(pt.children))).join('');
+html += `<h2>${devoirs.content}</h2><ul class="todo">` + devoirs.children.map((d, i) =>
+  `<li><input type="checkbox" id="devoir-${i + 1}"><label for="devoir-${i + 1}">${bold(d.content)}</label></li>`).join('') + '</ul>';
+document.getElementById('doc').innerHTML = html;
+
+// Carte mentale : une teinte pastel par branche principale (couleurs Plaud), épaisseur décroissante avec la profondeur
+const BRANCH = ['#E5CCB3', '#E5DDB3', '#CCE5B3', '#B7E5C6'];
+data.payload.c = BRANCH[0];
+data.children.forEach((b, i) => {
+  (function paint(x) { x.payload.c = BRANCH[i % BRANCH.length]; x.children.forEach(paint); })(b);
+});
+(function mark(x) { if (x.payload.fold) x.payload.foldInit = 1; x.children.forEach(mark); })(data);
+const depthOf = node => (node.state && node.state.path ? node.state.path.split('.').length : 1);
+
+const { Markmap } = window.markmap;
+const mm = Markmap.create('#mm', {
+  color: node => node.payload.c,
+  lineWidth: node => 1 + 1.5 / Math.pow(2, depthOf(node) - 1),
+  maxWidth: 300,
+  duration: 400,
+  spacingVertical: 5,
+  paddingX: 8,
+  fitRatio: 0.95
+}, data);
+setTimeout(() => { mm.setData(data); }, 50);
+
+const card = document.getElementById('card');
+function setFull(on) {
+  card.classList.toggle('full', on);
+  document.body.style.overflow = on ? 'hidden' : '';
+  requestAnimationFrame(() => mm.fit());
+  if (on) document.getElementById('close').focus();
+}
+document.getElementById('open').onclick = () => setFull(true);
+document.getElementById('close').onclick = () => setFull(false);
+document.addEventListener('keydown', e => { if (e.key === 'Escape' && card.classList.contains('full')) setFull(false); });
+document.getElementById('zin').onclick = () => mm.rescale(1.25);
+document.getElementById('zout').onclick = () => mm.rescale(0.8);
+document.getElementById('fit').onclick = () => mm.fit();
+let open = false;
+document.getElementById('all').onclick = () => {
+  open = !open;
+  (function walk(x) {
+    if (x !== data && x.children && x.children.length) {
+      x.payload = { ...x.payload, fold: open ? 0 : (x.payload.foldInit ? 1 : 0) };
+    }
+    (x.children || []).forEach(walk);
+  })(mm.state.data);
+  mm.renderData().then(() => mm.fit());
+  const b = document.getElementById('all');
+  b.title = b.ariaLabel = open ? 'Replier' : 'Tout déplier';
+};
+window.addEventListener('resize', () => mm.fit());
+window.addEventListener('load', () => setTimeout(() => mm.fit(), 300));
+</script>
+
+</body>
+</html>
